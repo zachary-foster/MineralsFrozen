@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 
 <ModMetaData>
-	<name>MineralsExtra</name>
+	<name>MineralsFrozen</name>
 	<author>zachary-foster</author>
 	<targetVersion>0.18.0</targetVersion>
   <description>
@@ -11,25 +11,10 @@ mod version 0.5.0
 
 &lt;size=24&gt;Description&lt;/size&gt;
 
-This mod is an expansion of the Minerals Mod and the Minerals mod must come before in the loading order.
+This mod is an expansion of the "Minerals" Mod and the "Minerals" mod be enabled and must come before in the loading order.
+It adds ice-related content.
 
-See:
+See: https://github.com/zachary-foster/MineralsFrozen for detailed documentation.
 
-https://github.com/zachary-foster/MineralsExtra
-
-for full documentation.
-
-
-&lt;size=18&gt;Citrine&lt;/size&gt;
-
-Crystals of silicon dioxide. Impurities of iron make these crystals a beautiful yellow. Rarely found. Yeilds glass batch when mined. Often yeilds gem-quality peices due to its interesting color.
-
-&lt;size=18&gt;Prasiolite&lt;/size&gt;
-
-A very rare and beautiful green variety of quartz, silicon dioxide. Yeilds glass batch when mined. Often yeilds gem-quality peices due to its interesting color.
-
-&lt;size=18&gt;Pyrite&lt;/size&gt;
-
-Crystals of iron(II) disulfide. A common mineral found underground and often mistaken for gold or silver by the foolish. Interesting, but not otherwise very useful. Yeilds rubble if mined.
-
-  </description></ModMetaData>
+  </description>
+</ModMetaData>
