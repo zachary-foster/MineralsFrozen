@@ -8,7 +8,7 @@ using UnityEngine;   // Always needed
 using RimWorld;      // RimWorld specific functions 
 using Verse;         // RimWorld universal objects 
 
-namespace Minerals
+namespace MineralsFrozen
 {
     /// <summary>
     /// FrozenResource class

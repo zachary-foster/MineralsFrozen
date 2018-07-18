@@ -6,20 +6,20 @@ using UnityEngine;   // Always needed
 using RimWorld;      // RimWorld specific functions 
 using Verse;         // RimWorld universal objects 
 
-namespace Minerals
+namespace MineralsFrozen
 {
     /// <summary>
     /// SaltCrystal class
     /// </summary>
     /// <author>zachary-foster</author>
     /// <permission>No restrictions</permission>
-    public class SnowDrift : DynamicMineral
+    public class SnowDrift : Minerals.DynamicMineral
     {
-        public static float grothRateFactor(ThingDef_DynamicMineral myDef, IntVec3 aPosition, Map aMap)
+        public static float grothRateFactor(Minerals.ThingDef_DynamicMineral myDef, IntVec3 aPosition, Map aMap)
         {
             // If melting, dont change
             float rate = 0f;
-            float baseRate = DynamicMineral.GrowthRateAtPos(myDef, aPosition, aMap);
+            float baseRate = Minerals.DynamicMineral.GrowthRateAtPos(myDef, aPosition, aMap);
             if (baseRate < 0) {
                 // Melt faster in water
                 if (aMap.terrainGrid.TerrainAt(aPosition).defName.Contains("Water"))
@@ -102,9 +102,9 @@ namespace Minerals
             }
         }
 
-        public new static float GrowthRateAtPos(ThingDef_DynamicMineral myDef, IntVec3 aPosition, Map aMap) 
+        public new static float GrowthRateAtPos(Minerals.ThingDef_DynamicMineral myDef, IntVec3 aPosition, Map aMap) 
         {
-            return DynamicMineral.GrowthRateAtPos(myDef, aPosition, aMap) * grothRateFactor(myDef, aPosition, aMap);
+            return Minerals.DynamicMineral.GrowthRateAtPos(myDef, aPosition, aMap) * grothRateFactor(myDef, aPosition, aMap);
         }
             
     }  
@@ -116,7 +116,7 @@ namespace Minerals
     /// </summary>
     /// <author>zachary-foster</author>
     /// <permission>No restrictions</permission>
-    public class ThingDef_SnowDrift : ThingDef_DynamicMineral
+    public class ThingDef_SnowDrift : Minerals.ThingDef_DynamicMineral
     {
         public override void InitNewMap(Map map, float scaling = 1)
         {

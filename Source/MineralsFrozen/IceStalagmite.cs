@@ -6,16 +6,16 @@ using UnityEngine;   // Always needed
 using RimWorld;      // RimWorld specific functions 
 using Verse;         // RimWorld universal objects 
 
-namespace Minerals
+namespace MineralsFrozen
 {
     /// <summary>
     /// SaltCrystal class
     /// </summary>
     /// <author>zachary-foster</author>
     /// <permission>No restrictions</permission>
-    public class IceStalagmite : DynamicMineral
+    public class IceStalagmite : Minerals.DynamicMineral
     {
-        public new static bool isRoofConditionOk(ThingDef_StaticMineral myDef, Map map, IntVec3 position)
+        public new static bool isRoofConditionOk(Minerals.ThingDef_StaticMineral myDef, Map map, IntVec3 position)
         {
             // Allow to spawn near roofs
             Predicate<IntVec3> validator = (IntVec3 c) => c.Roofed(map);
@@ -26,7 +26,7 @@ namespace Minerals
                 return true;
             }
 
-            return DynamicMineral.isRoofConditionOk(myDef, map, position);
+            return Minerals.DynamicMineral.isRoofConditionOk(myDef, map, position);
         }
 
     }       
