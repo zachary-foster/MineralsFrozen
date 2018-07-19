@@ -15,15 +15,7 @@ namespace MineralsFrozen
     /// <permission>No restrictions</permission>
     public class IceStalagmite : Minerals.DynamicMineral
     {
-
-        public override Minerals.ThingDef_DynamicMineral attributes
-        {
-            get
-            {
-                return this.def as ThingDef_IceStalagmite;
-            }
-
-        }
+    
 
     }       
 

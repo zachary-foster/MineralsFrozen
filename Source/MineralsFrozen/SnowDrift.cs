@@ -162,6 +162,7 @@ namespace MineralsFrozen
 
         public override Minerals.StaticMineral TrySpawnAt(IntVec3 dest, Map map)
         {
+            Log.Message("Minerals: ThingDef_DeepSnow spawning");
             // dont spawn on big things
             foreach (Thing thing in map.thingGrid.ThingsListAt(dest))
             {
@@ -196,6 +197,7 @@ namespace MineralsFrozen
 
         public override Minerals.StaticMineral TrySpawnAt(IntVec3 dest, Map map)
         {
+            Log.Message("Minerals: ThingDef_SnowDrift spawning");
             // dont always spawn in the open
             bool open = true;
             foreach (Thing thing in map.thingGrid.ThingsListAt(dest))
