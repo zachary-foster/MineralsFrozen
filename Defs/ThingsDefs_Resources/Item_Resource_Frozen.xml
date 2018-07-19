@@ -3,8 +3,8 @@
 
 <Defs>
 
-       <ThingDef Name="FrozenResource" ParentName="ResourceBase" Class="Minerals.ThingDef_FrozenResource" Abstract="True">
-				<thingClass>Minerals.FrozenResource</thingClass>
+       <ThingDef Name="FrozenResource" ParentName="ResourceBase" Class="MineralsFrozen.ThingDef_FrozenResource" Abstract="True">
+				<thingClass>MineralsFrozen.FrozenResource</thingClass>
                 <useHitPoints>true</useHitPoints>
                 <stackLimit>75</stackLimit>
                 <thingCategories>
@@ -156,7 +156,7 @@
         </ThingDef>
 
         <ThingDef ParentName="WallBase">
-				<thingClass>Minerals.FrozenResource</thingClass>
+				<thingClass>MineralsFrozen.FrozenResource</thingClass>
                 <defName>FrozenWall</defName>
                 <label>Frozen Wall</label>
                 <description>An impassable wall made of frozen material. It will melt when above freezing. It is capable of holding up a roof.</description>

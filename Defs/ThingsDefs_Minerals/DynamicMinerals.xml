@@ -3,8 +3,8 @@
 
 <Defs>
 
-	<ThingDef ParentName="DynamicMineralBase">
-		<thingClass>Minerals.IceStalagmite</thingClass>
+	<ThingDef ParentName="DynamicMineralBase" Class="MineralsFrozen.ThingDef_IceStalagmite">
+		<thingClass>MineralsFrozen.IceStalagmite</thingClass>
     	<defName>ZF_IceStalagmite</defName>
     	<label>Ice Stalagmite</label>		
     	<description>Spawns in caves when water drips down from the ceiling and freezes. Only grow when the temperature is just below freezing and melts when the temperature rises.</description>
@@ -35,9 +35,12 @@
 		<!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
 		<spawnRadius>5</spawnRadius>
 
+		<!-- The probability that this mineral type will be spawned at all on a given map -->
+		<perMapProbability>0.7</perMapProbability>
+		
 		<!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-		<minClusterProbability>-0.003</minClusterProbability>
-		<maxClusterProbability>0.005</maxClusterProbability>
+		<minClusterProbability>0.001</minClusterProbability>
+		<maxClusterProbability>0.003</maxClusterProbability>
 
 		<!-- How  many squares each cluster will be -->
 		<minClusterSize>1</minClusterSize>
@@ -168,8 +171,8 @@
 
 
 
-	<ThingDef ParentName="DynamicMineralBase" Class="Minerals.ThingDef_SnowDrift" >
-		<thingClass>Minerals.SnowDrift</thingClass>
+	<ThingDef ParentName="DynamicMineralBase" Class="MineralsFrozen.ThingDef_SnowDrift" >
+		<thingClass>MineralsFrozen.SnowDrift</thingClass>
     	<defName>ZF_SnowDrift</defName>
     	<label>Snow Drift</label>		
     	<description>A wind-blown pile of snow. Tends to accumulate next to buildings and trees when the temperature is very low. Hard to walk through, but pretty in a way. Can be mined for snow blocks. </description>
@@ -207,8 +210,11 @@
 		<!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
 		<spawnRadius>1</spawnRadius>
 
+		<!-- The probability that this mineral type will be spawned at all on a given map -->
+		<perMapProbability>1.0</perMapProbability>
+		
 		<!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-		<minClusterProbability>-0.001</minClusterProbability>
+		<minClusterProbability>0.001</minClusterProbability>
 		<maxClusterProbability>0.01</maxClusterProbability>
 
 		<!-- How  many squares each cluster will be -->
@@ -308,8 +314,8 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="DynamicMineralBase" Class="Minerals.ThingDef_SnowDrift" >
-		<thingClass>Minerals.SnowDrift</thingClass>
+	<ThingDef ParentName="DynamicMineralBase" Class="MineralsFrozen.ThingDef_DeepSnow" >
+		<thingClass>MineralsFrozen.SnowDrift</thingClass>
     	<defName>ZF_SmoothSnowDrift</defName>
     	<label>Deep Snow</label>		
     	<description>Mounds of very deep snow. Tends to accumulate in open areas. Hard to walk through, but pretty in a way. Can be mined for snow blocks. </description>
@@ -345,11 +351,14 @@
 
 		<!--How far away it can spawn from an existing location-->
 		<!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
-		<spawnRadius>3</spawnRadius>
+		<spawnRadius>4</spawnRadius>
 
-		<!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-		<minClusterProbability>-0.005</minClusterProbability>
-		<maxClusterProbability>0.01</maxClusterProbability>
+		<!-- The probability that this mineral type will be spawned at all on a given map -->
+		<perMapProbability>1.0</perMapProbability>
+		
+		<!-- For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
+		<minClusterProbability>0.005</minClusterProbability>
+		<maxClusterProbability>0.02</maxClusterProbability>
 
 		<!-- How  many squares each cluster will be -->
 		<minClusterSize>20</minClusterSize>
@@ -364,8 +373,8 @@
 
 		<!-- Reproduction and death settings -->
 		<minReproductionSize>.3</minReproductionSize>
-    <reproduceProp>0.05</reproduceProp>
-    <deathProb>0.9</deathProb>
+    	<reproduceProp>0.05</reproduceProp>
+    	<deathProb>0.9</deathProb>
 
 		<!-- The biomes this can appear in. The default is all ones known to mod-->
 		<allowedBiomes>
@@ -379,7 +388,7 @@
 		<allowedTerrains>
 		</allowedTerrains>
 
-    <!-- how far away it can be from needed nearby terrains-->
+    	<!-- how far away it can be from needed nearby terrains-->
 		<neededNearbyTerrainRadius>1</neededNearbyTerrainRadius>
 
 		<!-- If true, growth rate and initial size depends on distance from needed terrains -->
@@ -391,15 +400,15 @@
 		<mustBeUnroofed>true</mustBeUnroofed>
 
 		<!-- The maximum number of images that will be printed per square -->
-    <maxMeshCount>10</maxMeshCount>
+    	<maxMeshCount>12</maxMeshCount>
 
 		<!-- The size range -->
-    <visualSizeRange>
-    	<min>1.0</min>
-    	<max>2.5</max>
-    </visualSizeRange>
-    <visualClustering>0.3</visualClustering> <!-- between 0 and 1. 0 = uniform distribution, 1 = normal distribution -->
-    <visualSpread>2.5</visualSpread> <!-- 1 = everything appears within cell and can spawn at edge when visualClustering == 0 -->
+    	<visualSizeRange>
+    		<min>1.0</min>
+    		<max>2.5</max>
+    	</visualSizeRange>
+    	<visualClustering>0.3</visualClustering> <!-- between 0 and 1. 0 = uniform distribution, 1 = normal distribution -->
+    	<visualSpread>2.0</visualSpread> <!-- 1 = everything appears within cell and can spawn at edge when visualClustering == 0 -->
 		<visualSizeVariation>0.1</visualSizeVariation>
 
 		<!-- The amount of resource returned if the mineral is its maximum size -->
@@ -409,42 +418,42 @@
 		<growDays>0.4</growDays>
 
 		<!-- Chance of spawning de novo each check -->
-    <spawnProb>0.5</spawnProb>
+    	<spawnProb>0.5</spawnProb>
 		
 		<!-- Can spawn on items, pawns, and plants-->
 		<canSpawnOnThings>true</canSpawnOnThings>
 
 		<!-- Growth rate modifiers -->
-    <tempGrowthRateModifer>
-    	<active>true</active>
-    	<aboveMaxDecayRate>1</aboveMaxDecayRate> 
-    	<maxStable>1</maxStable> 
-    	<maxGrow>0.5</maxGrow> 
-    	<idealGrow>-1</idealGrow>  
-    	<minGrow>-30</minGrow>
-    	<minStable>-35</minStable>
-    	<belowMinDecayRate>1</belowMinDecayRate>
-    </tempGrowthRateModifer>
-    <rainGrowthRateModifer>
-    	<active>true</active>
-    	<aboveMaxDecayRate>0</aboveMaxDecayRate> 
-    	<maxStable>3</maxStable> 
-    	<maxGrow>2.5</maxGrow> 
-    	<idealGrow>1.5</idealGrow>  
-    	<minGrow>0.1</minGrow>
-    	<minStable>0.05</minStable>
-    	<belowMinDecayRate>5</belowMinDecayRate>
-    </rainGrowthRateModifer>
-    <fertGrowthRateModifer>
-    	<active>true</active>
-    	<aboveMaxDecayRate>0</aboveMaxDecayRate> 
-    	<maxStable>6</maxStable> 
-    	<maxGrow>5</maxGrow> 
-    	<idealGrow>1.2</idealGrow>  
-    	<minGrow>-1</minGrow>
-    	<minStable>-2</minStable>
-    	<belowMinDecayRate>0</belowMinDecayRate>
-    </fertGrowthRateModifer>
+    	<tempGrowthRateModifer>
+    		<active>true</active>
+    		<aboveMaxDecayRate>1</aboveMaxDecayRate> 
+    		<maxStable>1</maxStable> 
+    		<maxGrow>0.5</maxGrow> 
+    		<idealGrow>-1</idealGrow>  
+    		<minGrow>-30</minGrow>
+    		<minStable>-35</minStable>
+    		<belowMinDecayRate>1</belowMinDecayRate>
+    	</tempGrowthRateModifer>
+    	<rainGrowthRateModifer>
+    		<active>true</active>
+    		<aboveMaxDecayRate>0</aboveMaxDecayRate> 
+    		<maxStable>3</maxStable> 
+    		<maxGrow>2.5</maxGrow> 
+    		<idealGrow>1.5</idealGrow>  
+    		<minGrow>0.1</minGrow>
+    		<minStable>0.05</minStable>
+    		<belowMinDecayRate>5</belowMinDecayRate>
+    	</rainGrowthRateModifer>
+    	<fertGrowthRateModifer>
+    		<active>true</active>
+    		<aboveMaxDecayRate>0</aboveMaxDecayRate> 
+    		<maxStable>6</maxStable> 
+    		<maxGrow>5</maxGrow> 
+    		<idealGrow>1.2</idealGrow>  
+    		<minGrow>-1</minGrow>
+    		<minStable>-2</minStable>
+    		<belowMinDecayRate>0</belowMinDecayRate>
+    	</fertGrowthRateModifer>
 	</ThingDef>
 	
 	

@@ -15,13 +15,54 @@ namespace MineralsFrozen
     /// <permission>No restrictions</permission>
     public class SnowDrift : Minerals.DynamicMineral
     {
-        public static float grothRateFactor(Minerals.ThingDef_DynamicMineral myDef, IntVec3 aPosition, Map aMap)
+
+        public override float GrowthRate
         {
-            // If melting, dont change
+            get
+            {
+                return this.attributes.GrowthRateAtPos(this.Map, this.Position);
+            }
+        }
+
+            
+    }
+
+
+    /// <summary>
+    /// ThingDef_SnowDrift class.
+    /// </summary>
+    /// <author>zachary-foster</author>
+    /// <permission>No restrictions</permission>
+    public class ThingDef_Snow : Minerals.ThingDef_DynamicMineral
+    {
+        public override void InitNewMap(Map map, float scaling = 1)
+        {
+            float snowProb = 1f;
+            const float minTemp = 10f;
+
+            // Only spawn snow if it is cold out
+            if (map.mapTemperature.SeasonalTemp < minTemp)
+            {
+                snowProb = snowProb * (float)Math.Sqrt(minTemp - map.mapTemperature.SeasonalTemp) / 5;
+            }
+            else
+            {
+                snowProb = 0f;
+            }
+
+            // Scale by rain amount
+            snowProb = snowProb * map.TileInfo.rainfall / 1000;
+
+            Log.Message("Minerals: snow scaling due to temp/precip: " + snowProb);
+            base.InitNewMap(map, snowProb);
+        }
+
+        public virtual float grothRateFactor(IntVec3 aPosition, Map aMap)
+        {
+            // Melt faster in water
             float rate = 0f;
-            float baseRate = Minerals.DynamicMineral.GrowthRateAtPos(myDef, aPosition, aMap);
+            float baseRate = base.GrowthRateAtPos(aMap, aPosition);
             if (baseRate < 0) {
-                // Melt faster in water
                 if (aMap.terrainGrid.TerrainAt(aPosition).defName.Contains("Water"))
                 {
                     if (aMap.terrainGrid.TerrainAt(aPosition).defName.Contains("Moving"))
@@ -94,55 +135,85 @@ namespace MineralsFrozen
             return rate;
         }
 
-        public override float GrowthRate
+
+        public override float GrowthRateAtPos(Map aMap, IntVec3 aPosition) 
         {
-            get
-            {
-                return base.GrowthRate * grothRateFactor(this.attributes, this.Position, this.Map);
-            }
+            return base.GrowthRateAtPos(aMap, aPosition) * this.grothRateFactor(aPosition, aMap);
         }
 
-        public new static float GrowthRateAtPos(Minerals.ThingDef_DynamicMineral myDef, IntVec3 aPosition, Map aMap) 
+        public override bool PlaceIsBlocked(Map map, IntVec3 position)
         {
-            return Minerals.DynamicMineral.GrowthRateAtPos(myDef, aPosition, aMap) * grothRateFactor(myDef, aPosition, aMap);
+            // dont spawn on other types of snow 
+            foreach (Thing thing in map.thingGrid.ThingsListAt(position))
+            {
+                if (thing is SnowDrift)
+                {
+                    return true;
+                }
+            }
+
+            return base.PlaceIsBlocked(map, position);
         }
-            
+     
+    }
+        
+    public class ThingDef_DeepSnow : ThingDef_Snow
+    {
+
+        public override Minerals.StaticMineral TrySpawnAt(IntVec3 dest, Map map)
+        {
+            // dont spawn on big things
+            foreach (Thing thing in map.thingGrid.ThingsListAt(dest))
+            {
+                if (thing.def.passability == Traversability.PassThroughOnly)
+                {
+                    return null;
+                }
+            }
+
+
+            // dont spawn  next to roofed areas
+            Predicate<IntVec3> validator = (IntVec3 c) => c.InBounds(map) && c.Roofed(map);
+            IntVec3 unused;
+            if (CellFinder.TryFindRandomCellNear(dest, map, 1, validator, out unused))
+            {
+                return null;
+            }
+
+            // dont always spawn when there is little snow
+            if (Rand.Range(0f, 1f) > (dest.GetSnowDepth(map) + 0.5f))
+            {
+                return null;
+            }
+
+            return base.TrySpawnAt(dest, map);
+        }   
+
     }  
 
-
-
-    /// <summary>
-    /// ThingDef_SnowDrift class.
-    /// </summary>
-    /// <author>zachary-foster</author>
-    /// <permission>No restrictions</permission>
-    public class ThingDef_SnowDrift : Minerals.ThingDef_DynamicMineral
+    public class ThingDef_SnowDrift : ThingDef_Snow
     {
-        public override void InitNewMap(Map map, float scaling = 1)
+
+        public override Minerals.StaticMineral TrySpawnAt(IntVec3 dest, Map map)
         {
-            float snowProb = 1f;
-            const float minTemp = 10f;
-
-            // Only spawn snow if it is cold out
-            if (map.mapTemperature.SeasonalTemp < minTemp)
+            // dont always spawn in the open
+            bool open = true;
+            foreach (Thing thing in map.thingGrid.ThingsListAt(dest))
             {
-                snowProb = snowProb * (float)Math.Sqrt(minTemp - map.mapTemperature.SeasonalTemp) / 5;
+                if (thing.def.passability != Traversability.Standable)
+                {
+                    open = false;
+                }
             }
-            else
+            if (open && Rand.Range(0f, 1f) > 0.5f)
             {
-                snowProb = 0f;
+                return null;
             }
 
-            // Scale by rain amount
-            snowProb = snowProb * map.TileInfo.rainfall / 1000;
+            return base.TrySpawnAt(dest, map);
+        }   
 
-            Log.Message("Minerals: snow scaling due to temp/precip: " + snowProb);
-            base.InitNewMap(map, snowProb);
-        }
-    }
-
-
+    }  
 }
-
 
 
