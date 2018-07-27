@@ -22,7 +22,7 @@ namespace MineralsFrozen
         {
             get
             {
-                return this.def as ThingDef_FrozenResource;
+                return def as ThingDef_FrozenResource;
             }
         }
 
@@ -30,17 +30,17 @@ namespace MineralsFrozen
         public override void TickRare()
         {
             // Melt if hot
-            float temp = this.Position.GetTemperature(this.Map);
+            float temp = Position.GetTemperature(Map);
             if (temp > 0)
             {
                 float meltDamage = temp / 20;
                 if (meltDamage < 1 & Rand.Range(0f, 1f) < meltDamage)
                 {
-                    base.TakeDamage(new DamageInfo(DamageDefOf.Rotting, 1, -1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown));
+                    TakeDamage(new DamageInfo(DamageDefOf.Rotting, 1, -1, null, null, null));
                 }
                 else
                 {
-                    base.TakeDamage(new DamageInfo(DamageDefOf.Rotting, (int) Math.Floor(meltDamage), -1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown));
+                    TakeDamage(new DamageInfo(DamageDefOf.Rotting, (int) Math.Floor(meltDamage), -1, null, null, null));
 
                 }
             }

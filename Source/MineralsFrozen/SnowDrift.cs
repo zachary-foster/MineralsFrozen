@@ -20,7 +20,7 @@ namespace MineralsFrozen
         {
             get
             {
-                return this.attributes.GrowthRateAtPos(this.Map, this.Position);
+                return attributes.GrowthRateAtPos(Map, Position);
             }
         }
 
@@ -60,7 +60,7 @@ namespace MineralsFrozen
         public virtual float grothRateFactor(IntVec3 aPosition, Map aMap)
         {
             // Melt faster in water
-            float rate = 0f;
+            float rate;
             float baseRate = base.GrowthRateAtPos(aMap, aPosition);
             if (baseRate < 0) {
                 if (aMap.terrainGrid.TerrainAt(aPosition).defName.Contains("Water"))
@@ -138,11 +138,12 @@ namespace MineralsFrozen
 
         public override float GrowthRateAtPos(Map aMap, IntVec3 aPosition) 
         {
-            return base.GrowthRateAtPos(aMap, aPosition) * this.grothRateFactor(aPosition, aMap);
+            return base.GrowthRateAtPos(aMap, aPosition) * grothRateFactor(aPosition, aMap);
         }
 
         public override bool PlaceIsBlocked(Map map, IntVec3 position)
         {
+//            Log.Message("PlaceIsBlocked: snow");
             // dont spawn on other types of snow 
             foreach (Thing thing in map.thingGrid.ThingsListAt(position))
             {
@@ -160,59 +161,86 @@ namespace MineralsFrozen
     public class ThingDef_DeepSnow : ThingDef_Snow
     {
 
-        public override Minerals.StaticMineral TrySpawnAt(IntVec3 dest, Map map)
+        public override bool PlaceIsBlocked(Map map, IntVec3 position)
         {
-            Log.Message("Minerals: ThingDef_DeepSnow spawning");
+            Log.Message("PlaceIsBlocked: deep");
+            if (! position.InBounds(map))
+            {
+                return true;
+            }
+
             // dont spawn on big things
-            foreach (Thing thing in map.thingGrid.ThingsListAt(dest))
+            if (! position.Standable(map))
             {
-                if (thing.def.passability == Traversability.PassThroughOnly)
-                {
-                    return null;
-                }
+                return true;
             }
 
-
-            // dont spawn  next to roofed areas
-            Predicate<IntVec3> validator = (IntVec3 c) => c.InBounds(map) && c.Roofed(map);
+            // dont spawn  next to stuff
+            Predicate<IntVec3> validator = c => c.InBounds(map) && (! c.Standable(map));
             IntVec3 unused;
-            if (CellFinder.TryFindRandomCellNear(dest, map, 1, validator, out unused))
+            if (CellFinder.TryFindRandomCellNear(position, map, 1, validator, out unused))
             {
-                return null;
+                return true;
             }
 
-            // dont always spawn when there is little snow
-            if (Rand.Range(0f, 1f) > (dest.GetSnowDepth(map) + 0.5f))
+            // dont spawn  next to walls
+            Predicate<IntVec3> validator2 = c => c.InBounds(map) && (c.Roofed(map) || c.Impassable(map));
+            IntVec3 unused2;
+            if (CellFinder.TryFindRandomCellNear(position, map, 2, validator2, out unused2))
             {
-                return null;
+                return true;
             }
+                
+            return base.PlaceIsBlocked(map, position);
+        }
 
-            return base.TrySpawnAt(dest, map);
-        }   
+
+        public override void SpawnCluster(Map map, IntVec3 position)
+        {
+            // Make a cluster center
+            Minerals.StaticMineral mineral = TrySpawnAt(position, map);
+            if (mineral != null)
+            {            
+                mineral.size = Rand.Range(initialSizeMin, initialSizeMax);
+
+                // Add snow depth
+                mineral.size = mineral.size * 0.5f  + mineral.size * position.GetSnowDepth(map) * 0.5f;
+
+            }
+        }
+
 
     }  
 
     public class ThingDef_SnowDrift : ThingDef_Snow
     {
 
-        public override Minerals.StaticMineral TrySpawnAt(IntVec3 dest, Map map)
+        public override bool PlaceIsBlocked(Map map, IntVec3 position)
         {
-            Log.Message("Minerals: ThingDef_SnowDrift spawning");
-            // dont always spawn in the open
-            bool open = true;
-            foreach (Thing thing in map.thingGrid.ThingsListAt(dest))
+            Log.Message("PlaceIsBlocked: drift");
+            if (! position.InBounds(map))
             {
-                if (thing.def.passability != Traversability.Standable)
-                {
-                    open = false;
-                }
+                return true;
             }
-            if (open && Rand.Range(0f, 1f) > 0.5f)
-            {
-                return null;
-            }
+            Log.Message("PlaceIsBlocked: drift in bounds");
 
-            return base.TrySpawnAt(dest, map);
+            // Cant spawn on water
+            if (position.GetTerrain(map).defName.Contains("Water"))
+            {
+                return true;
+            }
+            Log.Message("PlaceIsBlocked: drift not water");
+
+            // dont spawn in the open
+            Predicate<IntVec3> validator = c => c.InBounds(map) && (c.Roofed(map) || (! c.Standable(map)));
+            IntVec3 unused;
+            if (! CellFinder.TryFindRandomCellNear(position, map, 2, validator, out unused))
+            {
+                return true;
+            }
+            Log.Message("PlaceIsBlocked: drift not blocked");
+
+            return base.PlaceIsBlocked(map, position);
         }   
 
     }  
