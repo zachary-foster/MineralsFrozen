@@ -31,27 +31,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="0Harmony, Version=1.0.9.1, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="0Harmony">
       <HintPath>..\..\..\..\Hardcore-SK\Mods\Core_SK\Assemblies\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp, Version=0.18.6527.36307, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\..\..\..\..\..\home\zachary\.steam\steam\steamapps\common\RimWorld\RimWorldLinux_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\..\..\..\..\home\zachary\.steam\steam\steamapps\common\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Minerals">
-      <HintPath>..\..\..\Minerals\Assemblies\Minerals.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\Minerals_SK\Assemblies\Minerals.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SnowDrift.cs" />
     <Compile Include="IceStalagmite.cs" />
-    <Compile Include="FrozenResource.cs" />
+    <Compile Include="FrozenWallBase.cs" />
+    <Compile Include="FrozenResourceBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -38,7 +38,7 @@ namespace MineralsFrozen
         public override void InitNewMap(Map map, float scaling = 1)
         {
             float snowProb = 1f;
-            const float minTemp = 10f;
+            const float minTemp = 0f;
 
             // Only spawn snow if it is cold out
             if (map.mapTemperature.SeasonalTemp < minTemp)
@@ -195,19 +195,19 @@ namespace MineralsFrozen
         }
 
 
-        public override void SpawnCluster(Map map, IntVec3 position)
-        {
-            // Make a cluster center
-            Minerals.StaticMineral mineral = TrySpawnAt(position, map);
-            if (mineral != null)
-            {            
-                mineral.size = Rand.Range(initialSizeMin, initialSizeMax);
-
-                // Add snow depth
-                mineral.size = mineral.size * 0.5f  + mineral.size * position.GetSnowDepth(map) * 0.5f;
-
-            }
-        }
+//        public override void SpawnCluster(Map map, IntVec3 position)
+//        {
+//            // Make a cluster center
+//            Minerals.StaticMineral mineral = TrySpawnAt(position, map);
+//            if (mineral != null)
+//            {            
+//                mineral.size = Rand.Range(initialSizeMin, initialSizeMax);
+//
+//                // Add snow depth
+//                mineral.size = mineral.size * 0.5f  + mineral.size * position.GetSnowDepth(map) * 0.5f;
+//
+//            }
+//        }
 
 
     }  

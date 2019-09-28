@@ -8,12 +8,12 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-## MineralsFrozen: A rimworld mod for the [Hardcore SK project](https://github.com/skyarkhangel/Hardcore-SK)
+## MineralsFrozen_SK: A rimworld mod for the [Hardcore SK project](https://github.com/skyarkhangel/Hardcore-SK)
 
 ![](About/Preview.jpg)
 
 
-**This mod is an expansion of the "Minerals" Mod and the "Minerals" mod must be enabled and come before in the loading order.**
+This mod is an extension of [Minerals_SK](https://github.com/zachary-foster/Minerals_SK) and must come after it in the load order.
 
 
 ## Dynamic minerals
@@ -70,6 +70,12 @@ To add a mineral:
 
 ## Ideas for future work
 
+### Resources
+
+#### Blue ice
+
+
+
 ### Mineral types
 
 #### Giant Hailstone
@@ -91,7 +97,7 @@ Lasts 0.5-3 days.
 
 #### Giant Hail
 
-"An unusual storm is producing giant hail in this region. Anything outside could be damaged."
+"An unusually violent storm is producing giant hail in this region. Anything outside could be damaged."
 
 A visual effect and sound effect.
 Locations take blunt damage randomly, 

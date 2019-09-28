@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="MineralsFrozen.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../Defs/ThingsDefs_Minerals/DynamicMinerals.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FrozenWallBase.cs">
     <Files>
-      <File FileName="FrozenResource.cs" Line="1" Column="1" />
+      <File FileName="FrozenResourceBase.cs" Line="40" Column="40" />
       <File FileName="IceStalagmite.cs" Line="1" Column="1" />
       <File FileName="Properties/AssemblyInfo.cs" Line="1" Column="1" />
       <File FileName="../../Defs/ThingsDefs_Resources/Item_Resource_Frozen.xml" Line="1" Column="1" />
-      <File FileName="SnowDrift.cs" Line="10" Column="10" />
-      <File FileName="../../Defs/ThingsDefs_Minerals/DynamicMinerals.xml" Line="28" Column="28" />
+      <File FileName="SnowDrift.cs" Line="1" Column="1" />
+      <File FileName="../../Defs/ThingsDefs_Minerals/DynamicMinerals.xml" Line="1" Column="1" />
+      <File FileName="FrozenWallBase.cs" Line="49" Column="49" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
