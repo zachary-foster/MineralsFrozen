@@ -38,7 +38,7 @@ namespace MineralsFrozen
         public override void InitNewMap(Map map, float scaling = 1)
         {
             float snowProb = 1f;
-            const float minTemp = 0f;
+            const float minTemp = 3f;
 
             // Only spawn snow if it is cold out
             if (map.mapTemperature.SeasonalTemp < minTemp)

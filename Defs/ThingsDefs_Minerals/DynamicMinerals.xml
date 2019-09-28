@@ -22,6 +22,7 @@
     <uiIconPath>Things/Mineral/IceStalagmite/IceStalagmiteA</uiIconPath>
     <fillPercent>0.2</fillPercent>
     <hideAtSnowDepth>2</hideAtSnowDepth>
+    <filthLeaving></filthLeaving>
     <!--How far away it can spawn from an existing location-->
     <!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
     <spawnRadius>4</spawnRadius>

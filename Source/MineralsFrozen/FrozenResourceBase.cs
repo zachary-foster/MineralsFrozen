@@ -43,7 +43,7 @@ namespace MineralsFrozen
                 if (isMelting)
                 {
                     float temp = Position.GetTemperature(Map);
-                    return temp / 30;
+                    return temp / stackCount;
                 }
                 else
                 {
@@ -58,14 +58,24 @@ namespace MineralsFrozen
             if (isMelting)
             {
                 float meltDamage = meltRate;
-                if (meltDamage < 1 & Rand.Range(0f, 1f) < meltDamage)
+                if (meltDamage < 1)
                 {
-                    TakeDamage(new DamageInfo(DamageDefOf.Deterioration, 1, 0, -1, null, null, null));
+                    if (Rand.Range(0f, 1f) < meltDamage)
+                    {
+                        TakeDamage(new DamageInfo(DamageDefOf.Deterioration, 1, 0, -1, null, null, null));
+                    }
+                    if (stackCount > 1 & Rand.Range(0f, 1f) < meltDamage)
+                    {
+                        stackCount = stackCount - 1;
+                    }
                 }
                 else
                 {
                     TakeDamage(new DamageInfo(DamageDefOf.Deterioration, (int) Math.Floor(meltDamage), 0, -1, null, null, null));
-
+                    if (stackCount > Math.Floor(meltDamage))
+                    {
+                        stackCount = stackCount - (int) Math.Floor(meltDamage);
+                    }
                 }
             }
 
@@ -81,7 +91,14 @@ namespace MineralsFrozen
             }
             else
             {
-                stringBuilder.AppendLine("Melting.");
+                if (isMelting)
+                {
+                    stringBuilder.AppendLine("Melting.");
+                }
+                else
+                {
+                    stringBuilder.AppendLine("Frozen.");
+                }
             }
             return stringBuilder.ToString().TrimEndNewlines();
         }

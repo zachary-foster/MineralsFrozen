@@ -15,11 +15,11 @@ namespace MineralsFrozen
     /// </summary>
     /// <author>zachary-foster</author>
     /// <permission>No restrictions</permission>
-    public class FrozenWallBase : ThingWithComps
+    public class FrozenWallBase : Building
     {
 
         // Cache for texture indexes
-        protected int textureIndex = 0;
+        protected int textureIndex = -100;
 
 
         public virtual ThingDef_FrozenWallBase attributes
@@ -86,7 +86,7 @@ namespace MineralsFrozen
         public virtual string getTexturePath()
         {
             // initalize the array if it has not already been initalized
-            if (textureIndex == -1)
+            if (textureIndex == -100)
             {
                 initializeTextures();
             }
@@ -94,6 +94,13 @@ namespace MineralsFrozen
             return(attributes.getTexturePaths()[textureIndex]);
         }
 
+        public override void Print(SectionLayer layer)
+        {
+             Rand.PushState();
+             Rand.Seed = Position.GetHashCode() + attributes.defName.GetHashCode();
+             base.Print(layer);
+             Rand.PopState();
+        }
 
         public override Graphic Graphic
         {
@@ -118,7 +125,14 @@ namespace MineralsFrozen
             }
             else
             {
-                stringBuilder.AppendLine("Melting.");
+                if (isMelting)
+                {
+                    stringBuilder.AppendLine("Melting.");
+                }
+                else
+                {
+                    stringBuilder.AppendLine("Frozen.");
+                }
             }
             return stringBuilder.ToString().TrimEndNewlines();
         }
@@ -141,7 +155,7 @@ namespace MineralsFrozen
             // Get paths to textures
             string textureName = System.IO.Path.GetFileName(graphicData.texPath);
             texturePaths = new List<string> { };
-            List<string> versions = new List<string> { "A"};//, "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
+            List<string> versions = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
             foreach (string letter in versions)
             {
                 string a_path = graphicData.texPath + "/" + textureName + letter;
