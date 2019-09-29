@@ -30,12 +30,44 @@ namespace MineralsFrozen
             }
         }
 
+        public virtual float currentTemp
+        {
+            get
+            {
+
+                float outTemp;
+                if (GenTemperature.TryGetAirTemperatureAroundThing(this, out outTemp))
+                {
+                    return outTemp;
+                }
+                else
+                {
+                    if (Position.Roofed(Map))
+                    {
+                        return Map.mapTemperature.OutdoorTemp - 10f;
+                    }
+                    else
+                    {
+                        return Map.mapTemperature.OutdoorTemp - 5f;
+                    }
+                }
+
+            }
+        }
+
         public virtual bool isMelting
         {
             get
             {
-                float temp = Position.GetTemperature(Map);
-                return temp > 0;
+                return currentTemp > attributes.meltTemp;
+            }
+        }
+
+        public virtual bool isHealing
+        {
+            get
+            {
+                return (HitPoints < MaxHitPoints) & (currentTemp < attributes.healTemp) & (HitPoints >= Math.Ceiling(MaxHitPoints * attributes.maxHealHP));
             }
         }
 
@@ -45,8 +77,7 @@ namespace MineralsFrozen
             {
                 if (isMelting)
                 {
-                    float temp = Position.GetTemperature(Map);
-                    return temp / 30;
+                    return currentTemp / 10;
                 }
                 else
                 {
@@ -55,7 +86,7 @@ namespace MineralsFrozen
             }
         }
 
-        public override void TickRare()
+        public override void TickLong()
         {
             // Melt if hot
             if (isMelting)
@@ -64,15 +95,31 @@ namespace MineralsFrozen
                 if (meltDamage < 1 & Rand.Range(0f, 1f) < meltDamage)
                 {
                     TakeDamage(new DamageInfo(DamageDefOf.Deterioration, 1, 0, -1, null, null, null));
+                    GenTemperature.PushHeat(this, - attributes.coolRateWhenMelting);
                 }
                 else
                 {
-                    TakeDamage(new DamageInfo(DamageDefOf.Deterioration, (int) Math.Floor(meltDamage), 0, -1, null, null, null));
-        
+                    TakeDamage(new DamageInfo(DamageDefOf.Deterioration, (int)Math.Floor(meltDamage), 0, -1, null, null, null));
+                    GenTemperature.PushHeat(this, - meltDamage * attributes.coolRateWhenMelting);
                 }
             }
+            else if (isHealing)
+            {
+                if (attributes.healRate < 1 & Rand.Range(0f, 1f) < attributes.healRate)
+                {
+                    TakeDamage(new DamageInfo(DamageDefOf.Deterioration, -1, 0, -1, null, null, null));
+                    GenTemperature.PushHeat(this, attributes.coolRateWhenMelting);
+                }
+                else
+                {
+                    TakeDamage(new DamageInfo(DamageDefOf.Deterioration, -(int)Math.Floor(attributes.healRate), 0, -1, null, null, null));
+                    GenTemperature.PushHeat(this, attributes.healRate * attributes.coolRateWhenMelting);
+                }
+
+            }
+                
         
-            base.TickRare();
+            base.TickLong();
         }
 
 
@@ -129,6 +176,10 @@ namespace MineralsFrozen
                 {
                     stringBuilder.AppendLine("Melting.");
                 }
+                else if (isHealing)
+                {
+                    stringBuilder.AppendLine("Healing.");
+                } 
                 else
                 {
                     stringBuilder.AppendLine("Frozen.");
@@ -149,6 +200,16 @@ namespace MineralsFrozen
     public class ThingDef_FrozenWallBase : ThingDef
     {
         public List<string> texturePaths;
+
+        // Maximum stable temperature
+        public float meltTemp = 0f;
+        // Minimum temperature the wall will heal
+        public float healTemp = -1000f;
+        // Minimum proportion of hit point needed to heal
+        public float maxHealHP = 1f;
+        // Mean heal per tick
+        public float healRate = 1f;
+        public float coolRateWhenMelting = 10f;
 
         public virtual void initTexturePaths()
         {

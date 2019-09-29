@@ -43,7 +43,7 @@ namespace MineralsFrozen
                 if (isMelting)
                 {
                     float temp = Position.GetTemperature(Map);
-                    return temp / stackCount;
+                    return (temp / stackCount);
                 }
                 else
                 {
@@ -52,7 +52,7 @@ namespace MineralsFrozen
             }
         }
 
-        public override void TickRare()
+        public override void TickLong()
         {
             // Melt if hot
             if (isMelting)
@@ -63,10 +63,12 @@ namespace MineralsFrozen
                     if (Rand.Range(0f, 1f) < meltDamage)
                     {
                         TakeDamage(new DamageInfo(DamageDefOf.Deterioration, 1, 0, -1, null, null, null));
+                        GenTemperature.PushHeat(this, - meltDamage * attributes.coolRateWhenMelting);
                     }
                     if (stackCount > 1 & Rand.Range(0f, 1f) < meltDamage)
                     {
                         stackCount = stackCount - 1;
+                        GenTemperature.PushHeat(this, - meltDamage * attributes.coolRateWhenMelting);
                     }
                 }
                 else
@@ -76,10 +78,11 @@ namespace MineralsFrozen
                     {
                         stackCount = stackCount - (int) Math.Floor(meltDamage);
                     }
+                    GenTemperature.PushHeat(this, - meltDamage * attributes.coolRateWhenMelting);
                 }
             }
 
-            base.TickRare();
+            base.TickLong();
         }
 
         public override string GetInspectString()
@@ -113,6 +116,6 @@ namespace MineralsFrozen
     /// <permission>No restrictions</permission>
     public class ThingDef_FrozenBlockBase : ThingDef
     {
-
+        public float coolRateWhenMelting = 50f;
     }
 }

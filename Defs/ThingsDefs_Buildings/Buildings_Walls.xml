@@ -5,7 +5,7 @@
     <thingClass>MineralsFrozen.FrozenWallBase</thingClass>
     <!-- <drawerType>MapMeshOnly</drawerType> -->
     <drawerType>MapMeshAndRealTime</drawerType>
-    <tickerType>Rare</tickerType>
+    <tickerType>Long</tickerType>
     <holdsRoof>true</holdsRoof>
     <blockLight>true</blockLight>
     <blockWind>true</blockWind>
@@ -22,6 +22,7 @@
     <repairEffect>ConstructDirt</repairEffect>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<meltTemp>0</meltTemp>
   </ThingDef>
   
   
@@ -60,16 +61,17 @@
 		<costList>
 			<SnowBlocks>6</SnowBlocks>
 		</costList>
+		<meltTemp>0</meltTemp>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>IceWall</defName>
     <label>Ice Wall</label>
-    <description>An impassable wall made of ice. It is capable of holding up a roof. It will melt when above freezing.</description>
+    <description>An impassable wall made of cut ice. It is capable of holding up a roof. It will melt when above freezing.</description>
     <graphicData>
-			<texPath>Things/Rock/HewnRockWall</texPath>
+			<texPath>Things/Rock/SmoothedRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
-			<color>(220,220,255)</color>
+			<color>(220,220,240)</color>
 			<linkType>CornerFiller</linkType>
 			<linkFlags>
 				<li>Wall</li>
@@ -86,13 +88,20 @@
         <edgeRight>Damage/Edge</edgeRight>
       </damageData>
     </graphicData>
+    <building>
+      <deconstructible>true</deconstructible>
+      <claimable>true</claimable>
+      <blueprintGraphicData>
+         <texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
     <filthLeaving></filthLeaving>
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
       <WorkToBuild>400</WorkToBuild>
       <Flammability>0.0</Flammability>
-      <Beauty>2</Beauty>
+      <Beauty>3</Beauty>
     </statBases>
 		<costList>
 			<IceBlocks>6</IceBlocks>
@@ -100,8 +109,12 @@
 		<researchPrerequisites>
 			<li>FrozenConstructionI</li>
 		</researchPrerequisites>
+		<meltTemp>0</meltTemp>
+		<healTemp>-3</healTemp>
+		<maxHealHP>0.97</maxHealHP>
+		<healRate>0.5</healRate>
   </ThingDef>
-  
+
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>PykreteWall</defName>
     <label>Pykrete Wall</label>
@@ -129,8 +142,8 @@
     <filthLeaving></filthLeaving>
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <statBases>
-      <MaxHitPoints>400</MaxHitPoints>
-      <WorkToBuild>800</WorkToBuild>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>600</WorkToBuild>
       <Flammability>0.0</Flammability>
       <Beauty>-1</Beauty>
     </statBases>
@@ -141,17 +154,21 @@
 		<researchPrerequisites>
 			<li>FrozenConstructionII</li>
 		</researchPrerequisites>
+		<meltTemp>1</meltTemp>
+		<healTemp>-3</healTemp>
+		<maxHealHP>0.97</maxHealHP>
+		<healRate>0.5</healRate>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>BlueIceWall</defName>
     <label>Blue Ice Wall</label>
-    <description>An impassable wall made of a strange blue ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above freezing.</description>
+    <description>An impassable wall made of a strange blue ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 5C and will slowly heal when exposed to light and below 0C. It cannot heal if damaged more than 80%.</description>
     <graphicData>
 			<texPath>Things/Rock/HewnRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<linkType>CornerFiller</linkType>
-			<color>(200,200,255)</color>
+			<color>(210,210,255)</color>
 			<linkFlags>
 				<li>Wall</li>
         <li>Rock</li>
@@ -171,25 +188,97 @@
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <comps>
       <li Class="CompProperties_Glower">
-        <glowRadius>1</glowRadius>
-        <glowColor>(0,96,255,0)</glowColor>
+        <glowRadius>2.2</glowRadius>
+        <glowColor>(170,170,255,0)</glowColor>
       </li>
     </comps>
     <statBases>
-      <MaxHitPoints>500</MaxHitPoints>
-      <WorkToBuild>2000</WorkToBuild>
+      <MaxHitPoints>600</MaxHitPoints>
+      <WorkToBuild>700</WorkToBuild>
       <Flammability>0.0</Flammability>
-      <Beauty>5</Beauty>
+      <Beauty>4</Beauty>
+    </statBases>
+		<costList>
+			<IceBlocks>5</IceBlocks>
+			<CrushedStone>20</CrushedStone>
+			<Coldstone>1</Coldstone>
+		</costList>
+		<researchPrerequisites>
+			<li>FrozenConstructionVI</li>
+		</researchPrerequisites>
+		<meltTemp>5</meltTemp>
+		<healTemp>0</healTemp>
+		<maxHealHP>0.75</maxHealHP>
+		<healRate>0.7</healRate>
+  </ThingDef>
+  
+  <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
+    <defName>GreenIceWall</defName>
+    <label>Green Ice Wall</label>
+    <description>An impassable wall made of a strange glowing green ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 10C and will slowly heal below 5C. It cannot heal if damaged more than 60%.</description>
+    <graphicData>
+			<texPath>Things/Rock/SmoothedRockWall</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<color>(200,255,250)</color>
+			<linkFlags>
+				<li>Wall</li>
+        <li>Rock</li>
+			</linkFlags>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+        <edgeTop>Damage/Edge</edgeTop>
+        <edgeBot>Damage/Edge</edgeBot>
+        <edgeLeft>Damage/Edge</edgeLeft>
+        <edgeRight>Damage/Edge</edgeRight>
+      </damageData>
+    </graphicData>
+    <filthLeaving></filthLeaving>
+    <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3.0</glowRadius>
+        <glowColor>(200,255,250,0)</glowColor>
+      </li>
+    </comps>
+    <statBases>
+      <MaxHitPoints>700</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
+      <Flammability>0.0</Flammability>
+      <Beauty>6</Beauty>
     </statBases>
 		<costList>
 			<IceBlocks>4</IceBlocks>
-			<CrushedStone>10</CrushedStone>
-			<Coldstone>10</Coldstone>
+			<ConcreteResource>20</ConcreteResource>
+			<Coldstone>1</Coldstone>
+			<Glowstone>1</Glowstone>
+			<Biomatter>2</Biomatter>
 		</costList>
 		<researchPrerequisites>
-			<li>FrozenConstructionIII</li>
+			<li>FrozenConstructionV</li>
 		</researchPrerequisites>
+		<meltTemp>10</meltTemp>
+		<healTemp>5</healTemp>
+		<maxHealHP>0.6</maxHealHP>
+		<healRate>1.0</healRate>
   </ThingDef>
   
-  
+	<ArchitectSense.DesignationSubCategoryDef>
+    <defName>SubCategory_FrozenWalls</defName>
+    <label>Frozen Walls</label>
+    <description>Walls made from frozen material.</description>
+    <defNames>
+      <li>SnowWall</li>
+      <li>IceWall</li>
+      <li>PykreteWall</li>
+      <li>BlueIceWall</li>
+      <li>GreenIceWall</li>
+    </defNames>
+    <designationCategory>Structure</designationCategory>
+    <debug>false</debug>
+  </ArchitectSense.DesignationSubCategoryDef>
+
 </Defs>

@@ -10,17 +10,10 @@
     </thingCategories>
     <techLevel>Neolithic</techLevel>
     <soundDrop>ChunkRock_Drop</soundDrop>
-    <tickerType>Rare</tickerType>
-    <comps>
-      <li Class="CompProperties_HeatPusher">
-        <compClass>CompHeatPusherPowered</compClass>
-        <heatPerSecond>-3</heatPerSecond>
-        <heatPushMinTemperature>1</heatPushMinTemperature>
-      </li>
-    </comps>
+    <tickerType>Long</tickerType>
   </ThingDef>
   
-  <ThingDef ParentName="FrozenBlockBase">
+  <ThingDef ParentName="FrozenBlockBase" Class="MineralsFrozen.ThingDef_FrozenBlockBase">
     <defName>SnowBlocks</defName>
     <label>Snow Blocks</label>
     <description>Hunks of compacted snow.</description>
@@ -65,7 +58,7 @@
     </stuffProps>
   </ThingDef>
   
-  <ThingDef ParentName="FrozenBlockBase">
+  <ThingDef ParentName="FrozenBlockBase" Class="MineralsFrozen.ThingDef_FrozenBlockBase">
     <defName>IceBlocks</defName>
     <label>Ice Blocks</label>
     <description>Blocks of ice.</description>
@@ -76,7 +69,7 @@
       <color>(220,220,255)</color>
     </graphicData>
     <statBases>
-      <MaxHitPoints>150</MaxHitPoints>
+      <MaxHitPoints>100</MaxHitPoints>
       <MarketValue>0.2</MarketValue>
       <DeteriorationRate>0</DeteriorationRate>
       <Flammability>0</Flammability>

@@ -23,25 +23,56 @@
     <techLevel>Neolithic</techLevel>
     <tab>Main</tab>
     <researchViewX>0.06</researchViewX>
-    <researchViewY>0.85</researchViewY>
+    <researchViewY>0.00</researchViewY>
     <prerequisites>
       <li>FrozenConstructionI</li>
     </prerequisites>
+    <tags></tags>
   </ResearchProjectDef>
 
-  <ResearchProjectDef ParentName="PrimitiveBase">
+  <ResearchProjectDef ParentName="MedievalBase">
     <defName>FrozenConstructionIII</defName>
     <label>Frozen Construction III</label>
-    <description>Make things out of blue ice.</description>
-    <baseCost>5000</baseCost>
-    <techLevel>Neolithic</techLevel>
+    <description>Make more things out ice and pykrete.</description>
+    <baseCost>1500</baseCost>
+    <techLevel>Medieval</techLevel>
     <tab>Main</tab>
     <researchViewX>0.06</researchViewX>
-    <researchViewY>0.85</researchViewY>
+    <researchViewY>0.00</researchViewY>
     <prerequisites>
       <li>FrozenConstructionII</li>
     </prerequisites>
+    <tags></tags>
   </ResearchProjectDef>
 
-  
+  <ResearchProjectDef ParentName="IndustrialBase">
+    <defName>FrozenConstructionVI</defName>
+    <label>Frozen Construction VI</label>
+    <description>Make things out of blue ice. Blue ice is made from coldstone and rubble. It heals naturally from minor damage when exposed to light and is quite tough.</description>
+    <baseCost>4000</baseCost>
+    <techLevel>Medieval</techLevel>
+    <tab>Main</tab>
+    <researchViewX>0.06</researchViewX>
+    <researchViewY>0.00</researchViewY>
+    <prerequisites>
+      <li>FrozenConstructionIII</li>
+    </prerequisites>
+    <tags></tags>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="HitechBase">
+    <defName>FrozenConstructionV</defName>
+    <label>Frozen Construction V</label>
+    <description>Make things out of green ice. Green ice is made from coldstone, glowstone, and biomatter. It heals naturally from minor damage and is quite tough.</description>
+    <baseCost>8000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <tab>Main</tab>
+    <researchViewX>0.06</researchViewX>
+    <researchViewY>0.00</researchViewY>
+    <prerequisites>
+      <li>FrozenConstructionVI</li>
+    </prerequisites>
+    <tags></tags>
+  </ResearchProjectDef>
+
 </Defs>
