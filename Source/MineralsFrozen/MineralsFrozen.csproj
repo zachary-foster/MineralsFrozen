@@ -53,6 +53,7 @@
     <Compile Include="IceStalagmite.cs" />
     <Compile Include="FrozenWallBase.cs" />
     <Compile Include="FrozenResourceBase.cs" />
+    <Compile Include="Patches.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

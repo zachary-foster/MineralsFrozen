@@ -54,7 +54,7 @@
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <statBases>
       <MaxHitPoints>50</MaxHitPoints>
-      <WorkToBuild>200</WorkToBuild>
+      <WorkToBuild>300</WorkToBuild>
       <Flammability>0.0</Flammability>
       <Beauty>1</Beauty>
     </statBases>
@@ -62,6 +62,8 @@
 			<SnowBlocks>6</SnowBlocks>
 		</costList>
 		<meltTemp>0</meltTemp>
+		<coolRateWhenMelting>4</coolRateWhenMelting>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
@@ -99,7 +101,7 @@
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
-      <WorkToBuild>400</WorkToBuild>
+      <WorkToBuild>600</WorkToBuild>
       <Flammability>0.0</Flammability>
       <Beauty>3</Beauty>
     </statBases>
@@ -110,9 +112,11 @@
 			<li>FrozenConstructionI</li>
 		</researchPrerequisites>
 		<meltTemp>0</meltTemp>
-		<healTemp>-3</healTemp>
+		<healTemp>-1</healTemp>
 		<maxHealHP>0.97</maxHealHP>
 		<healRate>0.5</healRate>
+		<coolRateWhenMelting>8</coolRateWhenMelting>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
   </ThingDef>
 
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
@@ -139,11 +143,11 @@
         <edgeRight>Damage/Edge</edgeRight>
       </damageData>
     </graphicData>
-    <filthLeaving></filthLeaving>
+    <filthLeaving>Filth_Dirt</filthLeaving>
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <WorkToBuild>600</WorkToBuild>
+      <WorkToBuild>800</WorkToBuild>
       <Flammability>0.0</Flammability>
       <Beauty>-1</Beauty>
     </statBases>
@@ -158,12 +162,14 @@
 		<healTemp>-3</healTemp>
 		<maxHealHP>0.97</maxHealHP>
 		<healRate>0.5</healRate>
+		<coolRateWhenMelting>3</coolRateWhenMelting>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>BlueIceWall</defName>
     <label>Blue Ice Wall</label>
-    <description>An impassable wall made of a strange blue ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 5C and will slowly heal when exposed to light and below 0C. It cannot heal if damaged more than 80%.</description>
+    <description>An impassable wall made of a strange blue ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 5C and will slowly heal when below 0C. It cannot heal if damaged more than 70%.</description>
     <graphicData>
 			<texPath>Things/Rock/HewnRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -184,17 +190,17 @@
         <edgeRight>Damage/Edge</edgeRight>
       </damageData>
     </graphicData>
-    <filthLeaving></filthLeaving>
+    <filthLeaving>Filth_RubbleRock</filthLeaving>
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <comps>
       <li Class="CompProperties_Glower">
-        <glowRadius>2.2</glowRadius>
+        <glowRadius>2.5</glowRadius>
         <glowColor>(170,170,255,0)</glowColor>
       </li>
     </comps>
     <statBases>
-      <MaxHitPoints>600</MaxHitPoints>
-      <WorkToBuild>700</WorkToBuild>
+      <MaxHitPoints>700</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
       <Flammability>0.0</Flammability>
       <Beauty>4</Beauty>
     </statBases>
@@ -208,14 +214,16 @@
 		</researchPrerequisites>
 		<meltTemp>5</meltTemp>
 		<healTemp>0</healTemp>
-		<maxHealHP>0.75</maxHealHP>
+		<maxHealHP>0.7</maxHealHP>
 		<healRate>0.7</healRate>
+		<coolRateWhenMelting>10</coolRateWhenMelting>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>GreenIceWall</defName>
     <label>Green Ice Wall</label>
-    <description>An impassable wall made of a strange glowing green ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 10C and will slowly heal below 5C. It cannot heal if damaged more than 60%.</description>
+    <description>An impassable wall made of a strange glowing green ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 15C and will slowly heal below 5C. It cannot heal if damaged more than 50%.</description>
     <graphicData>
 			<texPath>Things/Rock/SmoothedRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -236,7 +244,7 @@
         <edgeRight>Damage/Edge</edgeRight>
       </damageData>
     </graphicData>
-    <filthLeaving></filthLeaving>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <comps>
       <li Class="CompProperties_Glower">
@@ -245,7 +253,7 @@
       </li>
     </comps>
     <statBases>
-      <MaxHitPoints>700</MaxHitPoints>
+      <MaxHitPoints>900</MaxHitPoints>
       <WorkToBuild>1000</WorkToBuild>
       <Flammability>0.0</Flammability>
       <Beauty>6</Beauty>
@@ -260,10 +268,12 @@
 		<researchPrerequisites>
 			<li>FrozenConstructionV</li>
 		</researchPrerequisites>
-		<meltTemp>10</meltTemp>
+		<meltTemp>15</meltTemp>
 		<healTemp>5</healTemp>
-		<maxHealHP>0.6</maxHealHP>
+		<maxHealHP>0.5</maxHealHP>
 		<healRate>1.0</healRate>
+		<coolRateWhenMelting>3</coolRateWhenMelting>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
   </ThingDef>
   
 	<ArchitectSense.DesignationSubCategoryDef>

@@ -55,6 +55,18 @@ namespace MineralsFrozen
             }
         }
 
+        // https://stackoverflow.com/questions/2742276/how-do-i-check-if-a-type-is-a-subtype-or-the-type-of-an-object/2742288
+        public static bool isSameOrSubclass(Type potentialBase, Type potentialDescendant)
+        {
+            return potentialDescendant.IsSubclassOf(potentialBase)
+                || potentialDescendant == potentialBase;
+        }
+
+        public static bool isFrozenWall(Thing thing)
+        {
+            return isSameOrSubclass(typeof(FrozenWallBase), thing.GetType());
+        }
+
         public virtual bool isMelting
         {
             get
@@ -67,7 +79,7 @@ namespace MineralsFrozen
         {
             get
             {
-                return (HitPoints < MaxHitPoints) & (currentTemp < attributes.healTemp) & (HitPoints >= Math.Ceiling(MaxHitPoints * attributes.maxHealHP));
+                return (HitPoints < MaxHitPoints) && (currentTemp < attributes.healTemp) && (HitPoints >= Math.Ceiling(MaxHitPoints * attributes.maxHealHP));
             }
         }
 
@@ -92,7 +104,7 @@ namespace MineralsFrozen
             if (isMelting)
             {
                 float meltDamage = meltRate;
-                if (meltDamage < 1 & Rand.Range(0f, 1f) < meltDamage)
+                if (meltDamage < 1 && Rand.Range(0f, 1f) < meltDamage)
                 {
                     TakeDamage(new DamageInfo(DamageDefOf.Deterioration, 1, 0, -1, null, null, null));
                     GenTemperature.PushHeat(this, - attributes.coolRateWhenMelting);
@@ -105,7 +117,7 @@ namespace MineralsFrozen
             }
             else if (isHealing)
             {
-                if (attributes.healRate < 1 & Rand.Range(0f, 1f) < attributes.healRate)
+                if (attributes.healRate < 1 && Rand.Range(0f, 1f) < attributes.healRate)
                 {
                     TakeDamage(new DamageInfo(DamageDefOf.Deterioration, -1, 0, -1, null, null, null));
                     GenTemperature.PushHeat(this, attributes.coolRateWhenMelting);
@@ -119,7 +131,7 @@ namespace MineralsFrozen
             }
                 
         
-            base.TickLong();
+            //base.TickLong();
         }
 
 
@@ -209,7 +221,7 @@ namespace MineralsFrozen
         public float maxHealHP = 1f;
         // Mean heal per tick
         public float healRate = 1f;
-        public float coolRateWhenMelting = 10f;
+        public float coolRateWhenMelting = 8f;
 
         public virtual void initTexturePaths()
         {

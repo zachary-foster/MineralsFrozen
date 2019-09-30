@@ -27,12 +27,19 @@ namespace MineralsFrozen
         }
 
 
+        public virtual float currentTemp
+        {
+            get
+            {
+                return this.AmbientTemperature;
+            }
+        }
+
         public virtual bool isMelting
         {
             get
             {
-                float temp = Position.GetTemperature(Map);
-                return temp > 0;
+                return currentTemp > 0;
             }
         }
 
@@ -42,8 +49,7 @@ namespace MineralsFrozen
             {
                 if (isMelting)
                 {
-                    float temp = Position.GetTemperature(Map);
-                    return (temp / stackCount);
+                    return (currentTemp / stackCount) * attributes.meltRateFactor;
                 }
                 else
                 {
@@ -82,7 +88,7 @@ namespace MineralsFrozen
                 }
             }
 
-            base.TickLong();
+            //base.TickLong();
         }
 
         public override string GetInspectString()
@@ -116,6 +122,7 @@ namespace MineralsFrozen
     /// <permission>No restrictions</permission>
     public class ThingDef_FrozenBlockBase : ThingDef
     {
-        public float coolRateWhenMelting = 50f;
+        public float coolRateWhenMelting = 10f;
+        public float meltRateFactor = 2f;
     }
 }

@@ -53,7 +53,7 @@ namespace MineralsFrozen
             // Scale by rain amount
             snowProb = snowProb * map.TileInfo.rainfall / 1000;
 
-            Log.Message("Minerals: snow scaling due to temp/precip: " + snowProb);
+//            Log.Message("Minerals: snow scaling due to temp/precip: " + snowProb);
             base.InitNewMap(map, snowProb);
         }
 
@@ -163,7 +163,7 @@ namespace MineralsFrozen
 
         public override bool PlaceIsBlocked(Map map, IntVec3 position)
         {
-            Log.Message("PlaceIsBlocked: deep");
+//            Log.Message("PlaceIsBlocked: deep");
             if (! position.InBounds(map))
             {
                 return true;
@@ -217,19 +217,19 @@ namespace MineralsFrozen
 
         public override bool PlaceIsBlocked(Map map, IntVec3 position)
         {
-            Log.Message("PlaceIsBlocked: drift");
+//            Log.Message("PlaceIsBlocked: drift");
             if (! position.InBounds(map))
             {
                 return true;
             }
-            Log.Message("PlaceIsBlocked: drift in bounds");
+//            Log.Message("PlaceIsBlocked: drift in bounds");
 
             // Cant spawn on water
             if (position.GetTerrain(map).defName.Contains("Water"))
             {
                 return true;
             }
-            Log.Message("PlaceIsBlocked: drift not water");
+//            Log.Message("PlaceIsBlocked: drift not water");
 
             // dont spawn in the open
             Predicate<IntVec3> validator = c => c.InBounds(map) && (c.Roofed(map) || (! c.Standable(map)));
@@ -238,7 +238,7 @@ namespace MineralsFrozen
             {
                 return true;
             }
-            Log.Message("PlaceIsBlocked: drift not blocked");
+//            Log.Message("PlaceIsBlocked: drift not blocked");
 
             return base.PlaceIsBlocked(map, position);
         }   

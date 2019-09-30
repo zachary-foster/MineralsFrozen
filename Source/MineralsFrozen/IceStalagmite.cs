@@ -38,7 +38,7 @@ namespace MineralsFrozen
             // Scale by rain amount
             prob = prob * map.TileInfo.rainfall / 1000;
 
-            Log.Message("Minerals: Ice Stalagmite scaling due to temp/precip: " + prob);
+//            Log.Message("Minerals: Ice Stalagmite scaling due to temp/precip: " + prob);
             base.InitNewMap(map, prob);
         }
 
