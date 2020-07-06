@@ -33,7 +33,7 @@
   <ResearchProjectDef ParentName="MedievalBase">
     <defName>FrozenConstructionIII</defName>
     <label>Frozen Construction III</label>
-    <description>Make more things out ice and pykrete.</description>
+    <description>Make more things out of ice and pykrete.</description>
     <baseCost>1500</baseCost>
     <techLevel>Medieval</techLevel>
     <tab>Main</tab>

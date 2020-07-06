@@ -3,12 +3,15 @@
 <ModMetaData>
 	<name>MineralsFrozen_SK</name>
 	<author>Zachary Foster</author>
-	<supportedVersions><li>1.0</li></supportedVersions>
+	<supportedVersions>
+		<li>1.1</li>
+	</supportedVersions>
+	<packageId>zacharyfoster.mineralsfrozen</packageId>
   <description>
 
 For RimWorld Hardcore SK v1
 
-Mod version 1.0.0-alpha
+Mod version 1.1.0
 
 &lt;size=24&gt;Description&lt;/size&gt;
 
@@ -19,4 +22,9 @@ It adds ice-related content, inlcuding dynamic ice/snow formations and building 
 See: https://github.com/zachary-foster/MineralsFrozen_SK for detailed documentation.
 
   </description>
+  <loadAfter>
+		<li>skyarkhangel.HSK</li>
+		<li>skyarkhangel.NPS</li>
+		<li>zacharyfoster.minerals</li>
+	</loadAfter>
 </ModMetaData>

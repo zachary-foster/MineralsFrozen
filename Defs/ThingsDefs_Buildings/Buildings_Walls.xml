@@ -61,9 +61,19 @@
 		<costList>
 			<SnowBlocks>6</SnowBlocks>
 		</costList>
-		<meltTemp>0</meltTemp>
-		<coolRateWhenMelting>4</coolRateWhenMelting>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<!-- Maximum stable temperature -->
+		<meltTemp>1</meltTemp>
+		<!-- Minimum temperature the wall will heal -->
+		<healTemp>-1</healTemp>
+		<!-- Minimum proportion of hit point needed to heal -->
+		<maxHealHP>0.97</maxHealHP>
+		<!-- The proportion of health restored each tick at 20C below heal temperature -->
+		<healRate>0.05</healRate>
+		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
+		<meltRate>0.05</meltRate>
+		<!-- The difference in stored energy between the solid and liquid -->
+		<maxStoredHeat>1000</maxStoredHeat>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
@@ -111,12 +121,19 @@
 		<researchPrerequisites>
 			<li>FrozenConstructionI</li>
 		</researchPrerequisites>
-		<meltTemp>0</meltTemp>
-		<healTemp>-1</healTemp>
-		<maxHealHP>0.97</maxHealHP>
-		<healRate>0.5</healRate>
-		<coolRateWhenMelting>8</coolRateWhenMelting>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<!-- Maximum stable temperature -->
+		<meltTemp>1</meltTemp>
+		<!-- Minimum temperature the wall will heal -->
+		<healTemp>-1</healTemp>
+		<!-- Minimum proportion of hit point needed to heal -->
+		<maxHealHP>0.95</maxHealHP>
+		<!-- The proportion of health restored each tick at 20C below heal temperature -->
+		<healRate>0.02</healRate>
+		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
+		<meltRate>0.02</meltRate>
+		<!-- The difference in stored energy between the solid and liquid -->
+		<maxStoredHeat>2000</maxStoredHeat>
   </ThingDef>
 
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
@@ -158,12 +175,19 @@
 		<researchPrerequisites>
 			<li>FrozenConstructionII</li>
 		</researchPrerequisites>
-		<meltTemp>1</meltTemp>
-		<healTemp>-3</healTemp>
-		<maxHealHP>0.97</maxHealHP>
-		<healRate>0.5</healRate>
-		<coolRateWhenMelting>3</coolRateWhenMelting>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<!-- Maximum stable temperature -->
+		<meltTemp>1</meltTemp>
+		<!-- Minimum temperature the wall will heal -->
+		<healTemp>-1</healTemp>
+		<!-- Minimum proportion of hit point needed to heal -->
+		<maxHealHP>0.95</maxHealHP>
+		<!-- The proportion of health restored each tick at 20C below heal temperature -->
+		<healRate>0.01</healRate>
+		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
+		<meltRate>0.01</meltRate>
+		<!-- The difference in stored energy between the solid and liquid -->
+		<maxStoredHeat>1500</maxStoredHeat>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
@@ -212,12 +236,19 @@
 		<researchPrerequisites>
 			<li>FrozenConstructionVI</li>
 		</researchPrerequisites>
-		<meltTemp>5</meltTemp>
-		<healTemp>0</healTemp>
-		<maxHealHP>0.7</maxHealHP>
-		<healRate>0.7</healRate>
-		<coolRateWhenMelting>10</coolRateWhenMelting>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<!-- Maximum stable temperature -->
+		<meltTemp>5</meltTemp>
+		<!-- Minimum temperature the wall will heal -->
+		<healTemp>0</healTemp>
+		<!-- Minimum proportion of hit point needed to heal -->
+		<maxHealHP>0.7</maxHealHP>
+		<!-- The proportion of health restored each tick at 20C below heal temperature -->
+		<healRate>0.01</healRate>
+		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
+		<meltRate>0.01</meltRate>
+		<!-- The difference in stored energy between the solid and liquid -->
+		<maxStoredHeat>3000</maxStoredHeat>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
@@ -268,12 +299,19 @@
 		<researchPrerequisites>
 			<li>FrozenConstructionV</li>
 		</researchPrerequisites>
-		<meltTemp>15</meltTemp>
-		<healTemp>5</healTemp>
-		<maxHealHP>0.5</maxHealHP>
-		<healRate>1.0</healRate>
-		<coolRateWhenMelting>3</coolRateWhenMelting>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<!-- Maximum stable temperature -->
+		<meltTemp>15</meltTemp>
+		<!-- Minimum temperature the wall will heal -->
+		<healTemp>5</healTemp>
+		<!-- Minimum proportion of hit point needed to heal -->
+		<maxHealHP>0.5</maxHealHP>
+		<!-- The proportion of health restored each tick at 20C below heal temperature -->
+		<healRate>0.01</healRate>
+		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
+		<meltRate>0.01</meltRate>
+		<!-- The difference in stored energy between the solid and liquid -->
+		<maxStoredHeat>3000</maxStoredHeat>
   </ThingDef>
   
 	<ArchitectSense.DesignationSubCategoryDef>

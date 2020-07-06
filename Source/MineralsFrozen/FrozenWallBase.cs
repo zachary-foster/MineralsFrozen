@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,59 +79,76 @@ namespace MineralsFrozen
         {
             get
             {
-                return (HitPoints < MaxHitPoints) && (currentTemp < attributes.healTemp) && (HitPoints >= Math.Ceiling(MaxHitPoints * attributes.maxHealHP));
+                return currentTemp < attributes.healTemp && canHeal;
             }
         }
 
-        public virtual float meltRate
+        public virtual bool canHeal
         {
             get
             {
-                if (isMelting)
-                {
-                    return currentTemp / 10;
-                }
-                else
-                {
-                    return 0f;
-                }
+                return (HitPoints < MaxHitPoints) && (HitPoints >= Math.Ceiling(MaxHitPoints * attributes.maxHealHP));
             }
         }
 
+        public virtual float currentMeltRate
+        {
+            get
+            {
+                float temp = currentTemp;
+                float rate = 0f;
+                if (temp > attributes.meltTemp)
+                {
+                    rate = ((temp - attributes.meltTemp) / 20) * attributes.meltRate;
+                }
+                if (temp < attributes.healTemp && canHeal)
+                {
+                    rate = - ((attributes.healTemp - temp) / 20) * attributes.healRate;
+                }
+                return rate;
+            }
+        }
+
+
         public override void TickLong()
         {
-            // Melt if hot
-            if (isMelting)
+            
+            float rate = currentMeltRate;
+            if (Math.Abs(rate) > 0)
             {
-                float meltDamage = meltRate;
-                if (meltDamage < 1 && Rand.Range(0f, 1f) < meltDamage)
+              // calculate hit points lossed/gained
+              float rateInHitpoints = rate * MaxHitPoints;
+              if (Math.Abs(rateInHitpoints) < 1)
+              {
+                if (Rand.Range(0f, 1f) < Math.Abs(rateInHitpoints))
                 {
-                    TakeDamage(new DamageInfo(DamageDefOf.Deterioration, 1, 0, -1, null, null, null));
-                    GenTemperature.PushHeat(this, - attributes.coolRateWhenMelting);
+                  rateInHitpoints = Math.Sign(rateInHitpoints);
                 }
                 else
                 {
-                    TakeDamage(new DamageInfo(DamageDefOf.Deterioration, (int)Math.Floor(meltDamage), 0, -1, null, null, null));
-                    GenTemperature.PushHeat(this, - meltDamage * attributes.coolRateWhenMelting);
+                  rateInHitpoints = 0f;
                 }
+              }
+              else
+              {
+                rateInHitpoints = (float) Math.Floor(rateInHitpoints);
+              }
+            
+              // Dont heal past max health
+              float newHitpoints = HitPoints - rateInHitpoints;
+              if (newHitpoints > MaxHitPoints)
+              {
+                rateInHitpoints = MaxHitPoints - HitPoints;
+              }
+              
+              // Apply health and temperature change
+              if (Math.Abs(rateInHitpoints) > 0) 
+              {
+                float tempChange = (rateInHitpoints / MaxHitPoints) * attributes.maxStoredHeat;
+                GenTemperature.PushHeat(this, -tempChange);
+                TakeDamage(new DamageInfo(DamageDefOf.Deterioration, rateInHitpoints, 0, -1, null, null, null));
+              }
             }
-            else if (isHealing)
-            {
-                if (attributes.healRate < 1 && Rand.Range(0f, 1f) < attributes.healRate)
-                {
-                    TakeDamage(new DamageInfo(DamageDefOf.Deterioration, -1, 0, -1, null, null, null));
-                    GenTemperature.PushHeat(this, attributes.coolRateWhenMelting);
-                }
-                else
-                {
-                    TakeDamage(new DamageInfo(DamageDefOf.Deterioration, -(int)Math.Floor(attributes.healRate), 0, -1, null, null, null));
-                    GenTemperature.PushHeat(this, attributes.healRate * attributes.coolRateWhenMelting);
-                }
-
-            }
-                
-        
-            //base.TickLong();
         }
 
 
@@ -180,7 +197,7 @@ namespace MineralsFrozen
             StringBuilder stringBuilder = new StringBuilder();
             if (DebugSettings.godMode)
             {
-                stringBuilder.AppendLine("Melt Rate: " + meltRate);
+                stringBuilder.AppendLine("Melt Rate: " + currentMeltRate);
             }
             else
             {
@@ -190,7 +207,7 @@ namespace MineralsFrozen
                 }
                 else if (isHealing)
                 {
-                    stringBuilder.AppendLine("Healing.");
+                    stringBuilder.AppendLine("Freezing.");
                 } 
                 else
                 {
@@ -214,14 +231,17 @@ namespace MineralsFrozen
         public List<string> texturePaths;
 
         // Maximum stable temperature
-        public float meltTemp = 0f;
+        public float meltTemp = 1f;
         // Minimum temperature the wall will heal
-        public float healTemp = -1000f;
+        public float healTemp = -1f;
         // Minimum proportion of hit point needed to heal
-        public float maxHealHP = 1f;
-        // Mean heal per tick
-        public float healRate = 1f;
-        public float coolRateWhenMelting = 8f;
+        public float maxHealHP = 0.95f;
+        // The proportion of health restored each tick at 20C below heal temperature
+        public float healRate = 0.1f;
+        // The proportion of health lossed each tick at 20C above melt temperature
+        public float meltRate = 0.1f;
+        // The difference in stored energy between the solid and liquid
+        public float maxStoredHeat = 1000f;
 
         public virtual void initTexturePaths()
         {

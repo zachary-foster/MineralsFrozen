@@ -68,23 +68,23 @@ namespace MineralsFrozen
                 {
                     if (Rand.Range(0f, 1f) < meltDamage)
                     {
+                        GenTemperature.PushHeat(this, -meltDamage * attributes.coolRateWhenMelting);
                         TakeDamage(new DamageInfo(DamageDefOf.Deterioration, 1, 0, -1, null, null, null));
-                        GenTemperature.PushHeat(this, - meltDamage * attributes.coolRateWhenMelting);
                     }
                     if (stackCount > 1 & Rand.Range(0f, 1f) < meltDamage)
                     {
+                        GenTemperature.PushHeat(this, -meltDamage * attributes.coolRateWhenMelting);
                         stackCount = stackCount - 1;
-                        GenTemperature.PushHeat(this, - meltDamage * attributes.coolRateWhenMelting);
                     }
                 }
                 else
                 {
+                    GenTemperature.PushHeat(this, -meltDamage * attributes.coolRateWhenMelting);
                     TakeDamage(new DamageInfo(DamageDefOf.Deterioration, (int) Math.Floor(meltDamage), 0, -1, null, null, null));
                     if (stackCount > Math.Floor(meltDamage))
                     {
                         stackCount = stackCount - (int) Math.Floor(meltDamage);
                     }
-                    GenTemperature.PushHeat(this, - meltDamage * attributes.coolRateWhenMelting);
                 }
             }
 
