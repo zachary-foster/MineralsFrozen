@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
   
-  <ResearchProjectDef ParentName="PrimitiveBase">
+  <ResearchProjectDef ParentName="ZF_TribalResearchBase">
     <defName>FrozenConstructionI</defName>
     <label>Frozen Construction I</label>
-    <description>Make things out of ice.</description>
+    <description>Make things out of snow.</description>
     <baseCost>200</baseCost>
     <techLevel>Neolithic</techLevel>
     <tab>Main</tab>
     <researchViewX>0.06</researchViewX>
     <researchViewY>0.85</researchViewY>
     <tags>
-      <li>TribalStart</li>
+      <li>TribalOnlyStart</li>
     </tags>
   </ResearchProjectDef>
 
-  <ResearchProjectDef ParentName="PrimitiveBase">
+  <ResearchProjectDef ParentName="ZF_NoResearchBase">
     <defName>FrozenConstructionII</defName>
     <label>Frozen Construction II</label>
-    <description>Make things out of pykrete.</description>
+    <description>Make things out of ice.</description>
     <baseCost>500</baseCost>
     <techLevel>Neolithic</techLevel>
     <tab>Main</tab>
@@ -33,7 +33,7 @@
   <ResearchProjectDef ParentName="MedievalBase">
     <defName>FrozenConstructionIII</defName>
     <label>Frozen Construction III</label>
-    <description>Make more things out of ice and pykrete.</description>
+    <description>Make more things out of pykrete.</description>
     <baseCost>1500</baseCost>
     <techLevel>Medieval</techLevel>
     <tab>Main</tab>

@@ -61,6 +61,9 @@
 		<costList>
 			<SnowBlocks>6</SnowBlocks>
 		</costList>
+		<researchPrerequisites>
+			<li>FrozenConstructionI</li>
+		</researchPrerequisites>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<!-- Maximum stable temperature -->
 		<meltTemp>1</meltTemp>
@@ -119,7 +122,7 @@
 			<IceBlocks>6</IceBlocks>
 		</costList>
 		<researchPrerequisites>
-			<li>FrozenConstructionI</li>
+			<li>FrozenConstructionII</li>
 		</researchPrerequisites>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<!-- Maximum stable temperature -->
@@ -173,7 +176,7 @@
 			<Kindling>3</Kindling>
 		</costList>
 		<researchPrerequisites>
-			<li>FrozenConstructionII</li>
+			<li>FrozenConstructionIII</li>
 		</researchPrerequisites>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<!-- Maximum stable temperature -->

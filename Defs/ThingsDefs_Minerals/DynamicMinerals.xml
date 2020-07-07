@@ -50,8 +50,8 @@
       <li>Limestone_Rough</li>
       <li>Sandstone_Rough</li>
       <li>Slate_Rough</li>
-      <li>LavaRock_Rough</li>
-      <li>LavaRock_RoughHewn</li>
+      <li>Claystone_Rough</li>
+      <li>ZF_BasaltBase_Rough</li>
       <li>Gravel</li>
       <li>Sand</li>
       <li>Soil</li>
@@ -63,6 +63,8 @@
       <li>DeepIce</li>
       <li>IceDeep</li>
       <li>MuddyIce</li>
+      <li>Crashland_Wasteland</li>
+  		<li>RockySoil</li>
     </allowedTerrains>
     <!-- Controls how extra clusters are added near assocaited ore-->
     <associatedOres>
@@ -152,6 +154,7 @@
         <!--  no damage marks -->
       </damageData>
     </graphicData>
+    <uiIconPath>Things/Mineral/SmoothSnowDrift/SmoothSnowDriftA</uiIconPath>
     <hideAtSnowDepth>2</hideAtSnowDepth>
     <filthLeaving/>
     <!--How far away it can spawn from an existing location-->
@@ -175,13 +178,13 @@
     <reproduceProp>0.05</reproduceProp>
     <deathProb>0.9</deathProb>
     <!-- The biomes this can appear in. The default is all ones known to mod-->
-    <allowedBiomes>
+    <allowedBiomes Inherit="False">
 		</allowedBiomes>
     <!-- The terrains this must be near to, but not necessarily on -->
-    <neededNearbyTerrains>
+    <neededNearbyTerrains Inherit="False">
 		</neededNearbyTerrains>
     <!-- The terrains this can appear on. The default is rocky terrains-->
-    <allowedTerrains>
+    <allowedTerrains  Inherit="False">
 		</allowedTerrains>
     <!-- how far away it can be from needed nearby terrains-->
     <neededNearbyTerrainRadius>1</neededNearbyTerrainRadius>
@@ -216,8 +219,8 @@
       <maxStable>1</maxStable>
       <maxGrow>0.5</maxGrow>
       <idealGrow>-1</idealGrow>
-      <minGrow>-25</minGrow>
-      <minStable>-30</minStable>
+      <minGrow>-35</minGrow>
+      <minStable>-40</minStable>
       <belowMinDecayRate>0.1</belowMinDecayRate>
     </tempGrowthRateModifer>
     <rainGrowthRateModifer>
@@ -272,6 +275,7 @@
         <!--  no damage marks -->
       </damageData>
     </graphicData>
+    <uiIconPath>Things/Mineral/SnowDrift/SnowDriftA</uiIconPath>
     <hideAtSnowDepth>2</hideAtSnowDepth>
     <filthLeaving/>
     <!--How far away it can spawn from an existing location-->
@@ -295,13 +299,13 @@
     <reproduceProp>0.05</reproduceProp>
     <deathProb>0.5</deathProb>
     <!-- The biomes this can appear in. The default is all ones known to mod-->
-    <allowedBiomes>
+    <allowedBiomes Inherit="False">
 		</allowedBiomes>
     <!-- The terrains this must be near to, but not necessarily on -->
-    <neededNearbyTerrains>
+    <neededNearbyTerrains Inherit="False">
 		</neededNearbyTerrains>
     <!-- The terrains this can appear on. The default is rocky terrains-->
-    <allowedTerrains>
+    <allowedTerrains Inherit="False">
 		</allowedTerrains>
     <!-- how far away it can be from needed nearby terrains-->
     <neededNearbyTerrainRadius>1</neededNearbyTerrainRadius>
