@@ -105,7 +105,7 @@
     <!-- The number of days it takes to grow at max growth speed -->
     <growDays>4</growDays>
     <!-- Chance of spawning de novo each check -->
-    <spawnProb>0.5</spawnProb>
+    <spawnProb>0.6</spawnProb>
     <!-- Can spawn on items, pawns, and plants-->
     <canSpawnOnThings>true</canSpawnOnThings>
     <!-- Growth rate modifiers -->
@@ -209,7 +209,7 @@
     <!-- The number of days it takes to grow at max growth speed -->
     <growDays>0.5</growDays>
     <!-- Chance of spawning de novo each check -->
-    <spawnProb>0.6</spawnProb>
+    <spawnProb>0.7</spawnProb>
     <!-- Can spawn on items, pawns, and plants-->
     <canSpawnOnThings>true</canSpawnOnThings>
     <!-- Growth rate modifiers -->
@@ -330,7 +330,7 @@
     <!-- The number of days it takes to grow at max growth speed -->
     <growDays>0.5</growDays>
     <!-- Chance of spawning de novo each check -->
-    <spawnProb>0.5</spawnProb>
+    <spawnProb>0.6</spawnProb>
     <!-- Can spawn on items, pawns, and plants-->
     <canSpawnOnThings>true</canSpawnOnThings>
     <!-- Growth rate modifiers -->
