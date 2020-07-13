@@ -105,7 +105,7 @@
     <!-- The number of days it takes to grow at max growth speed -->
     <growDays>4</growDays>
     <!-- Chance of spawning de novo each check -->
-    <spawnProb>0.6</spawnProb>
+    <spawnProb>0.7</spawnProb>
     <!-- Can spawn on items, pawns, and plants-->
     <canSpawnOnThings>true</canSpawnOnThings>
     <!-- Growth rate modifiers -->
@@ -136,7 +136,7 @@
     <thingClass>MineralsFrozen.SnowDrift</thingClass>
     <defName>ZF_SmoothSnowDrift</defName>
     <label>Deep Snow</label>
-    <description>Mounds of very deep snow. Tends to accumulate in open areas. Hard to walk through, but pretty in a way. Can be mined for snow blocks. </description>
+    <description>Mounds of very deep snow. Tends to accumulate in open areas. Hard to walk through, but pretty in a way. Can be mined for snow blocks.</description>
     <altitudeLayer>SmallWire</altitudeLayer>
     <pathCost>100</pathCost>
     <statBases>
@@ -164,7 +164,7 @@
     <perMapProbability>1.0</perMapProbability>
     <!-- For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
     <minClusterProbability>0.01</minClusterProbability>
-    <maxClusterProbability>0.3</maxClusterProbability>
+    <maxClusterProbability>0.25</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
     <maxClusterSize>1</maxClusterSize>
@@ -209,7 +209,7 @@
     <!-- The number of days it takes to grow at max growth speed -->
     <growDays>0.5</growDays>
     <!-- Chance of spawning de novo each check -->
-    <spawnProb>0.7</spawnProb>
+    <spawnProb>0.8</spawnProb>
     <!-- Can spawn on items, pawns, and plants-->
     <canSpawnOnThings>true</canSpawnOnThings>
     <!-- Growth rate modifiers -->
@@ -218,7 +218,7 @@
       <aboveMaxDecayRate>1</aboveMaxDecayRate>
       <maxStable>1</maxStable>
       <maxGrow>0.5</maxGrow>
-      <idealGrow>-1</idealGrow>
+      <idealGrow>-5</idealGrow>
       <minGrow>-35</minGrow>
       <minStable>-40</minStable>
       <belowMinDecayRate>0.1</belowMinDecayRate>
@@ -257,7 +257,7 @@
     <thingClass>MineralsFrozen.SnowDrift</thingClass>
     <defName>ZF_SnowDrift</defName>
     <label>Snow Drift</label>
-    <description>A wind-blown pile of snow. Tends to accumulate next to buildings and trees when the temperature is very low. Hard to walk through, but pretty in a way. Can be mined for snow blocks. </description>
+    <description>A wind-blown pile of snow. Tends to accumulate next to buildings and trees when the temperature is very low. Hard to walk through, but pretty in a way. Can be mined for snow blocks.</description>
     <altitudeLayer>Zone</altitudeLayer>
     <pathCost>200</pathCost>
     <statBases>

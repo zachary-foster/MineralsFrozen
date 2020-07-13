@@ -15,12 +15,13 @@
       <blueprintGraphicData>
          <texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
       </blueprintGraphicData>
+      <repairable>false</repairable>
     </building>
     <filthLeaving>Filth_Dirt</filthLeaving>
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <constructEffect>ConstructDirt</constructEffect>
-    <repairEffect>ConstructDirt</repairEffect>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <!-- <repairEffect>ConstructDirt</repairEffect> -->
+    <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<meltTemp>0</meltTemp>
   </ThingDef>
@@ -29,7 +30,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>SnowWall</defName>
     <label>Snow Wall</label>
-    <description>An impassable wall made of snow. It is capable of holding up a roof but can be easily knocked down. It will melt when above freezing.</description>
+    <description>An impassable wall made of snow. It is capable of holding up a roof but can be easily knocked down. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if damaged more than 90%.</description>
     <graphicData>
 			<texPath>Things/Rock/HewnRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -65,12 +66,13 @@
 			<li>FrozenConstructionI</li>
 		</researchPrerequisites>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<!-- Maximum stable temperature -->
 		<meltTemp>1</meltTemp>
 		<!-- Minimum temperature the wall will heal -->
 		<healTemp>-1</healTemp>
 		<!-- Minimum proportion of hit point needed to heal -->
-		<maxHealHP>0.97</maxHealHP>
+		<maxHealHP>0.9</maxHealHP>
 		<!-- The proportion of health restored each tick at 20C below heal temperature -->
 		<healRate>0.05</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
@@ -82,7 +84,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>IceWall</defName>
     <label>Ice Wall</label>
-    <description>An impassable wall made of cut ice. It is capable of holding up a roof. It will melt when above freezing.</description>
+    <description>An impassable wall made of cut ice. It is capable of holding up a roof. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if damaged more than 90%.</description>
     <graphicData>
 			<texPath>Things/Rock/SmoothedRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -125,12 +127,13 @@
 			<li>FrozenConstructionII</li>
 		</researchPrerequisites>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<!-- Maximum stable temperature -->
 		<meltTemp>1</meltTemp>
 		<!-- Minimum temperature the wall will heal -->
 		<healTemp>-1</healTemp>
 		<!-- Minimum proportion of hit point needed to heal -->
-		<maxHealHP>0.95</maxHealHP>
+		<maxHealHP>0.9</maxHealHP>
 		<!-- The proportion of health restored each tick at 20C below heal temperature -->
 		<healRate>0.02</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
@@ -142,7 +145,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>PykreteWall</defName>
     <label>Pykrete Wall</label>
-    <description>An impassable wall made of pykrete, a frozen mixure of water and wood pulp. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above freezing.</description>
+    <description>An impassable wall made of pykrete, a frozen mixure of water and wood pulp. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if damaged more than 80%.</description>
     <graphicData>
 			<texPath>Things/Rock/HewnRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -179,12 +182,13 @@
 			<li>FrozenConstructionIII</li>
 		</researchPrerequisites>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<!-- Maximum stable temperature -->
 		<meltTemp>1</meltTemp>
 		<!-- Minimum temperature the wall will heal -->
 		<healTemp>-1</healTemp>
 		<!-- Minimum proportion of hit point needed to heal -->
-		<maxHealHP>0.95</maxHealHP>
+		<maxHealHP>0.8</maxHealHP>
 		<!-- The proportion of health restored each tick at 20C below heal temperature -->
 		<healRate>0.01</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
@@ -196,7 +200,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>BlueIceWall</defName>
     <label>Blue Ice Wall</label>
-    <description>An impassable wall made of a strange blue ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 5C and will slowly heal when below 0C. It cannot heal if damaged more than 70%.</description>
+    <description>An impassable wall made of a strange blue ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 5C and will slowly heal when below 0C. It cannot heal if damaged more than 60%.</description>
     <graphicData>
 			<texPath>Things/Rock/HewnRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -240,12 +244,13 @@
 			<li>FrozenConstructionVI</li>
 		</researchPrerequisites>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<!-- Maximum stable temperature -->
 		<meltTemp>5</meltTemp>
 		<!-- Minimum temperature the wall will heal -->
 		<healTemp>0</healTemp>
 		<!-- Minimum proportion of hit point needed to heal -->
-		<maxHealHP>0.7</maxHealHP>
+		<maxHealHP>0.6</maxHealHP>
 		<!-- The proportion of health restored each tick at 20C below heal temperature -->
 		<healRate>0.01</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
@@ -257,7 +262,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>GreenIceWall</defName>
     <label>Green Ice Wall</label>
-    <description>An impassable wall made of a strange glowing green ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 15C and will slowly heal below 5C. It cannot heal if damaged more than 50%.</description>
+    <description>An impassable wall made of a strange glowing green ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 15C and will slowly heal below 5C. It cannot heal if damaged more than 30%.</description>
     <graphicData>
 			<texPath>Things/Rock/SmoothedRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -303,12 +308,13 @@
 			<li>FrozenConstructionV</li>
 		</researchPrerequisites>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<!-- Maximum stable temperature -->
 		<meltTemp>15</meltTemp>
 		<!-- Minimum temperature the wall will heal -->
 		<healTemp>5</healTemp>
 		<!-- Minimum proportion of hit point needed to heal -->
-		<maxHealHP>0.5</maxHealHP>
+		<maxHealHP>0.3</maxHealHP>
 		<!-- The proportion of health restored each tick at 20C below heal temperature -->
 		<healRate>0.01</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
