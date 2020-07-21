@@ -105,6 +105,10 @@ namespace MineralsFrozen
                 {
                     rate = - ((attributes.healTemp - temp) / 20) * attributes.healRate;
                 }
+                if (Math.Abs(rate) > attributes.maxChangeRate)
+                {
+                    rate = attributes.maxChangeRate * Math.Sign(rate);
+                }
                 return rate;
             }
         }
@@ -240,6 +244,8 @@ namespace MineralsFrozen
         public float healRate = 0.1f;
         // The proportion of health lossed each tick at 20C above melt temperature
         public float meltRate = 0.1f;
+        // The proportion of health lossed each tick at 20C above melt temperature
+        public float maxChangeRate = 0.2f;
         // The difference in stored energy between the solid and liquid
         public float maxStoredHeat = 1000f;
 

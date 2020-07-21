@@ -77,8 +77,10 @@
 		<healRate>0.05</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
 		<meltRate>0.05</meltRate>
+		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
+		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
-		<maxStoredHeat>1000</maxStoredHeat>
+		<maxStoredHeat>150</maxStoredHeat>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
@@ -126,7 +128,7 @@
 		<researchPrerequisites>
 			<li>FrozenConstructionII</li>
 		</researchPrerequisites>
-    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<!-- Maximum stable temperature -->
 		<meltTemp>1</meltTemp>
@@ -138,8 +140,10 @@
 		<healRate>0.02</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
 		<meltRate>0.02</meltRate>
+		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
+		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
-		<maxStoredHeat>2000</maxStoredHeat>
+		<maxStoredHeat>600</maxStoredHeat>
   </ThingDef>
 
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
@@ -193,8 +197,10 @@
 		<healRate>0.01</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
 		<meltRate>0.01</meltRate>
+		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
+		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
-		<maxStoredHeat>1500</maxStoredHeat>
+		<maxStoredHeat>1200</maxStoredHeat>
   </ThingDef>
   
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
@@ -255,6 +261,8 @@
 		<healRate>0.01</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
 		<meltRate>0.01</meltRate>
+		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
+		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
 		<maxStoredHeat>3000</maxStoredHeat>
   </ThingDef>
@@ -319,6 +327,8 @@
 		<healRate>0.01</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
 		<meltRate>0.01</meltRate>
+		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
+		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
 		<maxStoredHeat>3000</maxStoredHeat>
   </ThingDef>

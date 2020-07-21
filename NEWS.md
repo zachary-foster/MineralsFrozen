@@ -1,3 +1,8 @@
+## Current version
+
+* Improved melting and temperature dynamics of ice and snow blocks and made them consistent with the frozen walls.
+* Fixed low spawn rate of snow and reduced initial snow amount on new maps
+
 ## v0.6.0
 
 * Updated for new minerals mod
