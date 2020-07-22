@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;   // Always needed
 using RimWorld;      // RimWorld specific functions 
 using Verse;         // RimWorld universal objects 
+using Verse.AI.Group;
 
 namespace MineralsFrozen
 {
@@ -35,6 +36,15 @@ namespace MineralsFrozen
     /// <permission>No restrictions</permission>
     public class ThingDef_Snow : Minerals.ThingDef_DynamicMineral
     {
+
+        // How much faster it melts in still water
+        public float stillWaterMeltFactor = 5f;
+        // How much faster it melts in moving water
+        public float movingWaterMeltFactor = 30f;
+        // How much faster it melts in moving water
+        public float rainMeltFactor = 10f;
+
+
         public override void InitNewMap(Map map, float scaling = 1)
         {
             float snowProb = 1f;
@@ -57,109 +67,52 @@ namespace MineralsFrozen
             base.InitNewMap(map, snowProb);
         }
 
-        public virtual float grothRateFactor(IntVec3 aPosition, Map aMap)
+        public virtual float growthRateFactor(IntVec3 aPosition, Map aMap, float rate)
         {
-            // Melt faster in water
-            float rate;
-            float baseRate = base.GrowthRateAtPos(aMap, aPosition);
-            if (baseRate < 0) {
+            float factor = 1f;
+
+           
+            if (rate < 0)
+            {
+                // Melts faster in water
                 if (aMap.terrainGrid.TerrainAt(aPosition).defName.Contains("Water"))
                 {
                     if (aMap.terrainGrid.TerrainAt(aPosition).defName.Contains("Moving"))
                     {
 
-                        return Math.Abs(baseRate) * 30; // melt even faster in moving water
+                        factor = factor * movingWaterMeltFactor; // melt even faster in moving water
                     }
                     else
                     {
-                        return Math.Abs(baseRate) * 10;
+                        factor = factor * stillWaterMeltFactor;
                     }
                 }
-                else
+
+                // Melts faster in rain
+                if (! aMap.roofGrid.Roofed(aPosition))
                 {
-                    return Math.Abs(baseRate);
-                }
-            } else {
-                rate = aPosition.GetSnowDepth(aMap);
-            }
-
-            // Nearby Buldings slow growth
-            const int snowCoverRadius = 1;
-            for (int xOffset = -snowCoverRadius; xOffset <= snowCoverRadius; xOffset++)
-            {
-                for (int zOffset = -snowCoverRadius; zOffset <= snowCoverRadius; zOffset++)
-                {
-                    IntVec3 checkedPosition = aPosition + new IntVec3(xOffset, 0, zOffset);
-                    if (checkedPosition.InBounds(aMap))
-                    {
-                        foreach (Thing thing in aMap.thingGrid.ThingsListAt(checkedPosition))
-                        {
-                            if (thing is Building && thing.def.altitudeLayer == AltitudeLayer.Building)
-                            {
-
-                                rate = rate * 0.5f;
-                            }
-
-                        }
-                    }                    
+                    factor = factor * (1 + aMap.weatherManager.curWeather.rainRate * rainMeltFactor);
                 }
             }
 
-            // Trees on same tile slow growth
-            foreach (Thing thing in aMap.thingGrid.ThingsListAt(aPosition))
-            {
-                if (thing is Plant && thing.def.altitudeLayer == AltitudeLayer.Building)
-                {
-
-                    rate = rate * (1 - ((Plant) thing).Growth) * 0.5f;
-                }
-
-            }
-
-            // Factor cannot be greater than one or negative
-            if (rate > 1)
-            { 
-                rate = 1f;
-            }
-            if (rate < 0)
-            { 
-                rate = 0f;
-            }
-
-            // Melt faster in water
-            if (aMap.terrainGrid.TerrainAt(aPosition).defName.Contains("Water") && baseRate < 0.05)
-            {
-                rate = rate * 5;
-            }
-
-            return rate;
+            return factor;
         }
 
-
-        public override float GrowthRateAtPos(Map aMap, IntVec3 aPosition) 
+        public override float GrowthRateAtPos(Map aMap, IntVec3 aPosition)
         {
-            return base.GrowthRateAtPos(aMap, aPosition) * grothRateFactor(aPosition, aMap);
+            float rate = base.GrowthRateAtPos(aMap, aPosition);
+            return rate * growthRateFactor(aPosition, aMap, rate);
         }
 
-        public override bool PlaceIsBlocked(Map map, IntVec3 position)
-        {
-//            Log.Message("PlaceIsBlocked: snow");
-            // dont spawn on other types of snow 
-            foreach (Thing thing in map.thingGrid.ThingsListAt(position))
-            {
-                if (thing is SnowDrift)
-                {
-                    return true;
-                }
-            }
-
-            return base.PlaceIsBlocked(map, position);
-        }
-     
     }
-        
+
     public class ThingDef_DeepSnow : ThingDef_Snow
     {
+        // How much each nearby obstruction reduces growth rate. The effect is multiplicative
+        public float obstructionGrowthFactor = 0.5f;
+        // The maximum radius obstructions are looked for
+        public int obstructionSearchRadius = 1;
+
 
         public override bool PlaceIsBlocked(Map map, IntVec3 position)
         {
@@ -176,17 +129,7 @@ namespace MineralsFrozen
             }
 
             // dont spawn  next to stuff
-            Predicate<IntVec3> validator = c => c.InBounds(map) && (! c.Standable(map));
-            IntVec3 unused;
-            if (CellFinder.TryFindRandomCellNear(position, map, 1, validator, out unused))
-            {
-                return true;
-            }
-
-            // dont spawn  next to walls
-            Predicate<IntVec3> validator2 = c => c.InBounds(map) && (c.Roofed(map) || c.Impassable(map));
-            IntVec3 unused2;
-            if (CellFinder.TryFindRandomCellNear(position, map, 2, validator2, out unused2))
+            if (Rand.Range(0f, 1f) > obstructionGrowthRateFactor(position, map))
             {
                 return true;
             }
@@ -194,26 +137,53 @@ namespace MineralsFrozen
             return base.PlaceIsBlocked(map, position);
         }
 
+        public virtual float obstructionGrowthRateFactor(IntVec3 aPosition, Map aMap)
+        {
+            float factor = 1f;
 
-//        public override void SpawnCluster(Map map, IntVec3 position)
-//        {
-//            // Make a cluster center
-//            Minerals.StaticMineral mineral = TrySpawnAt(position, map);
-//            if (mineral != null)
-//            {            
-//                mineral.size = Rand.Range(initialSizeMin, initialSizeMax);
-//
-//                // Add snow depth
-//                mineral.size = mineral.size * 0.5f  + mineral.size * position.GetSnowDepth(map) * 0.5f;
-//
-//            }
-//        }
+            // Nearby Buldings slow growth
+            for (int xOffset = -obstructionSearchRadius; xOffset <= obstructionSearchRadius; xOffset++)
+            {
+                for (int zOffset = -obstructionSearchRadius; zOffset <= obstructionSearchRadius; zOffset++)
+                {
+                    IntVec3 checkedPosition = aPosition + new IntVec3(xOffset, 0, zOffset);
+                    if (checkedPosition.InBounds(aMap))
+                    {
+                        foreach (Thing thing in aMap.thingGrid.ThingsListAt(checkedPosition))
+                        {
+                            if ((thing is Building && thing.def.altitudeLayer == AltitudeLayer.Building) || aMap.roofGrid.Roofed(checkedPosition) || (thing is Plant && ! checkedPosition.Standable(aMap)))
+                            {
+                                factor = factor * obstructionGrowthFactor;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            return factor;
+
+        }
+
+        public override float growthRateFactor(IntVec3 aPosition, Map aMap, float rate)
+        {
+            float factor = base.growthRateFactor(aPosition, aMap, rate);
+
+            // Nearby Buldings slow growth  and melting
+            factor = factor * obstructionGrowthRateFactor(aPosition, aMap);
+
+            return factor;
+        }
 
 
-    }  
+    }
 
     public class ThingDef_SnowDrift : ThingDef_Snow
     {
+        // How much each nearby obstruction increases growth rate. The effect is additive
+        public float obstructionGrowthBonus = 0.25f;
+        // The maximum radius obstructions are looked for
+        public int obstructionSearchRadius = 1;
 
         public override bool PlaceIsBlocked(Map map, IntVec3 position)
         {
@@ -232,18 +202,56 @@ namespace MineralsFrozen
 //            Log.Message("PlaceIsBlocked: drift not water");
 
             // dont spawn in the open
-            Predicate<IntVec3> validator = c => c.InBounds(map) && (c.Roofed(map) || (! c.Standable(map)));
-            IntVec3 unused;
-            if (! CellFinder.TryFindRandomCellNear(position, map, 2, validator, out unused))
+            if (Rand.Range(0f, 1f) > obstructionGrowthRateFactor(position, map))
             {
                 return true;
             }
-//            Log.Message("PlaceIsBlocked: drift not blocked");
+
+
+            //            Log.Message("PlaceIsBlocked: drift not blocked");
 
             return base.PlaceIsBlocked(map, position);
-        }   
+        }
 
-    }  
+        public virtual float obstructionGrowthRateFactor(IntVec3 aPosition, Map aMap)
+        {
+            float factor = 0f;
+
+            // Nearby Buldings or other snow drifts allow growth
+            for (int xOffset = -obstructionSearchRadius; xOffset <= obstructionSearchRadius; xOffset++)
+            {
+                for (int zOffset = -obstructionSearchRadius; zOffset <= obstructionSearchRadius; zOffset++)
+                {
+                    IntVec3 checkedPosition = aPosition + new IntVec3(xOffset, 0, zOffset);
+                    if (checkedPosition.InBounds(aMap))
+                    {
+                        foreach (Thing thing in aMap.thingGrid.ThingsListAt(checkedPosition))
+                        {
+                            if ((thing is Building && thing.def.altitudeLayer == AltitudeLayer.Building) || thing.def is ThingDef_SnowDrift)
+                            {
+                                factor = factor + obstructionGrowthBonus;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            return factor;
+
+        }
+
+        public override float growthRateFactor(IntVec3 aPosition, Map aMap, float rate)
+        {
+            float factor = base.growthRateFactor(aPosition, aMap, rate);
+
+            // Nearby Buldings slow growth  and melting
+            factor = factor * obstructionGrowthRateFactor(aPosition, aMap);
+
+            return factor;
+        }
+
+    }
 }
 
 
