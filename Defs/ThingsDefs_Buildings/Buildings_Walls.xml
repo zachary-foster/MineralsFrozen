@@ -30,7 +30,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>SnowWall</defName>
     <label>Snow Wall</label>
-    <description>An impassable wall made of snow. It is capable of holding up a roof but can be easily knocked down. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if damaged more than 90%.</description>
+    <description>An impassable wall made of snow. It is capable of holding up a roof but can be easily knocked down. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if its health is below 90%.</description>
     <graphicData>
 			<texPath>Things/Rock/HewnRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -86,7 +86,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>IceWall</defName>
     <label>Ice Wall</label>
-    <description>An impassable wall made of cut ice. It is capable of holding up a roof. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if damaged more than 90%.</description>
+    <description>An impassable wall made of cut ice. It is capable of holding up a roof. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if its health is below 90%.</description>
     <graphicData>
 			<texPath>Things/Rock/SmoothedRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -149,7 +149,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>PykreteWall</defName>
     <label>Pykrete Wall</label>
-    <description>An impassable wall made of pykrete, a frozen mixure of water and wood pulp. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if damaged more than 80%.</description>
+    <description>An impassable wall made of pykrete, a frozen mixure of water and wood pulp. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if its health is below 80%.</description>
     <graphicData>
 			<texPath>Things/Rock/HewnRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -206,7 +206,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>BlueIceWall</defName>
     <label>Blue Ice Wall</label>
-    <description>An impassable wall made of a strange blue ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 5C and will slowly heal when below 0C. It cannot heal if damaged more than 60%.</description>
+    <description>An impassable wall made of a strange blue ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 5C and will slowly heal when below 0C. It cannot heal if its health is below 60%.</description>
     <graphicData>
 			<texPath>Things/Rock/HewnRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -270,7 +270,7 @@
   <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
     <defName>GreenIceWall</defName>
     <label>Green Ice Wall</label>
-    <description>An impassable wall made of a strange glowing green ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 15C and will slowly heal below 5C. It cannot heal if damaged more than 30%.</description>
+    <description>An impassable wall made of a strange glowing green ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 15C and will slowly heal below 5C. It cannot heal if its health is below 30%.</description>
     <graphicData>
 			<texPath>Things/Rock/SmoothedRockWall</texPath>
 			<graphicClass>Graphic_Random</graphicClass>

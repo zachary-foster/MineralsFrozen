@@ -245,8 +245,11 @@ namespace MineralsFrozen
         {
             float factor = base.growthRateFactor(aPosition, aMap, rate);
 
-            // Nearby Buldings slow growth  and melting
-            factor = factor * obstructionGrowthRateFactor(aPosition, aMap);
+            // Nearby Buldings speed growth
+            if (rate > 0f)
+            {
+                factor = factor * obstructionGrowthRateFactor(aPosition, aMap);
+            }
 
             return factor;
         }
