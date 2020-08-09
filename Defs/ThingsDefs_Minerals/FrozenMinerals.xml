@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
   
-  <ThingDef ParentName="DynamicMineralBase" Class="MineralsFrozen.ThingDef_IceStalagmite">
+  <ThingDef ParentName="FrozenMineralBase" Class="MineralsFrozen.ThingDef_IceStalagmite">
     <thingClass>MineralsFrozen.IceStalagmite</thingClass>
     <defName>IceStalagmite</defName>
     <label>Ice Stalagmite</label>
@@ -133,11 +133,13 @@
       </li>
     </randomlyDropResources>
     <!-- If smaller than 1, it looks smaller in water -->
-    <submergedSize>0</submergedSize>
+    <submergedSize>1</submergedSize>
     <submergedRadius>1</submergedRadius>
+        <!-- What stage of map generation the thing is spawned during (chunks or plants) -->
+    <newMapGenStep>chunks</newMapGenStep>
   </ThingDef>
   
-  <ThingDef ParentName="DynamicMineralBase" Class="MineralsFrozen.ThingDef_DeepSnow">
+  <ThingDef ParentName="FrozenMineralBase" Class="MineralsFrozen.ThingDef_DeepSnow">
     <thingClass>MineralsFrozen.SnowDrift</thingClass>
     <defName>ZF_SmoothSnowDrift</defName>
     <label>Deep Snow</label>
@@ -236,7 +238,7 @@
       <idealGrow>2.0</idealGrow>
       <minGrow>0.1</minGrow>
       <minStable>0.05</minStable>
-      <belowMinDecayRate>5</belowMinDecayRate>
+      <belowMinDecayRate>2</belowMinDecayRate>
     </rainGrowthRateModifer>
     <fertGrowthRateModifer>
       <active>true</active>
@@ -258,7 +260,7 @@
     </randomlyDropResources>
   </ThingDef>
   
-  <ThingDef ParentName="DynamicMineralBase" Class="MineralsFrozen.ThingDef_SnowDrift">
+  <ThingDef ParentName="FrozenMineralBase" Class="MineralsFrozen.ThingDef_SnowDrift">
     <thingClass>MineralsFrozen.SnowDrift</thingClass>
     <defName>ZF_SnowDrift</defName>
     <label>Snow Drift</label>
@@ -357,7 +359,7 @@
       <idealGrow>2</idealGrow>
       <minGrow>0.2</minGrow>
       <minStable>0.1</minStable>
-      <belowMinDecayRate>5</belowMinDecayRate>
+      <belowMinDecayRate>2</belowMinDecayRate>
     </rainGrowthRateModifer>
     <!-- Other resources it might drop -->
     <randomlyDropResources>
