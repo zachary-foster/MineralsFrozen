@@ -52,6 +52,7 @@
       <li>Slate_Rough</li>
       <li>Claystone_Rough</li>
       <li>ZF_BasaltBase_Rough</li>
+      <li>ZF_MudstoneBase_Rough</li>
       <li>Gravel</li>
       <li>Sand</li>
       <li>Soil</li>
@@ -87,7 +88,7 @@
       <li>IceDeep</li>
       <li>MuddyIce</li>
     </associatedOres>
-    <nearAssociatedOreBonus>30</nearAssociatedOreBonus>
+    <nearAssociatedOreBonus>10</nearAssociatedOreBonus>
     <!-- how far away it can be from needed nearby terrains-->
     <neededNearbyTerrainRadius>1</neededNearbyTerrainRadius>
     <!-- If true, growth rate and initial size depends on distance from needed terrains -->
@@ -110,12 +111,11 @@
     <!-- The number of days it takes to grow at max growth speed -->
     <growDays>5</growDays>
     <!-- Chance of spawning de novo each check -->
-    <spawnProb>0.00005</spawnProb>
+    <spawnProb>0.00003</spawnProb>
     <!-- Can spawn on items, pawns, and plants-->
     <canSpawnOnThings>false</canSpawnOnThings>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
-      <active>true</active>
       <aboveMaxDecayRate>5</aboveMaxDecayRate>
       <maxStable>5</maxStable>
       <maxGrow>2</maxGrow>
@@ -171,7 +171,7 @@
     <perMapProbability>1.0</perMapProbability>
     <!-- For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
     <minClusterProbability>0.01</minClusterProbability>
-    <maxClusterProbability>0.1</maxClusterProbability>
+    <maxClusterProbability>0.05</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
     <maxClusterSize>1</maxClusterSize>
@@ -214,24 +214,23 @@
     <!-- 1 = everything appears within cell and can spawn at edge when visualClustering == 0 -->
     <visualSizeVariation>0.2</visualSizeVariation>
     <!-- The number of days it takes to grow at max growth speed -->
-    <growDays>2</growDays>
+    <growDays>3</growDays>
     <!-- Chance of spawning de novo each check -->
-    <spawnProb>0.0002</spawnProb>
+    <spawnProb>0.0006</spawnProb>
     <!-- Can spawn on items, pawns, and plants-->
     <canSpawnOnThings>false</canSpawnOnThings>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
-      <active>true</active>
-      <aboveMaxDecayRate>1</aboveMaxDecayRate>
+      <aboveMaxDecayRate>1.5</aboveMaxDecayRate>
       <maxStable>1</maxStable>
       <maxGrow>0.5</maxGrow>
       <idealGrow>-5</idealGrow>
       <minGrow>-45</minGrow>
       <minStable>-60</minStable>
       <belowMinDecayRate>0.1</belowMinDecayRate>
+      <wholeMapEffect>true</wholeMapEffect>
     </tempGrowthRateModifer>
     <rainGrowthRateModifer>
-      <active>true</active>
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
       <maxStable>3</maxStable>
       <maxGrow>2.5</maxGrow>
@@ -239,9 +238,9 @@
       <minGrow>0.1</minGrow>
       <minStable>0.05</minStable>
       <belowMinDecayRate>2</belowMinDecayRate>
+      <wholeMapEffect>true</wholeMapEffect>
     </rainGrowthRateModifer>
     <fertGrowthRateModifer>
-      <active>true</active>
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
       <maxStable>6</maxStable>
       <maxGrow>5</maxGrow>
@@ -292,7 +291,7 @@
     <perMapProbability>1.0</perMapProbability>
     <!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
     <minClusterProbability>0.005</minClusterProbability>
-    <maxClusterProbability>0.1</maxClusterProbability>
+    <maxClusterProbability>0.05</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
     <maxClusterSize>5</maxClusterSize>
@@ -326,7 +325,7 @@
     <maxMeshCount>1</maxMeshCount>
     <!-- The size range -->
     <visualSizeRange>
-      <min>1.5</min>
+      <min>1.2</min>
       <max>3.5</max>
     </visualSizeRange>
     <visualClustering>1.0</visualClustering>
@@ -335,14 +334,13 @@
     <!-- 1 = everything appears within cell and can spawn at edge when visualClustering == 0 -->
     <visualSizeVariation>0.1</visualSizeVariation>
     <!-- The number of days it takes to grow at max growth speed -->
-    <growDays>3</growDays>
+    <growDays>4</growDays>
     <!-- Chance of spawning de novo each check -->
-    <spawnProb>0.00005</spawnProb>
+    <spawnProb>0.0003</spawnProb>
     <!-- Can spawn on items, pawns, and plants-->
     <canSpawnOnThings>false</canSpawnOnThings>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
-      <active>true</active>
       <aboveMaxDecayRate>3</aboveMaxDecayRate>
       <maxStable>0</maxStable>
       <maxGrow>-10</maxGrow>
@@ -350,9 +348,9 @@
       <minGrow>-120</minGrow>
       <minStable>-150</minStable>
       <belowMinDecayRate>0</belowMinDecayRate>
+      <wholeMapEffect>true</wholeMapEffect>
     </tempGrowthRateModifer>
     <rainGrowthRateModifer>
-      <active>true</active>
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
       <maxStable>6</maxStable>
       <maxGrow>5</maxGrow>
@@ -360,6 +358,7 @@
       <minGrow>0.2</minGrow>
       <minStable>0.1</minStable>
       <belowMinDecayRate>2</belowMinDecayRate>
+      <wholeMapEffect>true</wholeMapEffect>
     </rainGrowthRateModifer>
     <!-- Other resources it might drop -->
     <randomlyDropResources>

@@ -98,7 +98,7 @@ namespace MineralsFrozen
             return factor;
         }
 
-        public override float GrowthRateAtPos(Map aMap, IntVec3 aPosition)
+        public override float GrowthRateAtPos(Map aMap, IntVec3 aPosition, bool includePerMapEffects = true)
         {
             float rate = base.GrowthRateAtPos(aMap, aPosition);
             return rate * growthRateFactor(aPosition, aMap, rate);
