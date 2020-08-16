@@ -112,8 +112,6 @@
     <growDays>5</growDays>
     <!-- Chance of spawning de novo each check -->
     <spawnProb>0.00003</spawnProb>
-    <!-- Can spawn on items, pawns, and plants-->
-    <canSpawnOnThings>false</canSpawnOnThings>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
       <aboveMaxDecayRate>5</aboveMaxDecayRate>
@@ -217,8 +215,6 @@
     <growDays>3</growDays>
     <!-- Chance of spawning de novo each check -->
     <spawnProb>0.0006</spawnProb>
-    <!-- Can spawn on items, pawns, and plants-->
-    <canSpawnOnThings>false</canSpawnOnThings>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
       <aboveMaxDecayRate>1.5</aboveMaxDecayRate>
@@ -337,8 +333,6 @@
     <growDays>4</growDays>
     <!-- Chance of spawning de novo each check -->
     <spawnProb>0.0003</spawnProb>
-    <!-- Can spawn on items, pawns, and plants-->
-    <canSpawnOnThings>false</canSpawnOnThings>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
       <aboveMaxDecayRate>3</aboveMaxDecayRate>
