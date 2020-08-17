@@ -44,29 +44,6 @@ namespace MineralsFrozen
         // How much faster it melts in moving water
         public float rainMeltFactor = 10f;
 
-
-        public override void InitNewMap(Map map, float scaling = 1)
-        {
-            float snowProb = 1f;
-            const float minTemp = 3f;
-
-            // Only spawn snow if it is cold out
-            if (map.mapTemperature.SeasonalTemp < minTemp)
-            {
-                snowProb = snowProb * (float)Math.Sqrt(minTemp - map.mapTemperature.SeasonalTemp) / 5;
-            }
-            else
-            {
-                snowProb = 0f;
-            }
-
-            // Scale by rain amount
-            snowProb = snowProb * map.TileInfo.rainfall / 1000;
-
-//            Log.Message("Minerals: snow scaling due to temp/precip: " + snowProb);
-            base.InitNewMap(map, snowProb);
-        }
-
         public virtual float growthRateFactor(IntVec3 aPosition, Map aMap, float rate)
         {
             float factor = 1f;
