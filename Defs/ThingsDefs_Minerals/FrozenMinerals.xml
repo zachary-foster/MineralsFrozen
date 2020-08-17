@@ -117,9 +117,10 @@
       <aboveMaxDecayRate>5</aboveMaxDecayRate>
       <maxStable>5</maxStable>
       <maxGrow>2</maxGrow>
-      <idealGrow>-1</idealGrow>
-      <minGrow>-10</minGrow>
-      <minStable>-15</minStable>
+      <maxIdeal>-5</maxIdeal>
+      <minIdeal>-10</minIdeal>
+      <minGrow>-15</minGrow>
+      <minStable>-25</minStable>
       <belowMinDecayRate>0.05</belowMinDecayRate>
     </tempGrowthRateModifer>
     <!-- Other resources it might drop -->
@@ -220,17 +221,19 @@
       <aboveMaxDecayRate>1.5</aboveMaxDecayRate>
       <maxStable>1</maxStable>
       <maxGrow>0.5</maxGrow>
-      <idealGrow>-5</idealGrow>
-      <minGrow>-45</minGrow>
+      <maxIdeal>0</maxIdeal>
+      <minIdeal>-20</minIdeal>
+      <minGrow>-40</minGrow>
       <minStable>-60</minStable>
       <belowMinDecayRate>0.1</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
     </tempGrowthRateModifer>
     <rainGrowthRateModifer>
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
-      <maxStable>3</maxStable>
-      <maxGrow>2.5</maxGrow>
-      <idealGrow>2.0</idealGrow>
+      <maxStable>999</maxStable>
+      <maxGrow>10</maxGrow>
+      <maxIdeal>5</maxIdeal>
+      <minIdeal>1</minIdeal>
       <minGrow>0.1</minGrow>
       <minStable>0.05</minStable>
       <belowMinDecayRate>2</belowMinDecayRate>
@@ -238,11 +241,12 @@
     </rainGrowthRateModifer>
     <fertGrowthRateModifer>
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
-      <maxStable>6</maxStable>
+      <maxStable>999</maxStable>
       <maxGrow>5</maxGrow>
-      <idealGrow>1.2</idealGrow>
+      <maxIdeal>2</maxIdeal>
+      <minIdeal>1</minIdeal>
       <minGrow>-1</minGrow>
-      <minStable>-2</minStable>
+      <minStable>-999</minStable>
       <belowMinDecayRate>0</belowMinDecayRate>
     </fertGrowthRateModifer>
     <!-- Other resources it might drop -->
@@ -338,7 +342,8 @@
       <aboveMaxDecayRate>3</aboveMaxDecayRate>
       <maxStable>0</maxStable>
       <maxGrow>-10</maxGrow>
-      <idealGrow>-30</idealGrow>
+      <maxIdeal>-20</maxIdeal>
+      <minIdeal>-60</minIdeal>
       <minGrow>-120</minGrow>
       <minStable>-150</minStable>
       <belowMinDecayRate>0</belowMinDecayRate>
@@ -346,9 +351,10 @@
     </tempGrowthRateModifer>
     <rainGrowthRateModifer>
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
-      <maxStable>6</maxStable>
-      <maxGrow>5</maxGrow>
-      <idealGrow>2</idealGrow>
+      <maxStable>999</maxStable>
+      <maxGrow>10</maxGrow>
+      <maxIdeal>5</maxIdeal>
+      <minIdeal>1</minIdeal>
       <minGrow>0.2</minGrow>
       <minStable>0.1</minStable>
       <belowMinDecayRate>2</belowMinDecayRate>
