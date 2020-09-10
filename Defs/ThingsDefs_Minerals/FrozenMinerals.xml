@@ -144,11 +144,11 @@
     <label>Deep Snow</label>
     <description>Mounds of very deep snow. Tends to accumulate in open areas. Hard to walk through, but pretty in a way. Can be mined for snow blocks.</description>
     <altitudeLayer>SmallWire</altitudeLayer>
-    <pathCost>100</pathCost>
+    <pathCost>80</pathCost>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
       <Flammability>0</Flammability>
-      <Beauty>6</Beauty>
+      <Beauty>5</Beauty>
     </statBases>
     <graphicData>
       <texPath>Things/Mineral/SmoothSnowDrift</texPath>
@@ -169,8 +169,8 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!-- For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.03</minClusterProbability>
-    <maxClusterProbability>0.2</maxClusterProbability>
+    <minClusterProbability>0.1</minClusterProbability>
+    <maxClusterProbability>0.4</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
     <maxClusterSize>1</maxClusterSize>
@@ -180,9 +180,9 @@
     <!-- How much initial sizes of individuals randomly vary -->
     <initialSizeVariation>.05</initialSizeVariation>
     <!-- Reproduction and death settings -->
-    <minReproductionSize>.2</minReproductionSize>
-    <reproduceProp>0.01</reproduceProp>
-    <deathProb>0.9</deathProb>
+    <minReproductionSize>.8</minReproductionSize>
+    <reproduceProp>0.001</reproduceProp>
+    <deathProb>0.5</deathProb>
     <!-- The biomes this can appear in. The default is all ones known to mod-->
     <allowedBiomes Inherit="False">
 		</allowedBiomes>
@@ -209,7 +209,7 @@
     </visualSizeRange>
     <visualClustering>0.5</visualClustering>
     <!-- between 0 and 1. 0 = uniform distribution, 1 = normal distribution -->
-    <visualSpread>1.5</visualSpread>
+    <visualSpread>1.6</visualSpread>
     <!-- 1 = everything appears within cell and can spawn at edge when visualClustering == 0 -->
     <visualSizeVariation>0.2</visualSizeVariation>
     <!-- The number of days it takes to grow at max growth speed -->
@@ -257,6 +257,8 @@
         <CountPerDrop>5</CountPerDrop>
       </li>
     </randomlyDropResources>
+    <!--  If the mean size of minerals spawned at map generation is scaled by the relative abundance in that map -->
+    <sizeScaledByAbundance>true</sizeScaledByAbundance>
   </ThingDef>
   
   <ThingDef ParentName="FrozenMineralBase" Class="MineralsFrozen.ThingDef_SnowDrift">
@@ -290,7 +292,7 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.02</minClusterProbability>
+    <minClusterProbability>0.1</minClusterProbability>
     <maxClusterProbability>0.3</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
@@ -368,6 +370,8 @@
         <CountPerDrop>5</CountPerDrop>
       </li>
     </randomlyDropResources>
+    <!--  If the mean size of minerals spawned at map generation is scaled by the relative abundance in that map -->
+    <sizeScaledByAbundance>true</sizeScaledByAbundance>
   </ThingDef>
   
 </Defs>
