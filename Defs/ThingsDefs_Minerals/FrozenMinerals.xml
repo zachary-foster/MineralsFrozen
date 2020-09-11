@@ -29,11 +29,11 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.002</minClusterProbability>
+    <minClusterProbability>0.005</minClusterProbability>
     <maxClusterProbability>0.02</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
-    <maxClusterSize>10</maxClusterSize>
+    <maxClusterSize>8</maxClusterSize>
     <!-- The range of starting sizes of individuals in clusters -->
     <initialSizeMin>0.05</initialSizeMin>
     <initialSizeMax>1.0</initialSizeMax>
@@ -144,7 +144,7 @@
     <label>Deep Snow</label>
     <description>Mounds of very deep snow. Tends to accumulate in open areas. Hard to walk through, but pretty in a way. Can be mined for snow blocks.</description>
     <altitudeLayer>SmallWire</altitudeLayer>
-    <pathCost>80</pathCost>
+    <pathCost>70</pathCost>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
       <Flammability>0</Flammability>
@@ -169,8 +169,8 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!-- For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.1</minClusterProbability>
-    <maxClusterProbability>0.4</maxClusterProbability>
+    <minClusterProbability>0.3</minClusterProbability>
+    <maxClusterProbability>0.5</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
     <maxClusterSize>1</maxClusterSize>
@@ -292,7 +292,7 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.1</minClusterProbability>
+    <minClusterProbability>0.2</minClusterProbability>
     <maxClusterProbability>0.3</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
@@ -370,8 +370,6 @@
         <CountPerDrop>5</CountPerDrop>
       </li>
     </randomlyDropResources>
-    <!--  If the mean size of minerals spawned at map generation is scaled by the relative abundance in that map -->
-    <sizeScaledByAbundance>true</sizeScaledByAbundance>
   </ThingDef>
   
 </Defs>
