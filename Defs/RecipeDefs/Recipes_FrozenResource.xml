@@ -9,13 +9,12 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>CutStone</effectWorking>
     <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
-    <targetCountAdjustment>20</targetCountAdjustment>
     <recipeUsers>
       <li>TableStonecutter</li>
       <li>TableMachining</li>
       <li>TableStonecutterNeolithic</li>
     </recipeUsers>
-    <workAmount>500</workAmount>
+    <workAmount>1000</workAmount>
     <ingredients>
       <li>
         <filter>

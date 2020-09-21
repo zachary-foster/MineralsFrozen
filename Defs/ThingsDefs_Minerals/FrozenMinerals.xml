@@ -29,7 +29,7 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.005</minClusterProbability>
+    <minClusterProbability>0.01</minClusterProbability>
     <maxClusterProbability>0.02</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
@@ -118,9 +118,9 @@
       <maxStable>4</maxStable>
       <maxGrow>3</maxGrow>
       <maxIdeal>-1</maxIdeal>
-      <minIdeal>-10</minIdeal>
-      <minGrow>-20</minGrow>
-      <minStable>-40</minStable>
+      <minIdeal>-15</minIdeal>
+      <minGrow>-30</minGrow>
+      <minStable>-50</minStable>
       <belowMinDecayRate>0.05</belowMinDecayRate>
     </tempGrowthRateModifer>
     <!-- Other resources it might drop -->
@@ -169,19 +169,19 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!-- For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.3</minClusterProbability>
-    <maxClusterProbability>0.5</maxClusterProbability>
+    <minClusterProbability>0.4</minClusterProbability>
+    <maxClusterProbability>0.6</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
     <maxClusterSize>1</maxClusterSize>
-    <!-- The range of starting sizes of individuals in clusters -->
-    <initialSizeMin>0.3</initialSizeMin>
-    <initialSizeMax>0.9</initialSizeMax>
+    <!-- The range of starting sizes of individuals in clusters (for snow, the size is scaled by how much of the map is covered) -->
+    <initialSizeMin>0.5</initialSizeMin>
+    <initialSizeMax>1</initialSizeMax>
     <!-- How much initial sizes of individuals randomly vary -->
     <initialSizeVariation>.05</initialSizeVariation>
     <!-- Reproduction and death settings -->
     <minReproductionSize>.8</minReproductionSize>
-    <reproduceProp>0.001</reproduceProp>
+    <reproduceProp>0.0001</reproduceProp>
     <deathProb>0.5</deathProb>
     <!-- The biomes this can appear in. The default is all ones known to mod-->
     <allowedBiomes Inherit="False">
@@ -213,7 +213,7 @@
     <!-- 1 = everything appears within cell and can spawn at edge when visualClustering == 0 -->
     <visualSizeVariation>0.2</visualSizeVariation>
     <!-- The number of days it takes to grow at max growth speed -->
-    <growDays>3</growDays>
+    <growDays>6</growDays>
     <!-- Chance of spawning de novo each check -->
     <spawnProb>0.0006</spawnProb>
     <!-- Growth rate modifiers -->
@@ -222,9 +222,9 @@
       <maxStable>1</maxStable>
       <maxGrow>0.5</maxGrow>
       <maxIdeal>0</maxIdeal>
-      <minIdeal>-20</minIdeal>
-      <minGrow>-40</minGrow>
-      <minStable>-60</minStable>
+      <minIdeal>-30</minIdeal>
+      <minGrow>-60</minGrow>
+      <minStable>-80</minStable>
       <belowMinDecayRate>0.1</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
     </tempGrowthRateModifer>
@@ -236,10 +236,10 @@
       <minIdeal>1</minIdeal>
       <minGrow>0.1</minGrow>
       <minStable>0.05</minStable>
-      <belowMinDecayRate>2</belowMinDecayRate>
+      <belowMinDecayRate>10</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
     </rainGrowthRateModifer>
-    <fertGrowthRateModifer>
+    <!-- <fertGrowthRateModifer>
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
       <maxStable>999</maxStable>
       <maxGrow>5</maxGrow>
@@ -248,13 +248,13 @@
       <minGrow>-1</minGrow>
       <minStable>-999</minStable>
       <belowMinDecayRate>0</belowMinDecayRate>
-    </fertGrowthRateModifer>
+    </fertGrowthRateModifer> -->
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>
         <ResourceDefName>SnowBlocks</ResourceDefName>
-        <DropProbability>2</DropProbability>
-        <CountPerDrop>5</CountPerDrop>
+        <DropProbability>4</DropProbability>
+        <CountPerDrop>3</CountPerDrop>
       </li>
     </randomlyDropResources>
     <!--  If the mean size of minerals spawned at map generation is scaled by the relative abundance in that map -->
@@ -292,11 +292,11 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.2</minClusterProbability>
-    <maxClusterProbability>0.3</maxClusterProbability>
+    <minClusterProbability>0.4</minClusterProbability>
+    <maxClusterProbability>0.6</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
-    <maxClusterSize>5</maxClusterSize>
+    <maxClusterSize>4</maxClusterSize>
     <!-- The range of starting sizes of individuals in clusters -->
     <initialSizeMin>.5</initialSizeMin>
     <initialSizeMax>1.0</initialSizeMax>
@@ -304,7 +304,7 @@
     <initialSizeVariation>.3</initialSizeVariation>
     <!-- Reproduction and death settings -->
     <minReproductionSize>.95</minReproductionSize>
-    <reproduceProp>0.05</reproduceProp>
+    <reproduceProp>0.03</reproduceProp>
     <deathProb>0.5</deathProb>
     <!-- The biomes this can appear in. The default is all ones known to mod-->
     <allowedBiomes Inherit="False">
@@ -327,7 +327,7 @@
     <maxMeshCount>1</maxMeshCount>
     <!-- The size range -->
     <visualSizeRange>
-      <min>1.2</min>
+      <min>1.3</min>
       <max>3.5</max>
     </visualSizeRange>
     <visualClustering>1.0</visualClustering>
@@ -336,7 +336,7 @@
     <!-- 1 = everything appears within cell and can spawn at edge when visualClustering == 0 -->
     <visualSizeVariation>0.1</visualSizeVariation>
     <!-- The number of days it takes to grow at max growth speed -->
-    <growDays>4</growDays>
+    <growDays>6</growDays>
     <!-- Chance of spawning de novo each check -->
     <spawnProb>0.0003</spawnProb>
     <!-- Growth rate modifiers -->
@@ -366,8 +366,8 @@
     <randomlyDropResources>
       <li>
         <ResourceDefName>SnowBlocks</ResourceDefName>
-        <DropProbability>4</DropProbability>
-        <CountPerDrop>5</CountPerDrop>
+        <DropProbability>8</DropProbability>
+        <CountPerDrop>3</CountPerDrop>
       </li>
     </randomlyDropResources>
   </ThingDef>
