@@ -25,7 +25,23 @@ namespace MineralsFrozen
             }
         }
 
-            
+        public override void TickLong()
+        {
+            // Always make the ground blow snow until it melts
+            float minSnowDepth = size;
+            if (minSnowDepth > 1)
+            {
+                minSnowDepth = 1f;
+            }
+            if (Map.snowGrid.GetDepth(Position) < minSnowDepth)
+            {
+                Map.snowGrid.SetDepth(Position, minSnowDepth);
+            }
+           
+            base.TickLong();
+        }
+
+
     }
 
 
@@ -38,11 +54,11 @@ namespace MineralsFrozen
     {
 
         // How much faster it melts in still water
-        public float stillWaterMeltFactor = 5f;
+        public float stillWaterMeltFactor = 10f;
         // How much faster it melts in moving water
-        public float movingWaterMeltFactor = 30f;
-        // How much faster it melts in moving water
-        public float rainMeltFactor = 10f;
+        public float movingWaterMeltFactor = 100f;
+        // How much faster it melts in rain water
+        public float rainMeltFactor = 5f;
 
         public virtual float growthRateFactor(IntVec3 aPosition, Map aMap, float rate)
         {
@@ -88,13 +104,17 @@ namespace MineralsFrozen
         // How much each nearby obstruction reduces growth rate. The effect is multiplicative
         public float obstructionGrowthFactor = 0.5f;
         // The maximum radius obstructions are looked for
-        public int obstructionSearchRadius = 1;
+        public int obstructionSearchRadius = 2;
 
 
-        public override bool PlaceIsBlocked(Map map, IntVec3 position)
+        public override bool PlaceIsBlocked(Map map, IntVec3 position, bool initialSpawn)
         {
-//            Log.Message("PlaceIsBlocked: deep");
-            if (! position.InBounds(map))
+            if (!position.InBounds(map))
+            {
+                return true;
+            }
+
+            if (base.PlaceIsBlocked(map, position, initialSpawn))
             {
                 return true;
             }
@@ -105,13 +125,25 @@ namespace MineralsFrozen
                 return true;
             }
 
+            // Cant spawn on water
+            if (position.GetTerrain(map).defName.Contains("Water"))
+            {
+                return true;
+            }
+
             // dont spawn  next to stuff
             if (Rand.Range(0f, 1f) > obstructionGrowthRateFactor(position, map))
             {
                 return true;
             }
-                
-            return base.PlaceIsBlocked(map, position);
+
+            // Cant spawn where there is too little snow
+            if ((! initialSpawn) && map.snowGrid.GetDepth(position) < 0.9f)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public virtual float obstructionGrowthRateFactor(IntVec3 aPosition, Map aMap)
@@ -128,9 +160,12 @@ namespace MineralsFrozen
                     {
                         foreach (Thing thing in aMap.thingGrid.ThingsListAt(checkedPosition))
                         {
-                            if ((thing is Building && thing.def.altitudeLayer == AltitudeLayer.Building) || aMap.roofGrid.Roofed(checkedPosition) || (thing is Plant && ! checkedPosition.Standable(aMap)))
+                            if ((thing is Building && thing.def.altitudeLayer == AltitudeLayer.Building) || checkedPosition.Roofed(aMap) || (thing is Plant && ! checkedPosition.Standable(aMap)))
                             {
-                                factor = factor * obstructionGrowthFactor;
+                                // float dist = checkedPosition.DistanceTo(aPosition) / obstructionSearchRadius;
+                                float dist = Math.Abs(xOffset) + Math.Abs(zOffset);
+                                factor = factor * dist / (dist + obstructionGrowthFactor);
+                                continue;
                             }
 
                         }
@@ -162,7 +197,7 @@ namespace MineralsFrozen
         // The maximum radius obstructions are looked for
         public int obstructionSearchRadius = 1;
 
-        public override bool PlaceIsBlocked(Map map, IntVec3 position)
+        public override bool PlaceIsBlocked(Map map, IntVec3 position, bool initialSpawn)
         {
 //            Log.Message("PlaceIsBlocked: drift");
             if (! position.InBounds(map))
@@ -184,10 +219,16 @@ namespace MineralsFrozen
                 return true;
             }
 
+            // Cant spawn where there is too little snow
+            if ((! initialSpawn) && map.snowGrid.GetDepth(position) < 0.9f)
+            {
+                return true;
+            }
+
 
             //            Log.Message("PlaceIsBlocked: drift not blocked");
 
-            return base.PlaceIsBlocked(map, position);
+            return base.PlaceIsBlocked(map, position, initialSpawn);
         }
 
         public virtual float obstructionGrowthRateFactor(IntVec3 aPosition, Map aMap)
