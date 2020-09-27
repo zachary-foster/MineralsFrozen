@@ -187,6 +187,11 @@ namespace MineralsFrozen
             return factor;
         }
 
+        public override void SpawnInitialCluster(Map map, IntVec3 position, float size, int count)
+        {
+            base.SpawnInitialCluster(map, position, size * obstructionGrowthRateFactor(position, map), count);
+        }
+
 
     }
 
@@ -270,6 +275,11 @@ namespace MineralsFrozen
             }
 
             return factor;
+        }
+
+        public override void SpawnInitialCluster(Map map, IntVec3 position, float size, int count)
+        {
+            base.SpawnInitialCluster(map, position, size * obstructionGrowthRateFactor(position, map), count);
         }
 
     }

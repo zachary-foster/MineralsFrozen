@@ -68,15 +68,15 @@
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<!-- Maximum stable temperature -->
-		<meltTemp>1</meltTemp>
+		<meltTemp>0</meltTemp>
 		<!-- Minimum temperature the wall will heal -->
 		<healTemp>-1</healTemp>
 		<!-- Minimum proportion of hit point needed to heal -->
 		<maxHealHP>0.9</maxHealHP>
 		<!-- The proportion of health restored each tick at 20C below heal temperature -->
-		<healRate>0.05</healRate>
+		<healRate>0.06</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
-		<meltRate>0.05</meltRate>
+		<meltRate>0.06</meltRate>
 		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
 		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
@@ -131,15 +131,15 @@
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<!-- Maximum stable temperature -->
-		<meltTemp>1</meltTemp>
+		<meltTemp>0</meltTemp>
 		<!-- Minimum temperature the wall will heal -->
 		<healTemp>-1</healTemp>
 		<!-- Minimum proportion of hit point needed to heal -->
 		<maxHealHP>0.9</maxHealHP>
 		<!-- The proportion of health restored each tick at 20C below heal temperature -->
-		<healRate>0.02</healRate>
+		<healRate>0.025</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
-		<meltRate>0.02</meltRate>
+		<meltRate>0.025</meltRate>
 		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
 		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
@@ -188,15 +188,15 @@
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<!-- Maximum stable temperature -->
-		<meltTemp>1</meltTemp>
+		<meltTemp>0</meltTemp>
 		<!-- Minimum temperature the wall will heal -->
 		<healTemp>-1</healTemp>
 		<!-- Minimum proportion of hit point needed to heal -->
 		<maxHealHP>0.8</maxHealHP>
 		<!-- The proportion of health restored each tick at 20C below heal temperature -->
-		<healRate>0.01</healRate>
+		<healRate>0.015</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
-		<meltRate>0.01</meltRate>
+		<meltRate>0.015</meltRate>
 		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
 		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
@@ -258,9 +258,9 @@
 		<!-- Minimum proportion of hit point needed to heal -->
 		<maxHealHP>0.6</maxHealHP>
 		<!-- The proportion of health restored each tick at 20C below heal temperature -->
-		<healRate>0.01</healRate>
+		<healRate>0.015</healRate>
 		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
-		<meltRate>0.01</meltRate>
+		<meltRate>0.015</meltRate>
 		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
 		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
