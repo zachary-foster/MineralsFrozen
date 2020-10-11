@@ -150,13 +150,19 @@ namespace MineralsFrozen
         {
             float factor = 1f;
 
+            // Roofs block snow
+            if (aPosition.Roofed(aMap))
+            {
+                return 0f;
+            }
+
             // Nearby Buldings slow growth
             for (int xOffset = -obstructionSearchRadius; xOffset <= obstructionSearchRadius; xOffset++)
             {
                 for (int zOffset = -obstructionSearchRadius; zOffset <= obstructionSearchRadius; zOffset++)
                 {
                     IntVec3 checkedPosition = aPosition + new IntVec3(xOffset, 0, zOffset);
-                    if (checkedPosition.InBounds(aMap))
+                    if (checkedPosition.InBounds(aMap) && (! (xOffset == 0 && zOffset == 0)))
                     {
                         foreach (Thing thing in aMap.thingGrid.ThingsListAt(checkedPosition))
                         {
@@ -182,7 +188,21 @@ namespace MineralsFrozen
             float factor = base.growthRateFactor(aPosition, aMap, rate);
 
             // Nearby Buldings slow growth  and melting
-            factor = factor * obstructionGrowthRateFactor(aPosition, aMap);
+            float obstructionFactor = obstructionGrowthRateFactor(aPosition, aMap);
+            if (factor >= 0)
+            {
+                factor = factor * obstructionFactor;
+            } else
+            {
+                if (obstructionFactor < 0.1f)
+                {
+                    factor = factor * 0.1f;
+                } else
+                {
+                    factor = factor * obstructionFactor;
+                }
+            }
+            
 
             return factor;
         }
@@ -239,6 +259,12 @@ namespace MineralsFrozen
         public virtual float obstructionGrowthRateFactor(IntVec3 aPosition, Map aMap)
         {
             float factor = 0f;
+
+            // Roofs block snow
+            if (aPosition.Roofed(aMap))
+            {
+                return 0f;
+            }
 
             // Nearby Buldings or other snow drifts allow growth
             for (int xOffset = -obstructionSearchRadius; xOffset <= obstructionSearchRadius; xOffset++)

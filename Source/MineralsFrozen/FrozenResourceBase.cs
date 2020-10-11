@@ -97,6 +97,11 @@ namespace MineralsFrozen
             }
         }
 
+        public virtual float exposedHitPoints()
+        {
+            return (1 / stackSizeMeltFactor) * ((float)HitPoints / (float)MaxHitPoints - 1) + 1;
+        }
+
         public override void TickLong()
         {
 
@@ -183,8 +188,7 @@ namespace MineralsFrozen
             }
 
             // Adjust stack count for simulated hit points of exposed items
-            float hitPointPropExposed = (1 / stackSizeMeltFactor) * (hitPointProp - 1) + 1;
-            if (hitPointPropExposed <= 0)
+            if (exposedHitPoints() <= 0)
             {
                 int exposedStackCount = (int)Math.Floor(stackCount * stackSizeMeltFactor);
                 rateInCount = rateInCount + exposedStackCount;
@@ -209,25 +213,23 @@ namespace MineralsFrozen
         public override string GetInspectString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            if (DebugSettings.godMode)
+            stringBuilder.AppendLine("Melt Rate: " + currentMeltRate.ToStringPercent());
+            stringBuilder.AppendLine("Exposed portion health: " + exposedHitPoints().ToStringPercent());
+            if (isMelting)
             {
-                stringBuilder.AppendLine("Melt Rate: " + currentMeltRate);
-                stringBuilder.AppendLine("Stack size factor: " + stackSizeMeltFactor);
+                stringBuilder.AppendLine("Melting.");
+            }
+            else if (isHealing)
+            {
+                stringBuilder.AppendLine("Freezing.");
             }
             else
             {
-                if (isMelting)
-                {
-                    stringBuilder.AppendLine("Melting.");
-                }
-                else if (isHealing)
-                {
-                    stringBuilder.AppendLine("Freezing.");
-                }
-                else
-                {
-                    stringBuilder.AppendLine("Frozen.");
-                }
+                stringBuilder.AppendLine("Frozen.");
+            }
+            if (DebugSettings.godMode)
+            {
+                stringBuilder.AppendLine("Stack size factor: " + stackSizeMeltFactor);
             }
             return stringBuilder.ToString().TrimEndNewlines();
         }

@@ -199,24 +199,19 @@ namespace MineralsFrozen
         public override string GetInspectString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            if (DebugSettings.godMode)
+            stringBuilder.AppendLine("Effective temperature: " + Math.Round(currentTemp) + "C");
+            stringBuilder.AppendLine("Melt Rate: " + currentMeltRate);
+            if (isMelting)
             {
-                stringBuilder.AppendLine("Melt Rate: " + currentMeltRate);
+                stringBuilder.AppendLine("Melting.");
+            }
+            else if (isHealing)
+            {
+                stringBuilder.AppendLine("Freezing.");
             }
             else
             {
-                if (isMelting)
-                {
-                    stringBuilder.AppendLine("Melting.");
-                }
-                else if (isHealing)
-                {
-                    stringBuilder.AppendLine("Freezing.");
-                } 
-                else
-                {
-                    stringBuilder.AppendLine("Frozen.");
-                }
+                stringBuilder.AppendLine("Frozen.");
             }
             return stringBuilder.ToString().TrimEndNewlines();
         }

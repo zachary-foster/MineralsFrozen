@@ -6,16 +6,16 @@
     <defName>IceStalagmite</defName>
     <label>Ice Stalagmite</label>
     <description>Spawns in caves when water drips down from the ceiling and freezes. Only grow when the temperature is just below freezing and melts when the temperature rises.</description>
-    <altitudeLayer>MoteLow</altitudeLayer>
+    <altitudeLayer>Building</altitudeLayer>
     <statBases>
-      <MaxHitPoints>200</MaxHitPoints>
+      <MaxHitPoints>100</MaxHitPoints>
       <Flammability>0</Flammability>
       <Beauty>15</Beauty>
     </statBases>
     <building>
       <mineableThing>IceBlocks</mineableThing>
-      <mineableYield>1</mineableYield>
-      <mineableDropChance>1</mineableDropChance>
+      <mineableYield>0</mineableYield>
+      <mineableDropChance>0</mineableDropChance>
       <mineableNonMinedEfficiency>0</mineableNonMinedEfficiency>
     </building>
     <graphicData>
@@ -140,8 +140,10 @@
     <!-- If smaller than 1, it looks smaller in water -->
     <submergedSize>1</submergedSize>
     <submergedRadius>1</submergedRadius>
-        <!-- What stage of map generation the thing is spawned during (chunks or plants) -->
+    <!-- What stage of map generation the thing is spawned during (chunks or plants) -->
     <newMapGenStep>chunks</newMapGenStep>
+    <!-- How easy it is to mine -->
+    <mineSpeedFactor>0.5</mineSpeedFactor>
   </ThingDef>
   
   <ThingDef ParentName="FrozenMineralBase" Class="MineralsFrozen.ThingDef_DeepSnow">
@@ -152,14 +154,14 @@
     <altitudeLayer>SmallWire</altitudeLayer>
     <pathCost>70</pathCost>
     <statBases>
-      <MaxHitPoints>200</MaxHitPoints>
+      <MaxHitPoints>400</MaxHitPoints>
       <Flammability>0</Flammability>
       <Beauty>5</Beauty>
     </statBases>
     <building>
       <mineableThing>SnowBlocks</mineableThing>
-      <mineableYield>1</mineableYield>
-      <mineableDropChance>1</mineableDropChance>
+      <mineableYield>0</mineableYield>
+      <mineableDropChance>0</mineableDropChance>
       <mineableNonMinedEfficiency>0</mineableNonMinedEfficiency>
     </building>
     <graphicData>
@@ -230,7 +232,7 @@
     <spawnProb>0.0005</spawnProb>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
-      <aboveMaxDecayRate>3</aboveMaxDecayRate>
+      <aboveMaxDecayRate>10</aboveMaxDecayRate>
       <maxStable>1</maxStable>
       <maxGrow>0.5</maxGrow>
       <maxIdeal>0</maxIdeal>
@@ -248,7 +250,7 @@
       <minIdeal>1</minIdeal>
       <minGrow>0.1</minGrow>
       <minStable>0.05</minStable>
-      <belowMinDecayRate>10</belowMinDecayRate>
+      <belowMinDecayRate>200</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
     </rainGrowthRateModifer>
     <!-- <fertGrowthRateModifer>
@@ -271,6 +273,8 @@
     </randomlyDropResources>
     <!--  If the mean size of minerals spawned at map generation is scaled by the relative abundance in that map -->
     <sizeScaledByAbundance>true</sizeScaledByAbundance>
+    <!-- How easy it is to mine -->
+    <mineSpeedFactor>2</mineSpeedFactor>
   </ThingDef>
   
   <ThingDef ParentName="FrozenMineralBase" Class="MineralsFrozen.ThingDef_SnowDrift">
@@ -281,14 +285,14 @@
     <altitudeLayer>Zone</altitudeLayer>
     <pathCost>200</pathCost>
     <statBases>
-      <MaxHitPoints>300</MaxHitPoints>
+      <MaxHitPoints>600</MaxHitPoints>
       <Flammability>0</Flammability>
       <Beauty>3</Beauty>
     </statBases>
     <building>
       <mineableThing>SnowBlocks</mineableThing>
-      <mineableYield>1</mineableYield>
-      <mineableDropChance>1</mineableDropChance>
+      <mineableYield>0</mineableYield>
+      <mineableDropChance>0</mineableDropChance>
       <mineableNonMinedEfficiency>0</mineableNonMinedEfficiency>
     </building>
     <graphicData>
@@ -359,7 +363,7 @@
     <spawnProb>0.0004</spawnProb>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
-      <aboveMaxDecayRate>4</aboveMaxDecayRate>
+      <aboveMaxDecayRate>8</aboveMaxDecayRate>
       <maxStable>0</maxStable>
       <maxGrow>-10</maxGrow>
       <maxIdeal>-20</maxIdeal>
@@ -377,7 +381,7 @@
       <minIdeal>1</minIdeal>
       <minGrow>0.2</minGrow>
       <minStable>0.1</minStable>
-      <belowMinDecayRate>2</belowMinDecayRate>
+      <belowMinDecayRate>100</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
     </rainGrowthRateModifer>
     <!-- Other resources it might drop -->
@@ -388,6 +392,8 @@
         <CountPerDrop>2</CountPerDrop>
       </li>
     </randomlyDropResources>
+    <!-- How easy it is to mine -->
+    <mineSpeedFactor>2</mineSpeedFactor>
   </ThingDef>
   
 </Defs>
