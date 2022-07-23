@@ -117,16 +117,16 @@
     <!-- The number of days it takes to grow at max growth speed -->
     <growDays>15</growDays>
     <!-- Chance of spawning de novo each check -->
-    <spawnProb>0.000025</spawnProb>
+    <spawnProb>0.00002</spawnProb>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
-      <aboveMaxDecayRate>5</aboveMaxDecayRate>
+      <aboveMaxDecayRate>8</aboveMaxDecayRate>
       <maxStable>4</maxStable>
       <maxGrow>3</maxGrow>
       <maxIdeal>-1</maxIdeal>
-      <minIdeal>-15</minIdeal>
-      <minGrow>-30</minGrow>
-      <minStable>-50</minStable>
+      <minIdeal>-10</minIdeal>
+      <minGrow>-40</minGrow>
+      <minStable>-60</minStable>
       <belowMinDecayRate>0.05</belowMinDecayRate>
     </tempGrowthRateModifer>
     <!-- Other resources it might drop -->
@@ -232,7 +232,7 @@
     <spawnProb>0.0005</spawnProb>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
-      <aboveMaxDecayRate>10</aboveMaxDecayRate>
+      <aboveMaxDecayRate>12</aboveMaxDecayRate>
       <maxStable>1</maxStable>
       <maxGrow>0.5</maxGrow>
       <maxIdeal>0</maxIdeal>
@@ -246,11 +246,11 @@
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
       <maxStable>999</maxStable>
       <maxGrow>10</maxGrow>
-      <maxIdeal>5</maxIdeal>
-      <minIdeal>1</minIdeal>
+      <maxIdeal>6</maxIdeal>
+      <minIdeal>2</minIdeal>
       <minGrow>0.1</minGrow>
       <minStable>0.05</minStable>
-      <belowMinDecayRate>200</belowMinDecayRate>
+      <belowMinDecayRate>1000</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
     </rainGrowthRateModifer>
     <!-- <fertGrowthRateModifer>
@@ -363,7 +363,7 @@
     <spawnProb>0.0004</spawnProb>
     <!-- Growth rate modifiers -->
     <tempGrowthRateModifer>
-      <aboveMaxDecayRate>8</aboveMaxDecayRate>
+      <aboveMaxDecayRate>10</aboveMaxDecayRate>
       <maxStable>0</maxStable>
       <maxGrow>-10</maxGrow>
       <maxIdeal>-20</maxIdeal>
@@ -381,7 +381,7 @@
       <minIdeal>1</minIdeal>
       <minGrow>0.2</minGrow>
       <minStable>0.1</minStable>
-      <belowMinDecayRate>100</belowMinDecayRate>
+      <belowMinDecayRate>500</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
     </rainGrowthRateModifer>
     <!-- Other resources it might drop -->
