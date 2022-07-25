@@ -1,7 +1,8 @@
 bin
 obj
-Source/Minerals/bin
-Source/Minerals/obj
+Source/MineralsFrozen/bin
+Source/MineralsFrozen/obj
+Source/MineralsFrozen/.vs
 **/*~
 *.Rproj
 .Rproj.user
