@@ -10,8 +10,15 @@ namespace MineralsFrozen
 {
     public class IceStalagmite : Minerals.DynamicMineral
     {
-    }
+     
+        public override void TickLong()
+        {
+            this.size -= Mathf.Clamp(this.attributes.tempGrowthRateModifer.maxIdeal + this.Position.GetTemperature(this.Map), 0, 100) / 1000;
 
+            base.TickLong();
+        }
+
+    }
 
     /// <summary>
     /// ThingDef_SnowDrift class.

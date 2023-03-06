@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Assemblies</OutputPath>
+    <OutputPath>.\</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -52,23 +52,21 @@
   <ItemGroup>
     <Reference Include="0Harmony, Version=1.0.9.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Minerals\Assemblies\0Harmony.dll</HintPath>
+      <HintPath>..\Assemblies\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\Minerals\Source\Minerals\references\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>E:\Users\kacey\Documents\GitHub\PacasForks\Hardcore-SK-Source\R1.4\Assemblies\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Core_SK">
-      <HintPath>..\..\..\..\..\public\Hardcore-SK\Mods\Core_SK\Assemblies\Core_SK.dll</HintPath>
+      <HintPath>E:\Users\kacey\Documents\GitHub\PacasForks\Hardcore-SK-Source\R1.4\Assemblies\Core_SK.dll</HintPath>
     </Reference>
     <Reference Include="Minerals, Version=1.0.7008.27336, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Minerals\Assemblies\Minerals.dll</HintPath>
+      <HintPath>..\Assemblies\Minerals.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\Minerals\Source\Minerals\references\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>E:\Users\kacey\Documents\GitHub\PacasForks\Hardcore-SK-Source\R1.4\Assemblies\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
