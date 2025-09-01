@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>jamaicancastle.RF.fertilefields</li>
+    </mods>
+    <match Class="PatchOperationAdd">
+      <xpath>/defs</xpath>
+      <value>
+
+        <ThingDef ParentName="RFF_TerraformBase">
+          <defName>MF_ExtractIce</defName>
+          <label>extract ice from frozen water</label>
+          <description>PLACE ON: Ice.\nRESULT: Shallow Water.\n Yeilds 12 ice blocks.</description>
+          <uiIconPath>UI/Icons/Terraforming/Ice-WaterShallow</uiIconPath>
+          <modExtensions>
+            <li Class="FertileFields.Terrain">
+              <above>
+                <li>IceShallow</li>
+                <li>Ice</li>
+              </above>
+              <products>
+                <IceBlocks>12</IceBlocks>
+              </products>
+            </li>
+          </modExtensions>
+          <statBases>
+            <WorkToBuild>4000</WorkToBuild>
+          </statBases>
+        </ThingDef>
+
+      </value>
+    </match>
+  </Operation>
+
+	<!-- <Operation Class="PatchOperationAdd"> -->
+	<!--    <xpath>Defs/ArchitectSense.DesignationSubCategoryDef[defName="SubCategory_Misc"]/defNames</xpath> -->
+	<!--    <value> -->
+	<!--      <li>ZF_ExtractIce</li> -->
+	<!--    </value> -->
+	<!-- </Operation> -->
+  
+  
+</Patch>

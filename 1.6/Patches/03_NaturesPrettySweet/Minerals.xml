@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>NPS SK</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Normal</success>
+      <operations>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="IceStalagmite"]/associatedOres</xpath>
+          <value>
+         		<li>ColdSpringsWater</li>
+         		<li>BridgeSpringsWater</li>
+         		<li>IceShallow</li>
+         		<li>MuddyIce</li>
+          </value>
+        </li>
+          
+      </operations>
+    </match>
+  </Operation>
+  
+  
+  
+  
+</Patch>

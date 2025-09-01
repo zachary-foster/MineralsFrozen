@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Minerals Exotic</li>
+    </mods>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs</xpath>
+      <value>
+
+        <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
+          <defName>BlueIceWall</defName>
+          <label>Blue Ice Wall</label>
+          <description>An impassable wall made of a strange blue ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 5C and will slowly heal when below 0C. It cannot heal if its health is below 60%.</description>
+          <graphicData>
+	      		<texPath>Things/Rock/HewnRockWall</texPath>
+	      		<graphicClass>Graphic_Random</graphicClass>
+	      		<linkType>CornerFiller</linkType>
+	      		<color>(210,210,255)</color>
+	      		<linkFlags>
+	      			<li>Wall</li>
+              <li>Rock</li>
+	      		</linkFlags>
+            <damageData>
+              <cornerTL>Damage/Corner</cornerTL>
+              <cornerTR>Damage/Corner</cornerTR>
+              <cornerBL>Damage/Corner</cornerBL>
+              <cornerBR>Damage/Corner</cornerBR>
+              <edgeTop>Damage/Edge</edgeTop>
+              <edgeBot>Damage/Edge</edgeBot>
+              <edgeLeft>Damage/Edge</edgeLeft>
+              <edgeRight>Damage/Edge</edgeRight>
+            </damageData>
+          </graphicData>
+          <filthLeaving>Filth_RubbleRock</filthLeaving>
+          <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
+          <comps>
+            <li Class="CompProperties_Glower">
+              <glowRadius>2.5</glowRadius>
+              <glowColor>(170,170,255,0)</glowColor>
+            </li>
+          </comps>
+          <statBases>
+            <MaxHitPoints>700</MaxHitPoints>
+            <WorkToBuild>1000</WorkToBuild>
+            <Flammability>0.0</Flammability>
+            <Beauty>4</Beauty>
+          </statBases>
+	      	<costList>
+	      		<IceBlocks>5</IceBlocks>
+	      		<CrushedStone>20</CrushedStone>
+	      		<Coldstone>1</Coldstone>
+	      	</costList>
+	      	<!-- <researchPrerequisites> -->
+	      	<!-- 	<li>FrozenConstructionVI</li> -->
+	      	<!-- </researchPrerequisites> -->
+          <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+          <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+	      	<!-- Maximum stable temperature -->
+	      	<meltTemp>5</meltTemp>
+	      	<!-- Minimum temperature the wall will heal -->
+	      	<healTemp>0</healTemp>
+	      	<!-- Minimum proportion of hit point needed to heal -->
+	      	<maxHealHP>0.6</maxHealHP>
+	      	<!-- The proportion of health restored each tick at 20C below heal temperature -->
+	      	<healRate>0.015</healRate>
+	      	<!-- The proportion of health lossed each tick at 20C above melt temperature -->
+	      	<meltRate>0.015</meltRate>
+	      	<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
+	      	<maxChangeRate>0.2</maxChangeRate>
+	      	<!-- The difference in stored energy between the solid and liquid -->
+	      	<maxStoredHeat>3000</maxStoredHeat>
+        </ThingDef>
+        
+        <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
+          <defName>GreenIceWall</defName>
+          <label>Green Ice Wall</label>
+          <description>An impassable wall made of a strange glowing green ice. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 15C and will slowly heal below 5C. It cannot heal if its health is below 30%.</description>
+          <graphicData>
+	      		<texPath>Things/Rock/SmoothedRockWall</texPath>
+	      		<graphicClass>Graphic_Random</graphicClass>
+	      		<linkType>CornerFiller</linkType>
+	      		<color>(200,255,250)</color>
+	      		<linkFlags>
+	      			<li>Wall</li>
+              <li>Rock</li>
+	      		</linkFlags>
+            <damageData>
+              <cornerTL>Damage/Corner</cornerTL>
+              <cornerTR>Damage/Corner</cornerTR>
+              <cornerBL>Damage/Corner</cornerBL>
+              <cornerBR>Damage/Corner</cornerBR>
+              <edgeTop>Damage/Edge</edgeTop>
+              <edgeBot>Damage/Edge</edgeBot>
+              <edgeLeft>Damage/Edge</edgeLeft>
+              <edgeRight>Damage/Edge</edgeRight>
+            </damageData>
+          </graphicData>
+          <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+          <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
+          <comps>
+            <li Class="CompProperties_Glower">
+              <glowRadius>3.0</glowRadius>
+              <glowColor>(200,255,250,0)</glowColor>
+            </li>
+          </comps>
+          <statBases>
+            <MaxHitPoints>900</MaxHitPoints>
+            <WorkToBuild>1000</WorkToBuild>
+            <Flammability>0.0</Flammability>
+            <Beauty>6</Beauty>
+          </statBases>
+	      	<costList>
+	      		<IceBlocks>4</IceBlocks>
+	      		<ConcreteResource>20</ConcreteResource>
+	      		<Coldstone>1</Coldstone>
+	      		<Glowstone>1</Glowstone>
+	      	</costList>
+	      	<!-- <researchPrerequisites> -->
+	      	<!-- 	<li>FrozenConstructionV</li> -->
+	      	<!-- </researchPrerequisites> -->
+          <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+          <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+	      	<!-- Maximum stable temperature -->
+	      	<meltTemp>15</meltTemp>
+	      	<!-- Minimum temperature the wall will heal -->
+	      	<healTemp>5</healTemp>
+	      	<!-- Minimum proportion of hit point needed to heal -->
+	      	<maxHealHP>0.3</maxHealHP>
+	      	<!-- The proportion of health restored each tick at 20C below heal temperature -->
+	      	<healRate>0.01</healRate>
+	      	<!-- The proportion of health lossed each tick at 20C above melt temperature -->
+	      	<meltRate>0.01</meltRate>
+	      	<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
+	      	<maxChangeRate>0.2</maxChangeRate>
+	      	<!-- The difference in stored energy between the solid and liquid -->
+	      	<maxStoredHeat>3000</maxStoredHeat>
+        </ThingDef>
+          
+      </value>
+    </match>
+  </Operation>
+</Patch>

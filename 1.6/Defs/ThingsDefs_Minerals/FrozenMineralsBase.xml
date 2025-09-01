@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  
+  <ThingDef Name="FrozenMineralBase" ParentName="MF_DynamicMineralBase" Abstract="True">
+    <!-- What stage of map generation the thing is spawned during (rocks or ice) -->
+    <newMapGenStep>ice</newMapGenStep>
+    <!-- Order in which minerals are spawned during map generation (lower numbers first) -->
+    <newMapSpawnOrder>200</newMapSpawnOrder>
+    <building>
+	    <ai_neverTrashThis>true</ai_neverTrashThis>
+	    <destroyShakeAmount>0</destroyShakeAmount>
+    </building>
+  </ThingDef>
+  
+</Defs>

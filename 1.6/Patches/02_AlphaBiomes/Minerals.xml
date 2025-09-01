@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Alpha Biomes</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Normal</success>
+      <operations>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="IceStalagmite"]/associatedOres</xpath>
+          <value>
+            <li>GU_RedWaterShallow</li>
+            <li>GU_RedWaterDeep</li>
+          </value>
+        </li>
+          
+      </operations>
+    </match>
+  </Operation>
+  
+  
+  
+  
+</Patch>

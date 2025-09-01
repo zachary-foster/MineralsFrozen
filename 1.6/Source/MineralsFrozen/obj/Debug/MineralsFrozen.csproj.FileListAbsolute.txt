@@ -1,0 +1,10 @@
+Z:\rimworld_mods\MineralsFrozen\1.6\Source\MineralsFrozen\obj\Debug\MineralsFrozen.csproj.AssemblyReference.cache
+Z:\rimworld_mods\MineralsFrozen\1.6\Source\MineralsFrozen\obj\Debug\MineralsFrozen.csproj.CoreCompileInputs.cache
+Z:\rimworld_mods\MineralsFrozen\1.6\Source\MineralsFrozen\bin\Debug\MineralsFrozen.dll
+Z:\rimworld_mods\MineralsFrozen\1.6\Source\MineralsFrozen\bin\Debug\MineralsFrozen.pdb
+Z:\rimworld_mods\MineralsFrozen\1.6\Source\MineralsFrozen\obj\Debug\MineralsFrozen.dll
+Z:\rimworld_mods\MineralsFrozen\1.6\Source\MineralsFrozen\obj\Debug\MineralsFrozen.pdb
+Z:\rimworld_mods\MineralsFrozen\1.6\Source\Assemblies\MineralsFrozen.dll
+Z:\rimworld_mods\MineralsFrozen\1.6\Source\Assemblies\MineralsFrozen.pdb
+Z:\rimworld_mods\MineralsFrozen\1.6\Assemblies\MineralsFrozen.dll
+Z:\rimworld_mods\MineralsFrozen\1.6\Assemblies\MineralsFrozen.pdb
