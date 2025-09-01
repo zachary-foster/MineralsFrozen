@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Odyssey</li>
+    </mods>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName="SolidIce"]/building</xpath>
+      <value>
+        <mineableThing>MF_ChunkIce</mineableThing>
+        <mineableDropChance>0.5</mineableDropChance>
+      </value>
+    </match>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Odyssey</li>
+    </mods>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName="SmoothedSolidIce"]/building</xpath>
+      <value>
+        <mineableThing>MF_ChunkIce</mineableThing>
+        <mineableDropChance>0.5</mineableDropChance>
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,19 @@
+.aider*
+
+# Unity
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+*.userprefs
+*.pidb
+
+# Visual Studio
+**/.vs/
+**/*.csproj.user
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Mod specific
+*.pdb
