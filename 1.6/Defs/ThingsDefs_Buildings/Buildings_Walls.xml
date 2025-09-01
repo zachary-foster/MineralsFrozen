@@ -17,13 +17,15 @@
       </blueprintGraphicData>
       <repairable>false</repairable>
     </building>
-    <filthLeaving>Filth_Dirt</filthLeaving>
+    <filthLeaving>Filth_ChippedIce</filthLeaving>
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
     <!-- <constructEffect>ConstructDirt</constructEffect> -->
     <!-- <repairEffect>ConstructDirt</repairEffect> -->
     <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<meltTemp>0</meltTemp>
+    <stuffCategories Inherit="false" />
+    <costStuffCount>0</costStuffCount>
   </ThingDef>
   
   
@@ -60,7 +62,7 @@
       <Beauty>1</Beauty>
     </statBases>
 		<costList>
-			<SnowBlocks>6</SnowBlocks>
+			<MF_SnowBlocks>6</MF_SnowBlocks>
 		</costList>
 		<!-- <researchPrerequisites> -->
 		<!-- 	<li>FrozenConstructionI</li> -->
@@ -123,7 +125,7 @@
       <Beauty>3</Beauty>
     </statBases>
 		<costList>
-			<IceBlocks>6</IceBlocks>
+			<MF_IceBlocks>6</MF_IceBlocks>
 		</costList>
 		<!-- <researchPrerequisites> -->
 		<!-- 	<li>FrozenConstructionII</li> -->
@@ -179,7 +181,7 @@
       <Beauty>-1</Beauty>
     </statBases>
 		<costList>
-			<IceBlocks>6</IceBlocks>
+			<MF_IceBlocks>6</MF_IceBlocks>
 			<WoodLog>1</WoodLog>
 		</costList>
 		<!-- <researchPrerequisites> -->

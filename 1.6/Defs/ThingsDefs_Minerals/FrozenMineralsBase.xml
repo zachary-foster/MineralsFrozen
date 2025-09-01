@@ -10,6 +10,15 @@
 	    <ai_neverTrashThis>true</ai_neverTrashThis>
 	    <destroyShakeAmount>0</destroyShakeAmount>
     </building>
+    <!-- at what snow depth the snow texture is used, if it exists -->
+    <snowTextureThreshold>0.8</snowTextureThreshold>
+    <!-- at what snow depth the mineral is completely hidden -->
+    <hiddenInSnowThreshold>999</hiddenInSnowThreshold>
+    <!-- The terrains this can appear cant on. If empty, all terrains are allowed -->
+    <disallowedTerrains>
+      <li>HotSpring</li>
+    </disallowedTerrains>
+    <filthLeaving></filthLeaving>
   </ThingDef>
   
 </Defs>

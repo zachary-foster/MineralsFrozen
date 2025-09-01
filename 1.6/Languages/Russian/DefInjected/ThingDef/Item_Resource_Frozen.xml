@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <SnowBlocks.label>Снежный блок</SnowBlocks.label>
-  <SnowBlocks.description>Глыбы уплотненного снега.</SnowBlocks.description>
-  <SnowBlocks.stuffProps.stuffAdjective>снежных блоков</SnowBlocks.stuffProps.stuffAdjective>
+  <MF_SnowBlocks.label>Снежный блок</MF_SnowBlocks.label>
+  <MF_SnowBlocks.description>Глыбы уплотненного снега.</MF_SnowBlocks.description>
+  <MF_SnowBlocks.stuffProps.stuffAdjective>снежных блоков</MF_SnowBlocks.stuffProps.stuffAdjective>
 
-  <IceBlocks.label>Ледяной блок</IceBlocks.label>
-  <IceBlocks.description>Глыбы льда.</IceBlocks.description>
-  <IceBlocks.stuffProps.stuffAdjective>льда</IceBlocks.stuffProps.stuffAdjective>
+  <MF_IceBlocks.label>Ледяной блок</MF_IceBlocks.label>
+  <MF_IceBlocks.description>Глыбы льда.</MF_IceBlocks.description>
+  <MF_IceBlocks.stuffProps.stuffAdjective>льда</MF_IceBlocks.stuffProps.stuffAdjective>
 
 </LanguageData>

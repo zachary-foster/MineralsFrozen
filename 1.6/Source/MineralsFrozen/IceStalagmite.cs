@@ -47,6 +47,8 @@ namespace MineralsFrozen
 
             return base.isRoofConditionOk(map, position);
         }
+
+
     }
 }
 

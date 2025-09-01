@@ -24,7 +24,6 @@
     <uiIconPath>Things/Mineral/IceStalagmite/IceStalagmiteA</uiIconPath>
     <fillPercent>0.2</fillPercent>
     <hideAtSnowOrSandDepth>5</hideAtSnowOrSandDepth>
-    <filthLeaving>Filth_Dirt</filthLeaving>
     <!--How far away it can spawn from an existing location-->
     <!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
     <spawnRadius>4</spawnRadius>
@@ -102,23 +101,21 @@
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>
-        <ResourceDefName>IceBlocks</ResourceDefName>
-        <DropProbability>4</DropProbability>
-        <CountPerDrop>2</CountPerDrop>
+        <ResourceDefName>MF_ChunkIce</ResourceDefName>
+        <DropProbability>0.5</DropProbability>
+        <CountPerDrop>1</CountPerDrop>
       </li>
     </randomlyDropResources>
     <!-- If smaller than 1, it looks smaller in water -->
     <submergedSize>1</submergedSize>
     <submergedRadius>1</submergedRadius>
-    <!-- What stage of map generation the thing is spawned during (chunks or plants) -->
-    <newMapGenStep>chunks</newMapGenStep>
     <!-- How easy it is to mine -->
     <mineSpeedFactor>0.5</mineSpeedFactor>
   </ThingDef>
   
   <ThingDef ParentName="FrozenMineralBase" Class="MineralsFrozen.ThingDef_DeepSnow">
     <thingClass>MineralsFrozen.SnowDrift</thingClass>
-    <defName>ZF_SmoothSnowDrift</defName>
+    <defName>MF_SmoothSnowDrift</defName>
     <label>Deep Snow</label>
     <description>Mounds of very deep snow. Tends to accumulate in open areas. Hard to walk through, but pretty in a way. Can be mined for snow blocks.</description>
     <altitudeLayer>SmallWire</altitudeLayer>
@@ -142,7 +139,6 @@
     </graphicData>
     <uiIconPath>Things/Mineral/SmoothSnowDrift/SmoothSnowDriftA</uiIconPath>
     <hideAtSnowOrSandDepth>1.9</hideAtSnowOrSandDepth>
-    <filthLeaving>Filth_Dirt</filthLeaving>
     <!--How far away it can spawn from an existing location-->
     <!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
     <spawnRadius>3</spawnRadius>
@@ -232,7 +228,7 @@
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>
-        <ResourceDefName>SnowBlocks</ResourceDefName>
+        <ResourceDefName>MF_SnowBlocks</ResourceDefName>
         <DropProbability>6</DropProbability>
         <CountPerDrop>2</CountPerDrop>
       </li>
@@ -256,7 +252,7 @@
       <Beauty>3</Beauty>
     </statBases>
     <building>
-      <mineableThing>SnowBlocks</mineableThing>
+      <mineableThing>MF_SnowBlocks</mineableThing>
       <mineableYield>0</mineableYield>
       <mineableDropChance>0</mineableDropChance>
       <mineableNonMinedEfficiency>0</mineableNonMinedEfficiency>
@@ -273,7 +269,6 @@
     </graphicData>
     <uiIconPath>Things/Mineral/SnowDrift/SnowDriftA</uiIconPath>
     <hideAtSnowOrSandDepth>5</hideAtSnowOrSandDepth>
-    <filthLeaving>Filth_Dirt</filthLeaving>
     <!--How far away it can spawn from an existing location-->
     <!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
     <spawnRadius>1</spawnRadius>
@@ -353,7 +348,7 @@
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>
-        <ResourceDefName>SnowBlocks</ResourceDefName>
+        <ResourceDefName>MF_SnowBlocks</ResourceDefName>
         <DropProbability>9</DropProbability>
         <CountPerDrop>2</CountPerDrop>
       </li>

@@ -23,7 +23,7 @@
                 <li>Ice</li>
               </above>
               <products>
-                <IceBlocks>12</IceBlocks>
+                <MF_IceBlocks>12</MF_IceBlocks>
               </products>
             </li>
           </modExtensions>

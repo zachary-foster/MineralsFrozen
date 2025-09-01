@@ -33,7 +33,6 @@
               <edgeRight>Damage/Edge</edgeRight>
             </damageData>
           </graphicData>
-          <filthLeaving>Filth_RubbleRock</filthLeaving>
           <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
           <comps>
             <li Class="CompProperties_Glower">
@@ -48,7 +47,7 @@
             <Beauty>4</Beauty>
           </statBases>
 	      	<costList>
-	      		<IceBlocks>5</IceBlocks>
+	      		<MF_IceBlocks>5</MF_IceBlocks>
 	      		<CrushedStone>20</CrushedStone>
 	      		<Coldstone>1</Coldstone>
 	      	</costList>
@@ -112,7 +111,7 @@
             <Beauty>6</Beauty>
           </statBases>
 	      	<costList>
-	      		<IceBlocks>4</IceBlocks>
+	      		<MF_IceBlocks>4</MF_IceBlocks>
 	      		<ConcreteResource>20</ConcreteResource>
 	      		<Coldstone>1</Coldstone>
 	      		<Glowstone>1</Glowstone>
@@ -137,7 +136,7 @@
 	      	<!-- The difference in stored energy between the solid and liquid -->
 	      	<maxStoredHeat>3000</maxStoredHeat>
         </ThingDef>
-          
+
       </value>
     </match>
   </Operation>

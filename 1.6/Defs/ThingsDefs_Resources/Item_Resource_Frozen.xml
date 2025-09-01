@@ -14,7 +14,7 @@
   </ThingDef>
   
   <ThingDef ParentName="FrozenBlockBase" Class="MineralsFrozen.ThingDef_FrozenBlockBase">
-    <defName>SnowBlocks</defName>
+    <defName>MF_SnowBlocks</defName>
     <label>Snow Blocks</label>
     <description>Hunks of compacted snow. They melt when the temperature is above 0C and can refreeze if not too damaged. Large stacks melt slower and the outer layer of blocks melt first. They absorb heat when they melt and release heat when they freeze.</description>
     <graphicData>
@@ -73,7 +73,7 @@
   </ThingDef>
   
   <ThingDef ParentName="FrozenBlockBase" Class="MineralsFrozen.ThingDef_FrozenBlockBase">
-    <defName>IceBlocks</defName>
+    <defName>MF_IceBlocks</defName>
     <label>Ice Blocks</label>
     <description>Blocks of ice. They melt when the temperature is above 0C and can refreeze if not too damaged. Large stacks melt slower and the outer layer of blocks melt first. They absorb heat when they melt and release heat when they freeze.</description>
     <graphicData>
@@ -130,6 +130,61 @@
 		<maxChangeRate>0.2</maxChangeRate>
 		<!-- The difference in stored energy between the solid and liquid -->
 		<maxStoredHeat>100</maxStoredHeat>
+  </ThingDef>
+
+  <ThingDef ParentName="FrozenBlockBase" Class="MineralsFrozen.ThingDef_FrozenBlockBase">
+    <defName>MF_ChunkIce</defName>
+    <label>ice chunk</label>
+    <graphicData>
+      <texPath>Things/Item/Chunk/ChunkStone</texPath>
+      <color>(230,240,250)</color>
+      <graphicClass>Graphic_Random</graphicClass>
+      <flipExtraRotation>80</flipExtraRotation>
+    </graphicData>
+    <statBases>
+      <Mass>5</Mass>
+    </statBases>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <butcherProducts>
+      <MF_IceBlocks>20</MF_IceBlocks>  
+    </butcherProducts>
+    <category>Item</category>
+    <altitudeLayer>Item</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.50</fillPercent>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-5</Beauty>
+      <BeautyOutdoors>0</BeautyOutdoors>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <selectable>true</selectable>
+    <pathCost>42</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <drawerType>MapMeshOnly</drawerType>
+    <randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+    <designateHaulable>true</designateHaulable>
+    <saveCompressible>true</saveCompressible>
+    <stackLimit>1</stackLimit>
+    <tradeability>None</tradeability>
+    <thingCategories>
+      <li>StoneChunks</li>
+    </thingCategories>
+		<!-- Maximum stable temperature -->
+		<meltTemp>0</meltTemp>
+		<!-- Minimum temperature the wall will heal -->
+		<healTemp>-5</healTemp>
+		<!-- Minimum proportion of hit point needed to heal -->
+		<maxHealHP>0.9</maxHealHP>
+		<!-- The proportion of health restored each tick at 20C below heal temperature -->
+		<healRate>0.03</healRate>
+		<!-- The proportion of health lossed each tick at 20C above melt temperature -->
+		<meltRate>0.03</meltRate>
+		<!-- The  maximum amount of change per tick (to stop large temperature changes in small rooms) -->
+		<maxChangeRate>0.05</maxChangeRate>
+		<!-- The difference in stored energy between the solid and liquid -->
+		<maxStoredHeat>2000</maxStoredHeat>
   </ThingDef>
   
 </Defs>

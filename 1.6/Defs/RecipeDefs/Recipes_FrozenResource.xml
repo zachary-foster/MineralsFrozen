@@ -2,7 +2,7 @@
 <Defs>
 
   <RecipeDef>
-    <defName>Make_IceFromSnow</defName>
+    <defName>Make_IceBlocksFromSnow</defName>
     <label>Make ice blocks</label>
     <description>Make ice blocks by compacting snow.</description>
     <jobString>Compacting snow into ice.</jobString>
@@ -18,7 +18,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>SnowBlocks</li>
+            <li>MF_SnowBlocks</li>
           </thingDefs>
         </filter>
         <count>30</count>
@@ -26,13 +26,41 @@
     </ingredients>
     <fixedIngredientFilter>
       <thingDefs>
-        <li>SnowBlocks</li>
+        <li>MF_SnowBlocks</li>
       </thingDefs>
     </fixedIngredientFilter>
     <products>
-      <IceBlocks>10</IceBlocks>
+      <MF_IceBlocks>10</MF_IceBlocks>
     </products>
     <!-- <researchPrerequisite>FrozenConstructionII</researchPrerequisite> -->
+  </RecipeDef>
+
+   <RecipeDef ParentName="MakeStoneBlocksBase">
+    <defName>Make_IceBlocksFromChunk</defName>
+    <label>cut ice blocks</label>
+    <description>Cuts ice chunks into usable blocks.</description>
+	 <recipeUsers Inherit="False">
+      <li>TableMachining</li>
+	    <li>TableStonecutter</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MF_ChunkIce</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MF_ChunkIce</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <MF_IceBlocks>20</MF_IceBlocks>
+    </products>
   </RecipeDef>
 
 </Defs>

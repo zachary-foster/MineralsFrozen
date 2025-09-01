@@ -96,7 +96,7 @@
 	<!-- 		<li> -->
 	<!-- 			<filter> -->
 	<!-- 				<thingDefs> -->
-	<!-- 					<li>SnowBlocks</li> -->
+	<!-- 					<li>MF_SnowBlocks</li> -->
 	<!-- 				</thingDefs> -->
 	<!-- 			</filter> -->
 	<!-- 			<count>2</count> -->
@@ -112,7 +112,7 @@
 	<!-- 	</ingredients> -->
 	<!-- 	<fixedIngredientFilter> -->
 	<!-- 		<thingDefs> -->
-	<!-- 			<li>SnowBlocks</li> -->
+	<!-- 			<li>MF_SnowBlocks</li> -->
 	<!-- 			<li>Sugar</li> -->
 	<!-- 		</thingDefs> -->
 	<!-- 	</fixedIngredientFilter> -->
@@ -145,7 +145,7 @@
 	<!-- 		<li> -->
 	<!-- 			<filter> -->
 	<!-- 				<thingDefs> -->
-	<!-- 					<li>IceBlocks</li> -->
+	<!-- 					<li>MF_IceBlocks</li> -->
 	<!-- 				</thingDefs> -->
 	<!-- 			</filter> -->
 	<!-- 			<count>2</count> -->
@@ -161,7 +161,7 @@
 	<!-- 	</ingredients> -->
 	<!-- 	<fixedIngredientFilter> -->
 	<!-- 		<thingDefs> -->
-	<!-- 			<li>IceBlocks</li> -->
+	<!-- 			<li>MF_IceBlocks</li> -->
 	<!-- 			<li>Sugar</li> -->
 	<!-- 		</thingDefs> -->
 	<!-- 	</fixedIngredientFilter> -->
