@@ -6,7 +6,6 @@
     <defName>IceStalagmite</defName>
     <label>Ice Stalagmite</label>
     <description>Spawns in caves when water drips down from the ceiling and freezes. Only grow when the temperature is just below freezing and melts when the temperature rises.</description>
-    <altitudeLayer>Building</altitudeLayer>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Flammability>0</Flammability>
@@ -23,7 +22,6 @@
     </graphicData>
     <uiIconPath>Things/Mineral/IceStalagmite/IceStalagmiteA</uiIconPath>
     <fillPercent>0.2</fillPercent>
-    <hideAtSnowOrSandDepth>5</hideAtSnowOrSandDepth>
     <!--How far away it can spawn from an existing location-->
     <!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
     <spawnRadius>4</spawnRadius>
@@ -138,7 +136,6 @@
       </damageData>
     </graphicData>
     <uiIconPath>Things/Mineral/SmoothSnowDrift/SmoothSnowDriftA</uiIconPath>
-    <hideAtSnowOrSandDepth>1.9</hideAtSnowOrSandDepth>
     <!--How far away it can spawn from an existing location-->
     <!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
     <spawnRadius>3</spawnRadius>
@@ -268,7 +265,6 @@
       </damageData>
     </graphicData>
     <uiIconPath>Things/Mineral/SnowDrift/SnowDriftA</uiIconPath>
-    <hideAtSnowOrSandDepth>5</hideAtSnowOrSandDepth>
     <!--How far away it can spawn from an existing location-->
     <!-- Even though it is a static crystal, the map initialization uses "reproduction" to make clusters-->
     <spawnRadius>1</spawnRadius>
