@@ -142,8 +142,8 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!-- For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.8</minClusterProbability>
-    <maxClusterProbability>0.9</maxClusterProbability>
+    <minClusterProbability>0.9</minClusterProbability>
+    <maxClusterProbability>1.0</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
     <maxClusterSize>1</maxClusterSize>
@@ -271,8 +271,8 @@
     <!-- The probability that this mineral type will be spawned at all on a given map -->
     <perMapProbability>1.0</perMapProbability>
     <!--For a given map, the minimum/maximum probablility a cluster will spawn for every possible location -->
-    <minClusterProbability>0.4</minClusterProbability>
-    <maxClusterProbability>0.6</maxClusterProbability>
+    <minClusterProbability>0.5</minClusterProbability>
+    <maxClusterProbability>0.8</maxClusterProbability>
     <!-- How  many squares each cluster will be -->
     <minClusterSize>1</minClusterSize>
     <maxClusterSize>5</maxClusterSize>
