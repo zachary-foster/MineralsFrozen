@@ -6,7 +6,7 @@
 	<packageId>zacharyfoster.mineralsfrozen</packageId>
   <description>
 Version 0.1
-    
+
 NOTE: Under development. This is my first time adding mods to Steam, so I have some learning to do and I am sure things will need fixing.
 
 Adds dynamic ice and snow formations that can be used for building walls and cooling rooms.
@@ -26,6 +26,8 @@ The Minerals mods are still being balanced. Feel free to let me know if anything
 I am not aware of any incompatibilities with other mods, but please let me know if you find any.
 
 Requires "Minerals Framework" mod to function.
+
+See the source code and report issues at: https://github.com/zachary-foster/MineralsFrozen
   </description>
 	<supportedVersions>
 		<li>1.6</li>
