@@ -7,16 +7,16 @@ Adds dynamic ice and snow formations that can be used for building walls and coo
 - Snow and ice formations can be mined for snow and ice blocks that can be used for building walls and cooling rooms as they melt
 - Snow and ice walls provide a way to quickly build structures without wood but melt when above above freezing 
 
-
 See other mods in the "Minerals" collection to get the full experience:
 
 - **Minerals Rock**: Complete overhaul of mountains and rocks
-- **Minerals Rock Extra**: Additional rocks types
 - **Minerals Sparkle**: Valuable crystals that can be mined for gems in remote and extreme biomes
-- **Minerals Sparkle Extra**: Additional crystal types
-- **Minerals Craft**: Useful stone types and resources useful for construction and crafting
-- **Minerals Exotic**: Exotic minerals such as glowstone, coldstone, and adamant
 
+The Minerals mods are still being balanced. Feel free to let me know if anything needs to be adjusted!
+
+I am not aware of any incompatibilities with other mods, but please let me know if you find any.
+
+Requires "Minerals Framework" to function.
 
 ## Compatibility
 
