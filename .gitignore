@@ -17,3 +17,6 @@ Thumbs.db
 
 # Mod specific
 *.pdb
+
+# Steam stuff
+About/images
