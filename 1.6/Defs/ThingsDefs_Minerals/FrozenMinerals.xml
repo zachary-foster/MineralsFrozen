@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 
-  <ThingDef Name="MF_IceStalagmite" ParentName="FrozenMineralBase" Class="MineralsFramework.ThingDef_DynamicMineral">
+  <ThingDef Name="MF_IceStalagmite" ParentName="MF_FrozenMineralBase" Class="MineralsFramework.ThingDef_DynamicMineral">
     <defName>MF_IceStalagmite</defName>
     <label>Ice Stalagmite</label>
     <description>Spawns in caves when water drips down from the ceiling and freezes. Only grow when the temperature is just below freezing and melts when the temperature rises.</description>
@@ -72,7 +72,7 @@
     <!-- Chance of spawning de novo each check -->
     <spawnProb>0.00002</spawnProb>
     <!-- Growth rate modifiers -->
-    <tempGrowthRateModifer>
+    <tempGrowthRateModifier>
       <aboveMaxDecayRate>8</aboveMaxDecayRate>
       <maxStable>4</maxStable>
       <maxGrow>3</maxGrow>
@@ -81,7 +81,7 @@
       <minGrow>-30</minGrow>
       <minStable>-40</minStable>
       <belowMinDecayRate>0.03</belowMinDecayRate>
-    </tempGrowthRateModifer>
+    </tempGrowthRateModifier>
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>
@@ -101,7 +101,7 @@
     <mineSpeedFactor>0.5</mineSpeedFactor>
   </ThingDef>
 
-  <ThingDef Name="MF_SmoothSnowDrift" ParentName="FrozenMineralBase" Class="MineralsFrozen.ThingDef_DeepSnow">
+  <ThingDef Name="MF_SmoothSnowDrift" ParentName="MF_FrozenMineralBase" Class="MineralsFrozen.ThingDef_DeepSnow">
     <thingClass>MineralsFrozen.SnowDrift</thingClass>
     <defName>MF_SmoothSnowDrift</defName>
     <label>Deep Snow</label>
@@ -155,7 +155,7 @@
     <!-- Chance of spawning de novo each check -->
     <spawnProb>0.0005</spawnProb>
     <!-- Growth rate modifiers -->
-    <tempGrowthRateModifer>
+    <tempGrowthRateModifier>
       <aboveMaxDecayRate>12</aboveMaxDecayRate>
       <maxStable>1</maxStable>
       <maxGrow>0.5</maxGrow>
@@ -165,8 +165,8 @@
       <minStable>-80</minStable>
       <belowMinDecayRate>0.1</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
-    </tempGrowthRateModifer>
-    <rainGrowthRateModifer>
+    </tempGrowthRateModifier>
+    <rainGrowthRateModifier>
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
       <maxStable>999</maxStable>
       <maxGrow>10</maxGrow>
@@ -176,7 +176,7 @@
       <minStable>0.05</minStable>
       <belowMinDecayRate>1000</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
-    </rainGrowthRateModifer>
+    </rainGrowthRateModifier>
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>
@@ -191,7 +191,7 @@
     <mineSpeedFactor>2</mineSpeedFactor>
   </ThingDef>
 
-  <ThingDef Name="ZF_SnowDrift" ParentName="FrozenMineralBase" Class="MineralsFrozen.ThingDef_SnowDrift">
+  <ThingDef Name="ZF_SnowDrift" ParentName="MF_FrozenMineralBase" Class="MineralsFrozen.ThingDef_SnowDrift">
     <thingClass>MineralsFrozen.SnowDrift</thingClass>
     <defName>ZF_SnowDrift</defName>
     <label>Snow Drift</label>
@@ -245,7 +245,7 @@
     <!-- Chance of spawning de novo each check -->
     <spawnProb>0.0004</spawnProb>
     <!-- Growth rate modifiers -->
-    <tempGrowthRateModifer>
+    <tempGrowthRateModifier>
       <aboveMaxDecayRate>10</aboveMaxDecayRate>
       <maxStable>0</maxStable>
       <maxGrow>-10</maxGrow>
@@ -255,8 +255,8 @@
       <minStable>-150</minStable>
       <belowMinDecayRate>0</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
-    </tempGrowthRateModifer>
-    <rainGrowthRateModifer>
+    </tempGrowthRateModifier>
+    <rainGrowthRateModifier>
       <aboveMaxDecayRate>0</aboveMaxDecayRate>
       <maxStable>999</maxStable>
       <maxGrow>10</maxGrow>
@@ -266,7 +266,7 @@
       <minStable>0.1</minStable>
       <belowMinDecayRate>500</belowMinDecayRate>
       <wholeMapEffect>true</wholeMapEffect>
-    </rainGrowthRateModifer>
+    </rainGrowthRateModifier>
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>

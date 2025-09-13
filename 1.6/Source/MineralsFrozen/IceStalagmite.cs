@@ -14,7 +14,7 @@ namespace MineralsFrozen
      
         public override void TickLong()
         {
-            this.size -= Mathf.Clamp(this.attributes.tempGrowthRateModifer.maxIdeal + this.Position.GetTemperature(this.Map), 0, 100) / 1000;
+            this.size -= Mathf.Clamp(this.attributes.tempGrowthRateModifier.maxIdeal + this.Position.GetTemperature(this.Map), 0, 100) / 1000;
 
             base.TickLong();
         }

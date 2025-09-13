@@ -88,7 +88,7 @@ namespace MineralsFrozen
                     factor = factor * (1 + aMap.weatherManager.curWeather.rainRate * rainMeltFactor);
                 }
             }
-            factor += Mathf.Clamp(this.tempGrowthRateModifer.maxIdeal + aPosition.GetTemperature(aMap), 0, 100);
+            factor += Mathf.Clamp(this.tempGrowthRateModifier.maxIdeal + aPosition.GetTemperature(aMap), 0, 100);
 
             return factor;
         }
@@ -204,7 +204,7 @@ namespace MineralsFrozen
                     factor = factor * obstructionFactor;
                 }
             }
-            factor += Mathf.Clamp(this.tempGrowthRateModifer.maxIdeal + aPosition.GetTemperature(aMap), 0, 100);
+            factor += Mathf.Clamp(this.tempGrowthRateModifier.maxIdeal + aPosition.GetTemperature(aMap), 0, 100);
 
             return factor;
         }
@@ -301,7 +301,7 @@ namespace MineralsFrozen
             {
                 factor = factor * obstructionGrowthRateFactor(aPosition, aMap);
             }
-            factor += Mathf.Clamp(this.tempGrowthRateModifer.maxIdeal + aPosition.GetTemperature(aMap), 0, 100);
+            factor += Mathf.Clamp(this.tempGrowthRateModifier.maxIdeal + aPosition.GetTemperature(aMap), 0, 100);
 
             return factor;
         }
