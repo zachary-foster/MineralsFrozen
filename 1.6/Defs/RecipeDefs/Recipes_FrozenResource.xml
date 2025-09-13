@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
+
   <RecipeDef>
-    <defName>Make_IceBlocksFromSnow</defName>
+    <defName>MF_MakeIceBlocksFromSnow</defName>
     <label>Make ice blocks</label>
     <description>Make ice blocks by compacting snow.</description>
     <jobString>Compacting snow into ice.</jobString>
@@ -11,7 +12,6 @@
     <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
     <recipeUsers>
       <li>TableStonecutter</li>
-      <li>TableMachining</li>
     </recipeUsers>
     <workAmount>1000</workAmount>
     <ingredients>
@@ -35,13 +35,13 @@
     <!-- <researchPrerequisite>FrozenConstructionII</researchPrerequisite> -->
   </RecipeDef>
 
-   <RecipeDef ParentName="MakeStoneBlocksBase">
-    <defName>Make_IceBlocksFromChunk</defName>
+
+  <RecipeDef ParentName="MakeStoneBlocksBase">
+    <defName>MF_MakeIceBlocksFromChunk</defName>
     <label>cut ice blocks</label>
     <description>Cuts ice chunks into usable blocks.</description>
-	 <recipeUsers Inherit="False">
+    <recipeUsers Inherit="False">
       <li>TableMachining</li>
-	    <li>TableStonecutter</li>
     </recipeUsers>
     <ingredients>
       <li>
@@ -62,5 +62,6 @@
       <MF_IceBlocks>20</MF_IceBlocks>
     </products>
   </RecipeDef>
+
 
 </Defs>

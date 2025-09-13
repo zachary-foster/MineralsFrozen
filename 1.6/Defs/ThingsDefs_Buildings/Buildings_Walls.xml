@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
   
-  <ThingDef Name="FrozenWallBase" ParentName="Wall" Class="MineralsFrozen.ThingDef_FrozenWallBase"  Abstract ="True">
+  <ThingDef Name="MF_FrozenWallBase" ParentName="Wall" Class="MineralsFrozen.ThingDef_FrozenWallBase" Abstract ="True">
     <thingClass>MineralsFrozen.FrozenWallBase</thingClass>
-    <!-- <drawerType>MapMeshOnly</drawerType> -->
     <drawerType>MapMeshAndRealTime</drawerType>
     <tickerType>Long</tickerType>
     <holdsRoof>true</holdsRoof>
@@ -19,8 +18,6 @@
     </building>
     <filthLeaving>Filth_ChippedIce</filthLeaving>
     <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
-    <!-- <constructEffect>ConstructDirt</constructEffect> -->
-    <!-- <repairEffect>ConstructDirt</repairEffect> -->
     <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<meltTemp>0</meltTemp>
@@ -29,8 +26,8 @@
   </ThingDef>
   
   
-  <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
-    <defName>SnowWall</defName>
+  <ThingDef Name="MF_SnowWall" ParentName="MF_FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
+    <defName>MF_SnowWall</defName>
     <label>Snow Wall</label>
     <description>An impassable wall made of snow. It is capable of holding up a roof but can be easily knocked down. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if its health is below 90%.</description>
     <graphicData>
@@ -85,8 +82,8 @@
 		<maxStoredHeat>150</maxStoredHeat>
   </ThingDef>
   
-  <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
-    <defName>IceWall</defName>
+  <ThingDef Name="MF_IceWall" ParentName="MF_FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
+    <defName>MF_IceWall</defName>
     <label>Ice Wall</label>
     <description>An impassable wall made of cut ice. It is capable of holding up a roof. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if its health is below 90%.</description>
     <graphicData>
@@ -148,8 +145,8 @@
 		<maxStoredHeat>600</maxStoredHeat>
   </ThingDef>
 
-  <ThingDef ParentName="FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
-    <defName>PykreteWall</defName>
+  <ThingDef Name="MF_PykreteWall" ParentName="MF_FrozenWallBase" Class="MineralsFrozen.ThingDef_FrozenWallBase">
+    <defName>MF_PykreteWall</defName>
     <label>Pykrete Wall</label>
     <description>An impassable wall made of pykrete, a frozen mixure of water and wood pulp. It is much tougher than pure ice and is capable of holding up a roof. It will melt when above 1C and will slowly heal when below 0C. It cannot heal if its health is below 80%.</description>
     <graphicData>

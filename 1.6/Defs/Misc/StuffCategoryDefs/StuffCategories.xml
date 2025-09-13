@@ -2,7 +2,7 @@
 <Defs>
   
   <StuffCategoryDef>
-      <defName>FrozenBuildingMaterial</defName>
+      <defName>MF_FrozenBuildingMaterial</defName>
       <label>Frozen Building Material</label>
   </StuffCategoryDef>
 
