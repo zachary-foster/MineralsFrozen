@@ -10,7 +10,7 @@
       <operations>
 
         <li Class="PatchOperationAdd">
-          <xpath>Defs/ThingDef[defName="IceStalagmite"]/associatedOres</xpath>
+          <xpath>Defs/ThingDef[defName="MF_IceStalagmite"]/associatedOres</xpath>
           <value>
          		<li>ColdSpringsWater</li>
          		<li>BridgeSpringsWater</li>

@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="FrozenResourceBase.cs" />
     <Compile Include="FrozenWallBase.cs" />
-    <Compile Include="IceStalagmite.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="SnowDrift.cs" />
   </ItemGroup>

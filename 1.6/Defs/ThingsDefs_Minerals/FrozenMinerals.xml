@@ -137,7 +137,7 @@
     <reproduceProp>0.00001</reproduceProp>
     <deathProb>0.5</deathProb>
     <!-- Roof requirements -->
-    <mustBeUnroofed>true</mustBeUnroofed>
+    <mustBeNotUnderRoof>true</mustBeNotUnderRoof>
     <!-- The maximum number of images that will be printed per square -->
     <maxMeshCount>12</maxMeshCount>
     <!-- The size range -->
@@ -227,7 +227,7 @@
     <reproduceProp>0.02</reproduceProp>
     <deathProb>0.5</deathProb>
     <!-- Roof requirements -->
-    <mustBeUnroofed>true</mustBeUnroofed>
+    <mustBeNotUnderRoof>true</mustBeNotUnderRoof>
     <!-- The maximum number of images that will be printed per square -->
     <maxMeshCount>1</maxMeshCount>
     <!-- The size range -->

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <IceStalagmite.label>Ледяной сталагмит</IceStalagmite.label>
-  <IceStalagmite.description>Образуется в пещерах из воды, стекающей с потолка, которая впоследствии застывает. Растет только при температуре чуть ниже нуля и тает при её повышении.</IceStalagmite.description>
+  <MF_IceStalagmite.label>Ледяной сталагмит</IceStalagmite.label>
+  <MF_IceStalagmite.description>Образуется в пещерах из воды, стекающей с потолка, которая впоследствии застывает. Растет только при температуре чуть ниже нуля и тает при её повышении.</MF_IceStalagmite.description>
 
   <ZF_SmoothSnowDrift.label>Сугроб</ZF_SmoothSnowDrift.label>
   <ZF_SmoothSnowDrift.description>Снежный сугроб. Сугробы имеет свойство накапливаться на открытых площадках. Сильно затрудняет передвижению. Можно добывать для снежных блоков.</ZF_SmoothSnowDrift.description>
