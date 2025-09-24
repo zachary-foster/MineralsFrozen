@@ -26,12 +26,22 @@ namespace MineralsFrozen
                 return;
             }
 
-            if (FrozenWallBase.isFrozenWall(t))
+            if (pawn is null)
             {
-                if (((double)t.HitPoints / t.MaxHitPoints) > ((FrozenWallBase)t).attributes.maxHealHP)
+                throw new ArgumentNullException(nameof(pawn));
+            }
+
+            if (FrozenWallBase.IsFrozenWall(t))
+            {
+                if (((double)t.HitPoints / t.MaxHitPoints) > ((FrozenWallBase)t).Attributes.maxHealHP)
                 {
                     __result = forced;
                 }
+            }
+
+            if (__instance is null)
+            {
+                throw new ArgumentNullException(nameof(__instance));
             }
         }
     }

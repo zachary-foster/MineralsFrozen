@@ -36,23 +36,36 @@
     <minReproductionSize>0.7</minReproductionSize>
     <reproduceProp>0.002</reproduceProp>
     <deathProb>0.1</deathProb>
-    <!-- Controls how extra clusters are added near assocaited ore-->
-    <associatedOres>
-      <li>Water</li>
-      <li>ShallowWater</li>
-      <li>WaterShallow</li>
-      <li>DeepWater</li>
-      <li>WaterDeep</li>
-      <li>Ice</li>
-      <li>SeaIce</li>
-      <li>IceSea</li>
-      <li>ShallowIce</li>
-      <li>IceShallow</li>
-      <li>DeepIce</li>
-      <li>IceDeep</li>
-      <li>MuddyIce</li>
-    </associatedOres>
-    <nearAssociatedOreBonus>10</nearAssociatedOreBonus>
+    <!-- How nearby things or terrains affect spawn abundance -->
+    <nearbyThingAbundEffects>
+      <li>
+        <defNames>
+          <li>Water</li>
+          <li>ShallowWater</li>
+          <li>WaterShallow</li>
+          <li>DeepWater</li>
+          <li>WaterDeep</li>
+          <li>Ice</li>
+          <li>SeaIce</li>
+          <li>IceSea</li>
+          <li>ShallowIce</li>
+          <li>IceShallow</li>
+          <li>DeepIce</li>
+          <li>IceDeep</li>
+          <li>MuddyIce</li>
+          <li>GU_RedWaterShallow</li>
+          <li>GU_RedWaterDeep</li>
+          <li>ColdSpringsWater</li>
+          <li>BridgeSpringsWater</li>
+          <li>IceShallow</li>
+          <li>MuddyIce</li>
+        </defNames>
+        <radius>3</radius>
+        <foundFactor>10</foundFactor>
+        <notFoundFactor>1</notFoundFactor>
+        <scaleByArea>true</scaleByArea>
+      </li>
+    </nearbyThingAbundEffects>
     <!-- Roof requirements -->
     <mustBeNearRoof>true</mustBeNearRoof>
     <mustBeNearRoofDist>1</mustBeNearRoofDist>
@@ -85,16 +98,16 @@
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>
-        <ResourceDefName>MF_ChunkIce</ResourceDefName>
-        <DropProbability>0.2</DropProbability>
-        <CountPerDrop>1</CountPerDrop>
-        <WasteProduct>true</WasteProduct>
+        <resourceDefName>MF_ChunkIce</resourceDefName>
+        <dropProbability>0.2</dropProbability>
+        <countPerDrop>1</countPerDrop>
+        <wasteProduct>true</wasteProduct>
       </li>
       <li>
-        <ResourceDefName>MF_IceBlocks</ResourceDefName>
-        <DropProbability>2</DropProbability>
-        <CountPerDrop>2</CountPerDrop>
-        <MinMiningSkill>8</MinMiningSkill>
+        <resourceDefName>MF_IceBlocks</resourceDefName>
+        <dropProbability>2</dropProbability>
+        <countPerDrop>2</countPerDrop>
+        <minMiningSkill>8</minMiningSkill>
       </li>
     </randomlyDropResources>
     <!-- How easy it is to mine -->
@@ -180,9 +193,9 @@
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>
-        <ResourceDefName>MF_SnowBlocks</ResourceDefName>
-        <DropProbability>6</DropProbability>
-        <CountPerDrop>2</CountPerDrop>
+        <resourceDefName>MF_SnowBlocks</resourceDefName>
+        <dropProbability>6</dropProbability>
+        <countPerDrop>2</countPerDrop>
       </li>
     </randomlyDropResources>
     <!--  If the mean size of minerals spawned at map generation is scaled by the relative abundance in that map -->
@@ -270,9 +283,9 @@
     <!-- Other resources it might drop -->
     <randomlyDropResources>
       <li>
-        <ResourceDefName>MF_SnowBlocks</ResourceDefName>
-        <DropProbability>10</DropProbability>
-        <CountPerDrop>2</CountPerDrop>
+        <resourceDefName>MF_SnowBlocks</resourceDefName>
+        <dropProbability>10</dropProbability>
+        <countPerDrop>2</countPerDrop>
       </li>
     </randomlyDropResources>
     <!-- How easy it is to mine -->

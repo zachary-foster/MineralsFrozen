@@ -22,7 +22,7 @@ namespace MineralsFrozen
         protected int textureIndex = -100;
 
 
-        public virtual ThingDef_FrozenWallBase attributes
+        public virtual ThingDef_FrozenWallBase Attributes
         {
             get
             {
@@ -30,13 +30,12 @@ namespace MineralsFrozen
             }
         }
 
-        public virtual float currentTemp
+        public virtual float CurrentTemp
         {
             get
             {
 
-                float outTemp;
-                if (GenTemperature.TryGetAirTemperatureAroundThing(this, out outTemp))
+                if (GenTemperature.TryGetAirTemperatureAroundThing(this, out float outTemp))
                 {
                     return outTemp;
                 }
@@ -55,59 +54,58 @@ namespace MineralsFrozen
             }
         }
 
-        // https://stackoverflow.com/questions/2742276/how-do-i-check-if-a-type-is-a-subtype-or-the-type-of-an-object/2742288
-        public static bool isSameOrSubclass(Type potentialBase, Type potentialDescendant)
+        public static bool IsSameOrSubclass(Type potentialBase, Type potentialDescendant)
         {
             return potentialDescendant.IsSubclassOf(potentialBase)
                 || potentialDescendant == potentialBase;
         }
 
-        public static bool isFrozenWall(Thing thing)
+        public static bool IsFrozenWall(Thing thing)
         {
-            return isSameOrSubclass(typeof(FrozenWallBase), thing.GetType());
+            return IsSameOrSubclass(typeof(FrozenWallBase), thing.GetType());
         }
 
-        public virtual bool isMelting
+        public virtual bool IsMelting
         {
             get
             {
-                return currentTemp > attributes.meltTemp;
+                return CurrentTemp > Attributes.meltTemp;
             }
         }
 
-        public virtual bool isHealing
+        public virtual bool IsHealing
         {
             get
             {
-                return currentTemp < attributes.healTemp && canHeal;
+                return CurrentTemp < Attributes.healTemp && CanHeal;
             }
         }
 
-        public virtual bool canHeal
+        public virtual bool CanHeal
         {
             get
             {
-                return (HitPoints < MaxHitPoints) && (HitPoints >= Math.Ceiling(MaxHitPoints * attributes.maxHealHP));
+                return (HitPoints < MaxHitPoints) && (HitPoints >= Math.Ceiling(MaxHitPoints * Attributes.maxHealHP));
             }
         }
 
-        public virtual float currentMeltRate
+        public virtual float CurrentMeltRate
         {
             get
             {
-                float temp = currentTemp;
+                float temp = CurrentTemp;
                 float rate = 0f;
-                if (temp > attributes.meltTemp)
+                if (temp > Attributes.meltTemp)
                 {
-                    rate = ((temp - attributes.meltTemp) / 20) * attributes.meltRate;
+                    rate = ((temp - Attributes.meltTemp) / 20) * Attributes.meltRate;
                 }
-                if (temp < attributes.healTemp && canHeal)
+                if (temp < Attributes.healTemp && CanHeal)
                 {
-                    rate = - ((attributes.healTemp - temp) / 20) * attributes.healRate;
+                    rate = - ((Attributes.healTemp - temp) / 20) * Attributes.healRate;
                 }
-                if (Math.Abs(rate) > attributes.maxChangeRate)
+                if (Math.Abs(rate) > Attributes.maxChangeRate)
                 {
-                    rate = attributes.maxChangeRate * Math.Sign(rate);
+                    rate = Attributes.maxChangeRate * Math.Sign(rate);
                 }
                 return rate;
             }
@@ -117,7 +115,7 @@ namespace MineralsFrozen
         public override void TickLong()
         {
             
-            float rate = currentMeltRate;
+            float rate = CurrentMeltRate;
             if (Math.Abs(rate) > 0)
             {
               // calculate hit points lossed/gained
@@ -148,7 +146,7 @@ namespace MineralsFrozen
               // Apply health and temperature change
               if (Math.Abs(rateInHitpoints) > 0) 
               {
-                float tempChange = (rateInHitpoints / MaxHitPoints) * attributes.maxStoredHeat;
+                float tempChange = (rateInHitpoints / MaxHitPoints) * Attributes.maxStoredHeat;
                 GenTemperature.PushHeat(this, -tempChange);
                 TakeDamage(new DamageInfo(DamageDefOf.Deterioration, rateInHitpoints, 0, -1, null, null, null));
               }
@@ -156,28 +154,28 @@ namespace MineralsFrozen
         }
 
 
-        public virtual void initializeTextures() {
+        public virtual void InitializeTextures() {
             Rand.PushState();
             Rand.Seed = Position.GetHashCode();
-            textureIndex = Rand.Range(0, attributes.getTexturePaths().Count);
+            textureIndex = Rand.Range(0, Attributes.GetTexturePaths().Count);
             Rand.PopState();
         }
 
-        public virtual string getTexturePath()
+        public virtual string GetTexturePath()
         {
             // initalize the array if it has not already been initalized
             if (textureIndex == -100)
             {
-                initializeTextures();
+                InitializeTextures();
             }
 
-            return(attributes.getTexturePaths()[textureIndex]);
+            return(Attributes.GetTexturePaths()[textureIndex]);
         }
 
         public override void Print(SectionLayer layer)
         {
              Rand.PushState();
-             Rand.Seed = Position.GetHashCode() + attributes.defName.GetHashCode();
+             Rand.Seed = Position.GetHashCode() + Attributes.defName.GetHashCode();
              base.Print(layer);
              Rand.PopState();
         }
@@ -187,8 +185,8 @@ namespace MineralsFrozen
             get
             {
                 // Pick a random path 
-                string printedTexturePath = getTexturePath();
-                Graphic printedTexture = GraphicDatabase.Get<Graphic_Single>(printedTexturePath, attributes.graphicData.shaderType.Shader);
+                string printedTexturePath = GetTexturePath();
+                Graphic printedTexture = GraphicDatabase.Get<Graphic_Single>(printedTexturePath, Attributes.graphicData.shaderType.Shader);
 
                 // convert to corner filler
                 printedTexture = GraphicDatabase.Get<Graphic_Single>(printedTexture.path, printedTexture.Shader, printedTexture.drawSize, DrawColor, DrawColorTwo, printedTexture.data);
@@ -199,13 +197,13 @@ namespace MineralsFrozen
         public override string GetInspectString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("Effective temperature: " + Math.Round(currentTemp) + "C");
-            stringBuilder.AppendLine("Melt Rate: " + currentMeltRate);
-            if (isMelting)
+            stringBuilder.AppendLine("Effective temperature: " + Math.Round(CurrentTemp) + "C");
+            stringBuilder.AppendLine("Melt Rate: " + CurrentMeltRate);
+            if (IsMelting)
             {
                 stringBuilder.AppendLine("Melting.");
             }
-            else if (isHealing)
+            else if (IsHealing)
             {
                 stringBuilder.AppendLine("Freezing.");
             }
@@ -244,7 +242,7 @@ namespace MineralsFrozen
         // The difference in stored energy between the solid and liquid
         public float maxStoredHeat = 1000f;
 
-        public virtual void initTexturePaths()
+        public virtual void InitTexturePaths()
         {
             // Get paths to textures
             string textureName = System.IO.Path.GetFileName(graphicData.texPath);
@@ -261,11 +259,11 @@ namespace MineralsFrozen
 
         }
 
-        public virtual List<string> getTexturePaths()
+        public virtual List<string> GetTexturePaths()
         {
             if (texturePaths == null)
             {
-                initTexturePaths();
+                InitTexturePaths();
             }
             return texturePaths;
         }

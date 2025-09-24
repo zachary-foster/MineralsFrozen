@@ -17,7 +17,7 @@ namespace MineralsFrozen
     public class FrozenBlockBase : ThingWithComps
     {
 
-        public virtual ThingDef_FrozenBlockBase attributes
+        public virtual ThingDef_FrozenBlockBase Attributes
         {
             get
             {
@@ -26,7 +26,7 @@ namespace MineralsFrozen
         }
 
 
-        public virtual float currentTemp
+        public virtual float CurrentTemp
         {
             get
             {
@@ -34,31 +34,31 @@ namespace MineralsFrozen
             }
         }
 
-        public virtual bool isMelting
+        public virtual bool IsMelting
         {
             get
             {
-                return currentTemp > attributes.meltTemp;
+                return CurrentTemp > Attributes.meltTemp;
             }
         }
 
-        public virtual bool isHealing
+        public virtual bool IsHealing
         {
             get
             {
-                return currentTemp < attributes.healTemp && canHeal;
+                return CurrentTemp < Attributes.healTemp && CanHeal;
             }
         }
 
-        public virtual bool canHeal
+        public virtual bool CanHeal
         {
             get
             {
-                return (HitPoints < MaxHitPoints) && (HitPoints >= Math.Ceiling(MaxHitPoints * attributes.maxHealHP));
+                return (HitPoints < MaxHitPoints) && (HitPoints >= Math.Ceiling(MaxHitPoints * Attributes.maxHealHP));
             }
         }
 
-        public virtual float stackSizeMeltFactor
+        public virtual float StackSizeMeltFactor
         {
             get
             {
@@ -67,44 +67,44 @@ namespace MineralsFrozen
             }
         }
 
-        public virtual float currentMeltRate
+        public virtual float CurrentMeltRate
         {
             get
             {
                 // Calculate base melt rate
-                float temp = currentTemp;
+                float temp = CurrentTemp;
                 float rate = 0f;
-                if (temp > attributes.meltTemp)
+                if (temp > Attributes.meltTemp)
                 {
-                    rate = ((temp - attributes.meltTemp) / 20) * attributes.meltRate;
+                    rate = ((temp - Attributes.meltTemp) / 20) * Attributes.meltRate;
                 }
-                if (temp < attributes.healTemp && canHeal)
+                if (temp < Attributes.healTemp && CanHeal)
                 {
-                    rate = -((attributes.healTemp - temp) / 20) * attributes.healRate;
+                    rate = -((Attributes.healTemp - temp) / 20) * Attributes.healRate;
                 }
 
                 // Adjust for stack amount
-                rate = rate * stackSizeMeltFactor;
+                rate *= StackSizeMeltFactor;
 
                 // Dont change too much per tick
-                if (Math.Abs(rate) > attributes.maxChangeRate)
+                if (Math.Abs(rate) > Attributes.maxChangeRate)
                 {
-                    rate = attributes.maxChangeRate * Math.Sign(rate);
+                    rate = Attributes.maxChangeRate * Math.Sign(rate);
                 }
 
                 return rate;
             }
         }
 
-        public virtual float exposedHitPoints()
+        public virtual float ExposedHitPoints()
         {
-            return (1 / stackSizeMeltFactor) * ((float)HitPoints / (float)MaxHitPoints - 1) + 1;
+            return ((1 / StackSizeMeltFactor) * ((float)HitPoints / (float)MaxHitPoints - 1)) + 1;
         }
 
         public override void TickLong()
         {
 
-            float rate = currentMeltRate;
+            float rate = CurrentMeltRate;
             float hitPointProp = (float) HitPoints / (float) MaxHitPoints;
             float rateInHitPoints = 0f;
             float rateInCount = 0f;
@@ -133,8 +133,8 @@ namespace MineralsFrozen
                 // Calculate temperature change
                 if (rateInCount > 0f || rateInHitPoints > 0f)
                 {
-                    float tempChangeFromHitPoints = (rateInHitPoints / MaxHitPoints) * attributes.maxStoredHeat * stackCount;
-                    float tempChangeFromStackCount = rateInCount * attributes.maxStoredHeat * hitPointProp;
+                    float tempChangeFromHitPoints = (rateInHitPoints / MaxHitPoints) * Attributes.maxStoredHeat * stackCount;
+                    float tempChangeFromStackCount = rateInCount * Attributes.maxStoredHeat * hitPointProp;
                     tempChange = tempChangeFromHitPoints + tempChangeFromStackCount;
                     GenTemperature.PushHeat(this, -tempChange);
                 }
@@ -170,7 +170,7 @@ namespace MineralsFrozen
                 // Calculate temperature change
                 if (Math.Abs(rateInHitPoints) > 0)
                 {
-                    tempChange = (rateInHitPoints / MaxHitPoints) * attributes.maxStoredHeat * stackCount;
+                    tempChange = (rateInHitPoints / MaxHitPoints) * Attributes.maxStoredHeat * stackCount;
                 }
             }
 
@@ -187,17 +187,17 @@ namespace MineralsFrozen
             }
 
             // Adjust stack count for simulated hit points of exposed items
-            if (exposedHitPoints() <= 0)
+            if (ExposedHitPoints() <= 0)
             {
-                int exposedStackCount = (int)Math.Floor(stackCount * stackSizeMeltFactor);
-                rateInCount = rateInCount + exposedStackCount;
+                int exposedStackCount = (int)Math.Floor(stackCount * StackSizeMeltFactor);
+                rateInCount += exposedStackCount;
                 HitPoints = MaxHitPoints;
              }
 
             // Apply stack count change
             if (rateInCount > 0)
             {
-                stackCount = stackCount - (int)rateInCount;
+                stackCount -= (int)rateInCount;
             }
 
             // Dont go below 1 stack count
@@ -212,13 +212,13 @@ namespace MineralsFrozen
         public override string GetInspectString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("Melt Rate: " + currentMeltRate.ToStringPercent());
-            stringBuilder.AppendLine("Exposed portion health: " + exposedHitPoints().ToStringPercent());
-            if (isMelting)
+            stringBuilder.AppendLine("Melt Rate: " + CurrentMeltRate.ToStringPercent());
+            stringBuilder.AppendLine("Exposed portion health: " + ExposedHitPoints().ToStringPercent());
+            if (IsMelting)
             {
                 stringBuilder.AppendLine("Melting.");
             }
-            else if (isHealing)
+            else if (IsHealing)
             {
                 stringBuilder.AppendLine("Freezing.");
             }
@@ -228,7 +228,7 @@ namespace MineralsFrozen
             }
             if (DebugSettings.godMode)
             {
-                stringBuilder.AppendLine("Stack size factor: " + stackSizeMeltFactor);
+                stringBuilder.AppendLine("Stack size factor: " + StackSizeMeltFactor);
             }
             return stringBuilder.ToString().TrimEndNewlines();
         }

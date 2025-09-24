@@ -11,10 +11,17 @@
     <snowTextureThreshold>0.8</snowTextureThreshold>
     <!-- at what snow depth the mineral is completely hidden -->
     <hiddenInSnowThreshold>999</hiddenInSnowThreshold>
-    <!-- The terrains this can appear cant on. If empty, all terrains are allowed -->
-    <disallowedTerrains>
-      <li>HotSpring</li>
-    </disallowedTerrains>
+    <!-- How nearby things or terrains affect spawn abundance -->
+    <nearbyThingAbundEffects>
+      <li>
+        <defNames>
+          <li>HotSpring</li>
+        </defNames>
+        <radius>0</radius>
+        <foundFactor>0</foundFactor>
+        <notFoundFactor>1</notFoundFactor>
+      </li>
+    </nearbyThingAbundEffects>
     <filthLeaving></filthLeaving>
   </ThingDef>
 

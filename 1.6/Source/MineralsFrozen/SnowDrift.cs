@@ -22,14 +22,14 @@ namespace MineralsFrozen
         {
             get
             {
-                return attributes.GrowthRateAtPos(Map, Position);
+                return Attributes.GrowthRateAtPos(Map, Position);
             }
         }
 
         public override void TickLong()
         {
             // Always make the ground blow snow until it melts
-            float minSnowDepth = size;
+            float minSnowDepth = Size;
             if (minSnowDepth > 1)
             {
                 minSnowDepth = 1f;
@@ -61,7 +61,7 @@ namespace MineralsFrozen
         // How much faster it melts in rain water
         public float rainMeltFactor = 5f;
 
-        public virtual float growthRateFactor(IntVec3 aPosition, Map aMap, float rate)
+        public virtual float GrowthRateFactor(IntVec3 aPosition, Map aMap, float rate)
         {
             float factor = 1f;
 
@@ -74,18 +74,18 @@ namespace MineralsFrozen
                     if (aMap.terrainGrid.TerrainAt(aPosition).defName.Contains("Moving"))
                     {
 
-                        factor = factor * movingWaterMeltFactor; // melt even faster in moving water
+                        factor *= movingWaterMeltFactor; // melt even faster in moving water
                     }
                     else
                     {
-                        factor = factor * stillWaterMeltFactor;
+                        factor *= stillWaterMeltFactor;
                     }
                 }
 
                 // Melts faster in rain
                 if (! aMap.roofGrid.Roofed(aPosition))
                 {
-                    factor = factor * (1 + aMap.weatherManager.curWeather.rainRate * rainMeltFactor);
+                    factor *= (1 + aMap.weatherManager.curWeather.rainRate * rainMeltFactor);
                 }
             }
             factor += Mathf.Clamp(this.tempGrowthRateModifier.maxIdeal + aPosition.GetTemperature(aMap), 0, 100);
@@ -96,7 +96,7 @@ namespace MineralsFrozen
         public override float GrowthRateAtPos(Map aMap, IntVec3 aPosition, bool includePerMapEffects = true)
         {
             float rate = base.GrowthRateAtPos(aMap, aPosition);
-            return rate * growthRateFactor(aPosition, aMap, rate);
+            return rate * GrowthRateFactor(aPosition, aMap, rate);
         }
 
     }
@@ -134,7 +134,7 @@ namespace MineralsFrozen
             }
 
             // dont spawn  next to stuff
-            if (Rand.Range(0f, 1f) > obstructionGrowthRateFactor(position, map))
+            if (Rand.Range(0f, 1f) > ObstructionGrowthRateFactor(position, map))
             {
                 return true;
             }
@@ -148,7 +148,7 @@ namespace MineralsFrozen
             return false;
         }
 
-        public virtual float obstructionGrowthRateFactor(IntVec3 aPosition, Map aMap)
+        public virtual float ObstructionGrowthRateFactor(IntVec3 aPosition, Map aMap)
         {
             float factor = 1f;
 
@@ -185,23 +185,23 @@ namespace MineralsFrozen
 
         }
 
-        public override float growthRateFactor(IntVec3 aPosition, Map aMap, float rate)
+        public override float GrowthRateFactor(IntVec3 aPosition, Map aMap, float rate)
         {
-            float factor = base.growthRateFactor(aPosition, aMap, rate);
+            float factor = base.GrowthRateFactor(aPosition, aMap, rate);
 
             // Nearby Buldings slow growth  and melting
-            float obstructionFactor = obstructionGrowthRateFactor(aPosition, aMap);
+            float obstructionFactor = ObstructionGrowthRateFactor(aPosition, aMap);
             if (factor >= 0)
             {
-                factor = factor * obstructionFactor;
+                factor *= obstructionFactor;
             } else
             {
                 if (obstructionFactor < 0.1f)
                 {
-                    factor = factor * 0.1f;
+                    factor *= 0.1f;
                 } else
                 {
-                    factor = factor * obstructionFactor;
+                    factor *= obstructionFactor;
                 }
             }
             factor += Mathf.Clamp(this.tempGrowthRateModifier.maxIdeal + aPosition.GetTemperature(aMap), 0, 100);
@@ -211,7 +211,7 @@ namespace MineralsFrozen
 
         public override void SpawnInitialCluster(Map map, IntVec3 position, float size, int count)
         {
-            base.SpawnInitialCluster(map, position, size * obstructionGrowthRateFactor(position, map), count);
+            base.SpawnInitialCluster(map, position, size * ObstructionGrowthRateFactor(position, map), count);
         }
 
 
@@ -241,7 +241,7 @@ namespace MineralsFrozen
 //            Log.Message("PlaceIsBlocked: drift not water");
 
             // dont spawn in the open
-            if (Rand.Range(0f, 1f) > obstructionGrowthRateFactor(position, map))
+            if (Rand.Range(0f, 1f) > ObstructionGrowthRateFactor(position, map))
             {
                 return true;
             }
@@ -258,7 +258,7 @@ namespace MineralsFrozen
             return base.PlaceIsBlocked(map, position, initialSpawn);
         }
 
-        public virtual float obstructionGrowthRateFactor(IntVec3 aPosition, Map aMap)
+        public virtual float ObstructionGrowthRateFactor(IntVec3 aPosition, Map aMap)
         {
             float factor = 0f;
 
@@ -280,7 +280,7 @@ namespace MineralsFrozen
                         {
                             if ((thing is Building && thing.def.altitudeLayer == AltitudeLayer.Building) || thing.def is ThingDef_SnowDrift)
                             {
-                                factor = factor + obstructionGrowthBonus;
+                                factor += obstructionGrowthBonus;
                             }
 
                         }
@@ -292,14 +292,14 @@ namespace MineralsFrozen
 
         }
 
-        public override float growthRateFactor(IntVec3 aPosition, Map aMap, float rate)
+        public override float GrowthRateFactor(IntVec3 aPosition, Map aMap, float rate)
         {
-            float factor = base.growthRateFactor(aPosition, aMap, rate);
+            float factor = base.GrowthRateFactor(aPosition, aMap, rate);
 
             // Nearby Buldings speed growth
             if (rate > 0f)
             {
-                factor = factor * obstructionGrowthRateFactor(aPosition, aMap);
+                factor *= ObstructionGrowthRateFactor(aPosition, aMap);
             }
             factor += Mathf.Clamp(this.tempGrowthRateModifier.maxIdeal + aPosition.GetTemperature(aMap), 0, 100);
 
@@ -308,7 +308,7 @@ namespace MineralsFrozen
 
         public override void SpawnInitialCluster(Map map, IntVec3 position, float size, int count)
         {
-            base.SpawnInitialCluster(map, position, size * obstructionGrowthRateFactor(position, map), count);
+            base.SpawnInitialCluster(map, position, size * ObstructionGrowthRateFactor(position, map), count);
         }
 
     }
